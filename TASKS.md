@@ -178,7 +178,7 @@ Tolong bantu saya step-by-step.
 
 | A0.1 | Inisialisasi monorepo dengan pnpm workspace | 🔴 | ✅ | Wajib | 1 hari |
 
-| A0.2 | Setup Next.js 14 untuk `apps/admin` | 🔴 | ⬜ | Wajib | 1 hari |
+| A0.2 | Setup Next.js 14 untuk `apps/admin` | 🔴 | ✅ | Wajib | 1 hari |
 
 | A0.3 | Setup Next.js 14 untuk `apps/mobile` | 🔴 | ⬜ | Wajib | 1 hari |
 

@@ -70,13 +70,13 @@
 
 | \*\*Fase\*\* | 🏗️ Fase 1: Fondasi & Data Master |
 
-| \*\*Progress\*\* | 0.4% |
+| \*\*Progress\*\* | 0.8% |
 
-| \*\*Task Selesai\*\* | 1 / 250+ (A0.1) |
+| \*\*Task Selesai\*\* | 2 / 250+ (A0.1, A0.2) |
 
 | \*\*Blocker\*\* | Tidak ada |
 
-| \*\*Next Action\*\* | Setup Next.js 14 untuk apps/admin (A0.2) |
+| \*\*Next Action\*\* | Setup Next.js 14 untuk apps/mobile (A0.3) |
 
 
 
@@ -103,7 +103,27 @@
 
 \### 2026 — Fase 1: Fondasi & Data Master
 
-\#### [2026-09-27] [A0.1] Inisialisasi Monorepo dengan pnpm workspace
+\#### [2026-09-27] [A0.2] Setup Next.js 14 untuk apps/admin
+
+\*\*Status:\*\* ✅ Selesai
+
+\*\*Oleh:\*\* DeepSeek
+
+\*\*Yang dikerjakan:\*\*
+
+\- Menginisialisasi aplikasi Next.js 14 App Router di `apps/admin` dengan TypeScript dan Tailwind CSS.
+
+\- Mengunci dev server di port 3000 (`next dev -p 3000`) dan memastikan tidak terjadi interferensi dengan port 8000 (ADZKIA) maupun 5173 (PERSOALAN).
+
+\- Mengimplementasikan seluruh komponen UI dashboard admin sesuai DASHBOARD-DESIGN.md: Shell layout responsif (Topbar, Sidebar drawer mobile + fixed desktop), 4 Stat Cards utama (Total Murid: 1.250, Total Guru: 85, Kehadiran Hari Ini: 94,6%, Asesmen Berjalan: 12).
+
+\- Menerapkan istilah resmi Permendikdasmen 2026 pada UI: Murid (Siswa), Fasilitasi Belajar (Pembelajaran), Perkembangan Murid, Asesmen, Disiplin Positif.
+
+\- Verifikasi lulus 100%: `pnpm typecheck` (0 error) ✅, `next build` (compiled successfully) ✅, Port Guard ✅.
+
+\---
+
+#### [2026-09-27] [A0.1] Inisialisasi Monorepo dengan pnpm workspace
 
 \*\*Status:\*\* ✅ Selesai
 
