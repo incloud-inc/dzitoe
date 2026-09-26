@@ -1,0 +1,30 @@
+{
+  "name": "dzitoe",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "DZITOE — Sistem Tata Kelola Sekolah SMAN 20 Kabupaten Tangerang",
+  "packageManager": "pnpm@12.6.0",
+  "engines": {
+    "node": ">=20.0.0",
+    "pnpm": ">=9.0.0"
+  },
+  "scripts": {
+    "dev": "pnpm --parallel --filter @dzitoe/admin --filter @dzitoe/mobile run dev",
+    "dev:admin": "pnpm --filter @dzitoe/admin run dev",
+    "dev:mobile": "pnpm --filter @dzitoe/mobile run dev",
+    "build": "pnpm -r --if-present run build",
+    "typecheck": "pnpm -r --if-present run typecheck",
+    "lint": "pnpm -r --if-present run lint",
+    "clean": "pnpm -r --if-present exec rimraf dist .next node_modules/.cache",
+    "ports:check": "node scripts/check-ports.mjs",
+    "format": "prettier --write \"**/*.{ts,tsx,js,mjs,cjs,json,md,yml,yaml}\"",
+    "format:check": "prettier --check \"**/*.{ts,tsx,js,mjs,cjs,json,md,yml,yaml}\""
+  },
+  "devDependencies": {
+    "@types/node": "catalog:",
+    "prettier": "catalog:",
+    "rimraf": "catalog:",
+    "typescript": "catalog:"
+  }
+}

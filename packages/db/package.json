@@ -1,0 +1,26 @@
+{
+  "name": "@dzitoe/db",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Prisma client & database schema DZITOE",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "exports": {
+    ".": {
+      "types": "./src/index.ts",
+      "import": "./src/index.ts",
+      "default": "./src/index.ts"
+    }
+  },
+  "files": ["src", "prisma"],
+  "scripts": {
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "clean": "rimraf dist"
+  },
+  "devDependencies": {
+    "@types/node": "catalog:",
+    "rimraf": "catalog:",
+    "typescript": "catalog:"
+  }
+}

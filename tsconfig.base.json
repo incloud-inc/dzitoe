@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "display": "DZITOE Base Config",
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "moduleDetection": "force",
+    "resolveJsonModule": true,
+
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "isolatedModules": true,
+    "verbatimModuleSyntax": false,
+    "skipLibCheck": true,
+
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "noImplicitOverride": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "incremental": true,
+
+    "baseUrl": ".",
+    "paths": {
+      "@dzitoe/shared": ["packages/shared/src/index.ts"],
+      "@dzitoe/shared/*": ["packages/shared/src/*"],
+      "@dzitoe/ui": ["packages/ui/src/index.ts"],
+      "@dzitoe/ui/*": ["packages/ui/src/*"],
+      "@dzitoe/config": ["packages/config/src/index.ts"],
+      "@dzitoe/config/*": ["packages/config/src/*"],
+      "@dzitoe/db": ["packages/db/src/index.ts"],
+      "@dzitoe/db/*": ["packages/db/src/*"],
+      "@dzitoe/auth": ["packages/auth/src/index.ts"],
+      "@dzitoe/auth/*": ["packages/auth/src/*"],
+      "@dzitoe/theme": ["packages/theme/src/index.ts"],
+      "@dzitoe/theme/*": ["packages/theme/src/*"],
+      "@dzitoe/utils": ["packages/utils/src/index.ts"],
+      "@dzitoe/utils/*": ["packages/utils/src/*"]
+    }
+  },
+  "exclude": [
+    "node_modules",
+    "dist",
+    "build",
+    "out",
+    "coverage",
+    ".next",
+    ".turbo"
+  ]
+}

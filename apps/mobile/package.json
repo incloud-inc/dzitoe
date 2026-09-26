@@ -1,0 +1,27 @@
+{
+  "name": "@dzitoe/mobile",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "DZITOE Mobile (PWA Next.js 14 untuk Murid & Guru)",
+  "scripts": {
+    "dev": "next dev --port 3001",
+    "build": "next build",
+    "start": "next start --port 3001",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "clean": "rimraf .next dist"
+  },
+  "dependencies": {
+    "@dzitoe/shared": "workspace:*",
+    "@dzitoe/ui": "workspace:*",
+    "@dzitoe/db": "workspace:*",
+    "@dzitoe/auth": "workspace:*",
+    "@dzitoe/theme": "workspace:*",
+    "@dzitoe/utils": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "catalog:",
+    "rimraf": "catalog:",
+    "typescript": "catalog:"
+  }
+}

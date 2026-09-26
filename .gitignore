@@ -1,0 +1,56 @@
+# ==============================================================================
+# DZITOE — Git ignore
+# ==============================================================================
+
+# --- Dependencies ---
+node_modules/
+.pnpm-store/
+.pnpm-debug.log*
+
+# --- Build output ---
+dist/
+build/
+out/
+.next/
+.expo/
+.vite/
+.turbo/
+*.tsbuildinfo
+
+# --- Environment (JANGAN PERNAH COMMIT) ---
+.env
+.env.*
+!.env.example
+
+# --- Logs ---
+*.log
+logs/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# --- Test / coverage ---
+coverage/
+.nyc_output/
+*.lcov
+
+# --- Runtime data lokal ---
+.data/
+uploads/
+tmp/
+temp/
+
+# --- Editor & OS ---
+.DS_Store
+Thumbs.db
+desktop.ini
+.idea/
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+
+# --- Misc ---
+*.local
+.cache/
+.eslintcache
