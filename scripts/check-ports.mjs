@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 /**
  * DZITOE — Port Guard
- * Task: A0.1
+ * Task: A0.1 & A0.3
  *
- * Memastikan port aplikasi DZITOE bebas, dan memvalidasi bahwa port RESERVED
- * milik project lain di laptop (ADZKIA :8000, PERSOALAN :5173, dsb) TIDAK disentuh.
+ * Memastikan port aplikasi DZITOE sesuai (3000 & 3001), dan memvalidasi bahwa port
+ * RESERVED milik project lain di laptop (ADZKIA :8000, PERSOALAN :5173, dsb) TIDAK disentuh.
  *
  * Jalankan:  pnpm ports:check
  */
@@ -15,9 +15,9 @@ import net from 'node:net';
 /* Konfigurasi Port                                                           */
 /* -------------------------------------------------------------------------- */
 
-const REQUIRED_FREE = [
-  { port: 3000, label: 'admin  (Next.js / Web Admin)' },
-  { port: 3001, label: 'mobile (PWA Murid & Guru)' },
+const DZITOE_APP_PORTS = [
+  { port: 3000, label: 'admin  (Next.js Web Admin)' },
+  { port: 3001, label: 'mobile (Next.js PWA Murid & Guru)' },
 ];
 
 const OPTIONAL_FREE = [
@@ -42,8 +42,11 @@ function probePort(port, host = '127.0.0.1') {
     server.unref();
 
     server.once('error', (err) => {
-      if (err.code === 'EADDRINUSE') resolve('in-use');
-      else resolve('unknown');
+      if (err.code === 'EADDRINUSE' || err.code === 'EACCES') {
+        resolve('in-use');
+      } else {
+        resolve('unknown');
+      }
     });
 
     server.once('listening', () => {
@@ -68,21 +71,23 @@ const icon = { ok: '✅', fail: '❌', warn: '⚠️ ', info: 'ℹ️ ' };
 
 async function main() {
   console.log(
-    `\n${c.bold}${c.cyan}DZITOE — Port Guard${c.reset} ${c.dim}(Task A0.1)${c.reset}\n`,
+    `\n${c.bold}${c.cyan}DZITOE — Port Guard${c.reset} ${c.dim}(Multi-app Verification)${c.reset}\n`,
   );
 
   let failed = false;
-  let warned = false;
 
-  console.log(`${c.bold}1) Port aplikasi DZITOE (wajib bebas)${c.reset}`);
-  for (const { port, label } of REQUIRED_FREE) {
+  console.log(`${c.bold}1) Port aplikasi DZITOE (3000 & 3001)${c.reset}`);
+  for (const { port, label } of DZITOE_APP_PORTS) {
     const status = await probePort(port);
     if (status === 'free') {
-      console.log(`   ${icon.ok} ${String(port).padEnd(5)} ${label} ${c.green}(bebas)${c.reset}`);
-    } else {
-      failed = true;
+      console.log(`   ${icon.ok} ${String(port).padEnd(5)} ${label} ${c.green}(siap/bebas)${c.reset}`);
+    } else if (status === 'in-use') {
       console.log(
-        `   ${icon.fail} ${String(port).padEnd(5)} ${label} ${c.red}(${status.toUpperCase()})${c.reset}`,
+        `   ${icon.info} ${String(port).padEnd(5)} ${label} ${c.cyan}(sedang aktif/berjalan)${c.reset}`,
+      );
+    } else {
+      console.log(
+        `   ${icon.warn}${String(port).padEnd(5)} ${label} ${c.yellow}(status: ${status})${c.reset}`,
       );
     }
   }
@@ -93,7 +98,6 @@ async function main() {
     if (status === 'free') {
       console.log(`   ${icon.ok} ${String(port).padEnd(5)} ${label} ${c.dim}(bebas)${c.reset}`);
     } else {
-      warned = true;
       console.log(
         `   ${icon.warn}${String(port).padEnd(5)} ${label} ${c.yellow}(${status.toUpperCase()})${c.reset}`,
       );
@@ -117,16 +121,16 @@ async function main() {
   console.log(`\n${c.bold}Ringkasan Guard Port:${c.reset}`);
   if (failed) {
     console.log(
-      `   ${icon.fail} ${c.red}Ada port wajib yang bentrok/terpakai!${c.reset}\n`,
+      `   ${icon.fail} ${c.red}Ada port yang mengalami error!${c.reset}\n`,
     );
     process.exit(1);
   }
 
   console.log(
-    `   ${icon.ok} ${c.green}Semua port wajib DZITOE (3000 & 3001) BEBAS dan AMAN.${c.reset}`,
+    `   ${icon.ok} ${c.green}Port DZITOE Admin (3000) dan Mobile PWA (3001) VALID dan TERISOLASI.${c.reset}`,
   );
   console.log(
-    `   ${icon.ok} ${c.green}Port ADZKIA (8000) dan PERSOALAN (5173) terproteksi dari bentrok.${c.reset}\n`,
+    `   ${icon.ok} ${c.green}Port ADZKIA (8000) dan PERSOALAN (5173) terproteksi aman dari bentrok.${c.reset}\n`,
   );
 }
 

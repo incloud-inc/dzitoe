@@ -3,25 +3,37 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "description": "DZITOE Mobile (PWA Next.js 14 untuk Murid & Guru)",
+  "description": "DZITOE Mobile PWA — SMAN 20 Kabupaten Tangerang",
   "scripts": {
-    "dev": "next dev --port 3001",
+    "dev": "next dev -p 3001",
     "build": "next build",
-    "start": "next start --port 3001",
-    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "start": "next start -p 3001",
+    "lint": "next lint",
+    "typecheck": "tsc --noEmit",
     "clean": "rimraf .next dist"
   },
   "dependencies": {
-    "@dzitoe/shared": "workspace:*",
-    "@dzitoe/ui": "workspace:*",
-    "@dzitoe/db": "workspace:*",
     "@dzitoe/auth": "workspace:*",
+    "@dzitoe/db": "workspace:*",
+    "@dzitoe/shared": "workspace:*",
     "@dzitoe/theme": "workspace:*",
-    "@dzitoe/utils": "workspace:*"
+    "@dzitoe/ui": "workspace:*",
+    "@dzitoe/utils": "workspace:*",
+    "clsx": "^2.1.1",
+    "lucide-react": "^0.451.0",
+    "next": "14.2.15",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "tailwind-merge": "^2.5.2"
   },
   "devDependencies": {
     "@types/node": "catalog:",
+    "@types/react": "^18.3.11",
+    "@types/react-dom": "^18.3.0",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.47",
     "rimraf": "catalog:",
+    "tailwindcss": "^3.4.13",
     "typescript": "catalog:"
   }
 }

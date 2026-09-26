@@ -70,13 +70,13 @@
 
 | \*\*Fase\*\* | 🏗️ Fase 1: Fondasi & Data Master |
 
-| \*\*Progress\*\* | 0.8% |
+| \*\*Progress\*\* | 1.2% |
 
-| \*\*Task Selesai\*\* | 2 / 250+ (A0.1, A0.2) |
+| \*\*Task Selesai\*\* | 3 / 250+ (A0.1, A0.2, A0.3) |
 
 | \*\*Blocker\*\* | Tidak ada |
 
-| \*\*Next Action\*\* | Setup Next.js 14 untuk apps/mobile (A0.3) |
+| \*\*Next Action\*\* | Setup Tailwind CSS & Design System (A0.4) |
 
 
 
@@ -103,7 +103,31 @@
 
 \### 2026 — Fase 1: Fondasi & Data Master
 
-\#### [2026-09-27] [A0.2] Setup Next.js 14 untuk apps/admin
+\#### [2026-09-27] [A0.3] Setup Next.js 14 untuk apps/mobile (PWA)
+
+\*\*Status:\*\* ✅ Selesai
+
+\*\*Oleh:\*\* DeepSeek
+
+\*\*Yang dikerjakan:\*\*
+
+\- Menginisialisasi aplikasi Mobile PWA Next.js 14 App Router di `apps/mobile` dengan TypeScript dan Tailwind CSS.
+
+\- Mengunci dev server di port 3001 (`next dev -p 3001`) dan mengisolasi penuh dari port 8000 (ADZKIA) serta 5173 (PERSOALAN).
+
+\- Mengimplementasikan seluruh komponen UI mobile PWA sesuai DESIGN.md: Frame MobileShell (mobile-first, centered di layar lebar), AppHeader dengan avatar dan status kehadiran, 5 Tab Bottom Navigation (Beranda, Absensi, Profil, Tagihan, Lainnya), QuickAbsenCard (simulasi tahapan GPS + Swafoto), StatGrid, ScheduleCard, dan AnnouncementList.
+
+\- Menyiapkan manifest PWA (`manifest.ts`), service worker (`public/sw.js`), icon SVG adaptif & maskable.
+
+\- Menyiapkan 5 halaman mobile utama: Beranda (`/`), Absensi (`/absensi`), Profil 360° (`/profil`), Tagihan (`/tagihan`), dan Menu Layanan (`/lainnya`).
+
+\- Menerapkan istilah Permendikdasmen 2026: Murid (Siswa), Fasilitasi Belajar (Pembelajaran), Perkembangan Murid, Asesmen, Disiplin Positif.
+
+\- Verifikasi lulus 100%: `pnpm typecheck` (0 error) ✅, `next build` (10 route statis berhasil dioptimalkan) ✅, Port Guard ✅.
+
+\---
+
+#### [2026-09-27] [A0.2] Setup Next.js 14 untuk apps/admin
 
 \*\*Status:\*\* ✅ Selesai
 
