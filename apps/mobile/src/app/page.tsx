@@ -1,34 +1,33 @@
 import AppHeader from '@/components/AppHeader';
+import { QuickActionBar } from '@/components/home/QuickActionBar';
+import { CompetencyProgress } from '@/components/home/CompetencyProgress';
+import { HomeTabs } from '@/components/home/HomeTabs';
 import AnnouncementList from '@/components/AnnouncementList';
-import QuickAbsenCard from '@/components/QuickAbsenCard';
-import ScheduleCard from '@/components/ScheduleCard';
 import SectionHeader from '@/components/SectionHeader';
-import StatGrid from '@/components/StatGrid';
 
 export default function BerandaPage() {
   return (
     <div className="animate-fade-up">
+      {/* Header dengan Identitas Sekolah & Kartu Pelajar QR */}
       <AppHeader />
 
-      <div className="-mt-12 space-y-6 px-4">
-        <QuickAbsenCard />
+      {/* Konten Utama */}
+      <div className="-mt-9 space-y-5 px-3.5 pb-6">
+        {/* Tombol Aksi Cepat (Presensi GPS, Kartu QR, Absensi, Tagihan) */}
+        <QuickActionBar />
 
-        <StatGrid />
+        {/* Tab Interaktif: Jadwal Hari Ini, Tugas & Asesmen, Disiplin Positif */}
+        <HomeTabs />
 
-        <section aria-labelledby="jadwal-heading">
-          <SectionHeader
-            id="jadwal-heading"
-            title="Jadwal Fasilitasi Belajar"
-            subtitle="Hari ini · 5 sesi terjadwal"
-          />
-          <ScheduleCard />
-        </section>
+        {/* Capaian Kompetensi Kurikulum Merdeka (Radix Progress) */}
+        <CompetencyProgress />
 
-        <section aria-labelledby="pengumuman-heading">
+        {/* Pengumuman Sekolah */}
+        <section aria-labelledby="pengumuman-heading" className="space-y-2.5">
           <SectionHeader
             id="pengumuman-heading"
-            title="Pengumuman"
-            subtitle="Informasi terbaru untuk Murid"
+            title="Pengumuman SMAN 20"
+            subtitle="Informasi resmi & agenda sekolah terkini"
           />
           <AnnouncementList />
         </section>
