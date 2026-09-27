@@ -22,15 +22,8 @@ import {
   TrendingUp,
   Users,
 } from "lucide-react";
-import {
-  Area,
-  AreaChart,
-  CartesianGrid,
-  ResponsiveContainer,
-  Tooltip as RechartsTooltip,
-  XAxis,
-  YAxis,
-} from "recharts";
+
+import { TrendChart } from "@/components/trend-chart";
 
 import { DashboardShell } from "@/components/dashboard-shell";
 import { ProgressBar } from "@/components/progress-bar";
@@ -373,35 +366,8 @@ export default function AdminDashboardPage() {
                     </div>
                   </div>
 
-                  <div className="mt-6 h-64 w-full">
-                    <ResponsiveContainer width="100%" height="100%">
-                      <AreaChart data={TREND_DATA} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
-                        <defs>
-                          <linearGradient id="colorAsesmen" x1="0" y1="0" x2="0" y2="1">
-                            <stop offset="5%" stopColor="#4f46e5" stopOpacity={0.25} />
-                            <stop offset="95%" stopColor="#4f46e5" stopOpacity={0} />
-                          </linearGradient>
-                          <linearGradient id="colorKehadiran" x1="0" y1="0" x2="0" y2="1">
-                            <stop offset="5%" stopColor="#10b981" stopOpacity={0.25} />
-                            <stop offset="95%" stopColor="#10b981" stopOpacity={0} />
-                          </linearGradient>
-                        </defs>
-                        <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f1f5f9" />
-                        <XAxis dataKey="bulan" tickLine={false} axisLine={false} tick={{ fontSize: 12, fill: "#64748b" }} />
-                        <YAxis domain={[50, 100]} tickLine={false} axisLine={false} tick={{ fontSize: 12, fill: "#64748b" }} />
-                        <RechartsTooltip
-                          contentStyle={{
-                            backgroundColor: "#0f172a",
-                            borderRadius: "12px",
-                            border: "none",
-                            color: "#fff",
-                            fontSize: "12px",
-                          }}
-                        />
-                        <Area type="monotone" dataKey="asesmen" stroke="#4f46e5" strokeWidth={2.5} fillOpacity={1} fill="url(#colorAsesmen)" name="Asesmen" />
-                        <Area type="monotone" dataKey="kehadiran" stroke="#10b981" strokeWidth={2.5} fillOpacity={1} fill="url(#colorKehadiran)" name="Kehadiran" />
-                      </AreaChart>
-                    </ResponsiveContainer>
+                  <div className="mt-6 w-full">
+                    <TrendChart data={TREND_DATA} height={260} />
                   </div>
                 </div>
 
