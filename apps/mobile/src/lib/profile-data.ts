@@ -11,7 +11,7 @@ export const STUDENT_PROFILE: StudentProfile = {
   nisn: '1029384756',
   className: 'Kelas XII IPA 1',
   school: 'SMAN 20',
-  avatarUrl: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=300&auto=format&fit=crop&q=80',
+  avatarUrl: '/avatars/maya_chen.jpg',
 };
 
 export interface MetricItem {
