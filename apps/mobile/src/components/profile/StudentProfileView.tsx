@@ -83,6 +83,7 @@ export default function StudentProfileView() {
                 sizes="96px"
                 className="object-cover"
                 priority
+                unoptimized
               />
             </div>
 
