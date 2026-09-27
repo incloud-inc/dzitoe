@@ -36,6 +36,11 @@ export const metadata: Metadata = {
     title: APP_NAME,
     statusBarStyle: 'default',
   },
+  icons: {
+    icon: '/icon.svg',
+    shortcut: '/icon.svg',
+    apple: '/apple-icon.svg',
+  },
   formatDetection: {
     telephone: false,
     email: false,

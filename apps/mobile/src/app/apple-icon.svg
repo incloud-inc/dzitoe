@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="DZITOE">
-  <rect width="512" height="512" fill="#0a7354" />
-  <path d="M256 120 136 180l120 60 120-60-120-60Z" fill="#ffffff" />
-  <path
-    d="M172 212v68c0 42 38 76 84 76s84-34 84-76v-68l-84 42-84-42Z"
-    fill="#ffffff"
-    fill-opacity="0.85"
-  />
-</svg>
