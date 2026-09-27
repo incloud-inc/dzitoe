@@ -2,24 +2,8 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { CreditCard, Home, LayoutGrid, ScanFace, User } from 'lucide-react';
-import type { LucideIcon } from 'lucide-react';
-
+import { Home, Calendar, QrCode, MessageSquare, User } from 'lucide-react';
 import { cn } from '@/lib/utils';
-
-type NavItem = {
-  href: string;
-  label: string;
-  icon: LucideIcon;
-};
-
-const NAV_ITEMS: NavItem[] = [
-  { href: '/', label: 'Beranda', icon: Home },
-  { href: '/absensi', label: 'Absensi', icon: ScanFace },
-  { href: '/tagihan', label: 'Tagihan', icon: CreditCard },
-  { href: '/profil', label: 'Profil', icon: User },
-  { href: '/lainnya', label: 'Lainnya', icon: LayoutGrid },
-];
 
 export default function BottomNav() {
   const pathname = usePathname();
@@ -30,55 +14,85 @@ export default function BottomNav() {
     }
   };
 
+  const isHome = pathname === '/';
+  const isJadwal = pathname === '/jadwal';
+  const isPesan = pathname === '/pesan';
+  const isProfil = pathname === '/profil';
+
   return (
     <nav
       aria-label="Navigasi utama mobile"
-      className="fixed inset-x-0 bottom-0 z-50 mx-auto w-full max-w-md border-t border-slate-200/90 bg-white/90 shadow-nav backdrop-blur-xl supports-[backdrop-filter]:bg-white/85"
+      className="fixed inset-x-0 bottom-0 z-50 mx-auto w-full max-w-md border-t border-slate-200/90 bg-white/95 shadow-nav backdrop-blur-xl supports-[backdrop-filter]:bg-white/90"
       style={{ paddingBottom: 'max(0.5rem, env(safe-area-inset-bottom, 0.5rem))' }}
     >
-      <ul className="grid grid-cols-5 px-1 pt-1.5">
-        {NAV_ITEMS.map((item) => {
-          const aktif =
-            item.href === '/'
-              ? pathname === '/'
-              : pathname === item.href || pathname.startsWith(`${item.href}/`);
-          const Icon = item.icon;
+      <div className="relative flex items-center justify-around px-2 pt-1.5">
+        {/* 1. Home */}
+        <Link
+          href="/"
+          onClick={handleTabPress}
+          className={cn(
+            'flex min-h-[50px] flex-1 flex-col items-center justify-center gap-1 rounded-xl text-[10px] font-medium transition-all active:scale-95',
+            isHome ? 'text-indigo-600 font-bold' : 'text-slate-400 hover:text-slate-600'
+          )}
+        >
+          <Home className="h-5 w-5" />
+          <span>Home</span>
+        </Link>
 
-          return (
-            <li key={item.href}>
-              <Link
-                href={item.href}
-                onClick={handleTabPress}
-                aria-current={aktif ? 'page' : undefined}
-                className={cn(
-                  'group flex min-h-[52px] flex-col items-center justify-center gap-1 rounded-xl text-[11px] font-medium transition-all duration-150',
-                  'focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 active:scale-95',
-                  aktif ? 'text-brand-700 font-semibold' : 'text-slate-500 hover:text-slate-800',
-                )}
-              >
-                <span
-                  className={cn(
-                    'grid h-8 w-13 place-items-center rounded-full transition-all duration-200',
-                    aktif
-                      ? 'bg-brand-50 text-brand-700 shadow-xs ring-1 ring-brand-200/60'
-                      : 'bg-transparent text-slate-500 group-hover:bg-slate-100',
-                  )}
-                >
-                  <Icon
-                    className={cn(
-                      'h-5 w-5 transition-transform duration-200',
-                      aktif ? 'scale-110 text-brand-700' : 'text-slate-500',
-                    )}
-                    strokeWidth={aktif ? 2.4 : 2}
-                    aria-hidden="true"
-                  />
-                </span>
-                <span className="leading-none text-[11px] tracking-tight">{item.label}</span>
-              </Link>
-            </li>
-          );
-        })}
-      </ul>
+        {/* 2. Jadwal (dengan dot notifikasi) */}
+        <Link
+          href="/absensi"
+          onClick={handleTabPress}
+          className={cn(
+            'relative flex min-h-[50px] flex-1 flex-col items-center justify-center gap-1 rounded-xl text-[10px] font-medium transition-all active:scale-95',
+            isJadwal ? 'text-indigo-600 font-bold' : 'text-slate-400 hover:text-slate-600'
+          )}
+        >
+          <div className="relative">
+            <Calendar className="h-5 w-5" />
+            <span className="absolute -top-0.5 -right-0.5 h-2 w-2 rounded-full bg-rose-500 ring-2 ring-white" />
+          </div>
+          <span>Jadwal</span>
+        </Link>
+
+        {/* 3. Scan QR / Tap Absen (Menonjol di tengah) */}
+        <div className="relative -mt-6 flex flex-1 justify-center">
+          <Link
+            href="/absensi"
+            onClick={handleTabPress}
+            className="flex h-13 w-13 flex-col items-center justify-center rounded-full bg-gradient-to-tr from-indigo-600 to-violet-600 text-white shadow-lg shadow-indigo-600/35 transition-transform active:scale-90 hover:brightness-110 ring-4 ring-white"
+            title="Scan QR / Tap Absen"
+          >
+            <QrCode className="h-6 w-6 stroke-[2.2]" />
+          </Link>
+        </div>
+
+        {/* 4. Pesan */}
+        <Link
+          href="/lainnya"
+          onClick={handleTabPress}
+          className={cn(
+            'flex min-h-[50px] flex-1 flex-col items-center justify-center gap-1 rounded-xl text-[10px] font-medium transition-all active:scale-95',
+            isPesan ? 'text-indigo-600 font-bold' : 'text-slate-400 hover:text-slate-600'
+          )}
+        >
+          <MessageSquare className="h-5 w-5" />
+          <span>Pesan</span>
+        </Link>
+
+        {/* 5. Profil (State Aktif) */}
+        <Link
+          href="/profil"
+          onClick={handleTabPress}
+          className={cn(
+            'flex min-h-[50px] flex-1 flex-col items-center justify-center gap-1 rounded-xl text-[10px] font-medium transition-all active:scale-95',
+            isProfil || isHome ? 'text-indigo-600 font-bold' : 'text-slate-400 hover:text-slate-600'
+          )}
+        >
+          <User className="h-5 w-5" />
+          <span>Profil</span>
+        </Link>
+      </div>
     </nav>
   );
 }
