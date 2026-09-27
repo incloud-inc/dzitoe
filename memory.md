@@ -103,6 +103,33 @@
 
 \### 2026 — Fase 1: Fondasi & Data Master
 
+\#### [2026-09-27] [UI/UX] Modern Web Guidance Enhancement — Dashboard Admin & Mobile PWA
+
+\*\*Status:\*\* ✅ Selesai
+
+\*\*Oleh:\*\* DeepSeek
+
+\*\*Yang dikerjakan:\*\*
+- Melakukan audit mendalam (scan) tampilan `apps/admin` dan `apps/mobile` menggunakan standar **Modern Web Guidance (Google Chrome / W3C)** dan `DASHBOARD-DESIGN.md`.
+- **apps/admin (Dashboard Web Desktop - Port 3000):**
+  - Mengimplementasikan **Layout 3 Kolom Responsif** sesuai spesifikasi `DASHBOARD-DESIGN.md`: Sidebar Kiri (272px), Konten Utama terpusat, dan Panel Kanan Terpadu (`ActivityPanel.tsx`, 320px) yang sticky di desktop lebar (≥1440px) serta berupa drawer halus di tablet/laptop (<1440px) dengan toggle di Topbar.
+  - Menampilkan notifikasi real-time, live activity feed guru/murid/operator, dan indikator status sistem & port.
+  - Memperbarui `Topbar.tsx`: Glassmorphism (`backdrop-blur-md bg-white/80`), search bar dengan shortcut keyboard (`Ctrl + K`), dan toggle panel notifikasi.
+  - Memperbarui `globals.css`: Token semantik OKLCH, tipografi modern dengan `text-wrap: balance` pada headings dan `text-wrap: pretty` pada body, scrollbar modern (`scrollbar-gutter: stable`, `scrollbar-width: thin`), dan kurva fisika `var(--ease-out-spring)`.
+  - Meningkatkan aksesibilitas `StatCard.tsx` dengan `role="region"`, `aria-label`, dan micro-interaction hover elevation.
+- **apps/mobile (Mobile PWA - Port 3001):**
+  - Mengoptimalkan `MobileShell.tsx` dengan `100dvh` dynamic viewport, `overscroll-behavior-y: contain` (mencegah pull-to-refresh liar), dan frame smartphone premium saat diakses via desktop.
+  - Menyempurnakan `AppHeader.tsx`: Identitas resmi SMAN 20 Kab. Tangerang, indikator status online murid, badge unread count, dan touch target minimum 44px.
+  - Meningkatkan `QuickAbsenCard.tsx`: Touch target minimum 48px (WCAG 2.5.5 AAA), simulasi haptic feedback saat tap (`navigator.vibrate`), status radius sekolah (geofencing 15m), dan indikator visual status presensi.
+  - Menyempurnakan `BottomNav.tsx`: Safe-area bottom padding (`env(safe-area-inset-bottom)`), active indicator pill dengan spring transition, dan feedback haptic saat berganti tab.
+  - Menyempurnakan `ScheduleCard.tsx`: Indikator real-time "Aktif Sekarang" dengan pulsating live dot.
+- Verifikasi lulus:
+  - `pnpm --filter @dzitoe/admin build` ✅ (Compiled successfully, 0 error)
+  - `pnpm --filter @dzitoe/mobile build` ✅ (10 static routes generated, 0 error)
+  - Port Guard: Port 3000 & 3001 terisolasi aman, Port 8000 (ADZKIA) & 5173 (PERSOALAN) tetap terlindungi 100%.
+
+---
+
 \#### [2026-09-27] [A0.3] Setup Next.js 14 untuk apps/mobile (PWA)
 
 \*\*Status:\*\* ✅ Selesai

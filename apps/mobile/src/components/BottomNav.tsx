@@ -16,21 +16,27 @@ type NavItem = {
 const NAV_ITEMS: NavItem[] = [
   { href: '/', label: 'Beranda', icon: Home },
   { href: '/absensi', label: 'Absensi', icon: ScanFace },
-  { href: '/profil', label: 'Profil', icon: User },
   { href: '/tagihan', label: 'Tagihan', icon: CreditCard },
+  { href: '/profil', label: 'Profil', icon: User },
   { href: '/lainnya', label: 'Lainnya', icon: LayoutGrid },
 ];
 
 export default function BottomNav() {
   const pathname = usePathname();
 
+  const handleTabPress = () => {
+    if (typeof window !== 'undefined' && 'vibrate' in navigator) {
+      navigator.vibrate?.(10);
+    }
+  };
+
   return (
     <nav
-      aria-label="Navigasi utama"
-      className="fixed inset-x-0 bottom-0 z-50 mx-auto w-full max-w-md border-t border-slate-200 bg-white/95 shadow-nav backdrop-blur-md supports-[backdrop-filter]:bg-white/80"
-      style={{ paddingBottom: 'env(safe-area-inset-bottom, 0px)' }}
+      aria-label="Navigasi utama mobile"
+      className="fixed inset-x-0 bottom-0 z-50 mx-auto w-full max-w-md border-t border-slate-200/90 bg-white/90 shadow-nav backdrop-blur-xl supports-[backdrop-filter]:bg-white/85"
+      style={{ paddingBottom: 'max(0.5rem, env(safe-area-inset-bottom, 0.5rem))' }}
     >
-      <ul className="grid grid-cols-5">
+      <ul className="grid grid-cols-5 px-1 pt-1.5">
         {NAV_ITEMS.map((item) => {
           const aktif =
             item.href === '/'
@@ -42,29 +48,32 @@ export default function BottomNav() {
             <li key={item.href}>
               <Link
                 href={item.href}
+                onClick={handleTabPress}
                 aria-current={aktif ? 'page' : undefined}
                 className={cn(
-                  'group flex flex-col items-center gap-1 pt-2.5 pb-2 text-[11px] font-medium transition-colors',
-                  'focus:outline-none focus-visible:bg-slate-100',
-                  aktif ? 'text-brand-700' : 'text-slate-500 hover:text-slate-800',
+                  'group flex min-h-[52px] flex-col items-center justify-center gap-1 rounded-xl text-[11px] font-medium transition-all duration-150',
+                  'focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 active:scale-95',
+                  aktif ? 'text-brand-700 font-semibold' : 'text-slate-500 hover:text-slate-800',
                 )}
               >
                 <span
                   className={cn(
-                    'grid h-8 w-14 place-items-center rounded-full transition-colors',
-                    aktif ? 'bg-brand-50' : 'bg-transparent',
+                    'grid h-8 w-13 place-items-center rounded-full transition-all duration-200',
+                    aktif
+                      ? 'bg-brand-50 text-brand-700 shadow-xs ring-1 ring-brand-200/60'
+                      : 'bg-transparent text-slate-500 group-hover:bg-slate-100',
                   )}
                 >
                   <Icon
                     className={cn(
-                      'h-[22px] w-[22px]',
-                      aktif ? 'text-brand-700' : 'text-slate-500',
+                      'h-5 w-5 transition-transform duration-200',
+                      aktif ? 'scale-110 text-brand-700' : 'text-slate-500',
                     )}
                     strokeWidth={aktif ? 2.4 : 2}
-                    aria-hidden
+                    aria-hidden="true"
                   />
                 </span>
-                <span className="leading-none">{item.label}</span>
+                <span className="leading-none text-[11px] tracking-tight">{item.label}</span>
               </Link>
             </li>
           );

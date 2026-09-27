@@ -5,21 +5,41 @@
 @layer base {
   :root {
     --sidebar-width: 272px;
+    --right-panel-width: 320px;
     --topbar-height: 64px;
+
+    /* Semantic OKLCH / modern tokens */
+    --dz-bg: oklch(98.5% 0.005 250);
+    --dz-surface: oklch(100% 0 0);
+    --dz-surface-subtle: oklch(97% 0.008 250);
+    --dz-border-subtle: oklch(92% 0.01 250);
+    --dz-border-strong: oklch(85% 0.02 250);
+
+    /* Physics-based Easing */
+    --ease-out-spring: cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-in-out-smooth: cubic-bezier(0.65, 0, 0.35, 1);
   }
 
   * {
     @apply border-slate-200;
+    box-sizing: border-box;
   }
 
   html {
     -webkit-tap-highlight-color: transparent;
     scroll-behavior: smooth;
+    text-rendering: optimizeLegibility;
+    scrollbar-gutter: stable;
   }
 
   body {
     @apply bg-slate-50 text-slate-900 antialiased;
-    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11", "ss01";
+    text-wrap: pretty;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    text-wrap: balance;
   }
 
   ::selection {
@@ -33,20 +53,20 @@
 
 @layer components {
   .dz-surface {
-    @apply rounded-2xl border border-slate-200 bg-white shadow-card;
+    @apply rounded-2xl border border-slate-200/90 bg-white shadow-card transition-all duration-200;
   }
 
   .dz-btn {
     @apply inline-flex select-none items-center justify-center gap-2 rounded-xl px-4 py-2.5
-           text-sm font-semibold transition-all duration-200 ease-out-expo
+           text-sm font-semibold transition-all duration-200
            focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500
-           focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50;
+           focus-visible:ring-offset-2 active:scale-[0.98] disabled:pointer-events-none disabled:opacity-50;
+    transition-timing-function: var(--ease-out-spring);
   }
 
   .dz-btn-primary {
     @apply dz-btn bg-brand-600 text-white shadow-sm shadow-brand-600/25
-           hover:-translate-y-0.5 hover:bg-brand-700 hover:shadow-md hover:shadow-brand-600/30
-           active:translate-y-0;
+           hover:-translate-y-0.5 hover:bg-brand-700 hover:shadow-md hover:shadow-brand-600/30;
   }
 
   .dz-btn-ghost {
@@ -58,9 +78,20 @@
     @apply inline-flex items-center gap-1.5 rounded-full px-2.5 py-1
            text-xs font-semibold tracking-tight;
   }
+
+  .dz-interactive {
+    transition: transform 200ms var(--ease-out-spring), box-shadow 200ms ease, background-color 150ms ease;
+  }
+  .dz-interactive:hover {
+    transform: translateY(-2px);
+  }
+  .dz-interactive:active {
+    transform: scale(0.98);
+  }
 }
 
 @layer utilities {
+  /* Modern CSS scrollbar (Chromium 121+, Firefox, Safari 18+) */
   .scrollbar-thin {
     scrollbar-width: thin;
     scrollbar-color: rgb(203 213 225) transparent;

@@ -81,9 +81,11 @@ export function StatCard({
 
   return (
     <article
+      role="region"
+      aria-label={`Statistik ${label}`}
       className={cn(
-        "group relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-5 shadow-card",
-        "transition-all duration-300 ease-out-expo",
+        "group relative overflow-hidden rounded-2xl border border-slate-200/90 bg-white p-5 shadow-card",
+        "transition-all duration-300 ease-out-expo dz-interactive",
         "hover:-translate-y-0.5 hover:border-slate-300 hover:shadow-card-hover",
         "animate-fade-in-up",
       )}

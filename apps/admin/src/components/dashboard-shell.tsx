@@ -3,6 +3,7 @@
 import { useState, type ReactNode } from "react";
 import { Sidebar } from "@/components/sidebar";
 import { Topbar } from "@/components/topbar";
+import { ActivityPanel } from "@/components/activity-panel";
 
 export interface DashboardShellProps {
   children: ReactNode;
@@ -10,29 +11,78 @@ export interface DashboardShellProps {
 
 export function DashboardShell({ children }: DashboardShellProps) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [activityOpen, setActivityOpen] = useState(false);
 
   return (
     <div className="min-h-screen bg-slate-50">
+      {/* 1. Sidebar Kiri (Kolom 1) */}
       <Sidebar open={sidebarOpen} onClose={() => setSidebarOpen(false)} />
 
+      {/* Kontainer Utama & Panel Kanan */}
       <div className="flex min-h-screen min-w-0 flex-col lg:pl-[272px]">
-        <Topbar onMenuClick={() => setSidebarOpen(true)} />
+        {/* Topbar dengan toggle Activity Panel */}
+        <Topbar
+          onMenuClick={() => setSidebarOpen(true)}
+          onToggleActivityPanel={() => setActivityOpen((prev) => !prev)}
+          activityPanelOpen={activityOpen}
+        />
 
-        <main className="flex-1 px-4 py-6 sm:px-6 lg:px-8">
-          <div className="mx-auto w-full max-w-[1400px]">{children}</div>
-        </main>
+        {/* 2. Grid Area: Konten Utama (Kolom 2) + Activity Panel (Kolom 3) */}
+        <div className="flex flex-1 min-w-0">
+          {/* Konten Utama */}
+          <main className="flex-1 min-w-0 px-4 py-6 sm:px-6 lg:px-8">
+            <div className="mx-auto w-full max-w-[1240px]">{children}</div>
+          </main>
 
-        <footer className="border-t border-slate-200 px-4 py-4 sm:px-6 lg:px-8">
-          <p className="text-center text-xs text-slate-500">
-            DZITOE · SMAN 20 Kabupaten Tangerang — istilah resmi{" "}
-            <strong className="font-semibold text-slate-600">
-              Permendikdasmen 2026
-            </strong>
-            . Port admin:{" "}
-            <code className="rounded bg-slate-100 px-1.5 py-0.5 font-mono text-[11px] text-slate-600">
-              :3000
-            </code>
-          </p>
+          {/* Kolom 3: Right Activity & Notification Panel (Desktop 2xl / >= 1440px sticky) */}
+          <div className="hidden 2xl:block 2xl:w-[320px] 2xl:shrink-0">
+            <div className="sticky top-16 h-[calc(100vh-64px)] overflow-hidden">
+              <ActivityPanel />
+            </div>
+          </div>
+        </div>
+
+        {/* Drawer Panel Kanan untuk layar < 1440px saat di-toggle dari Topbar */}
+        {activityOpen && (
+          <div className="fixed inset-0 z-50 2xl:hidden">
+            {/* Backdrop */}
+            <div
+              className="fixed inset-0 bg-slate-900/40 backdrop-blur-xs transition-opacity"
+              onClick={() => setActivityOpen(false)}
+              aria-hidden="true"
+            />
+            {/* Drawer */}
+            <div className="fixed inset-y-0 right-0 z-50 w-full max-w-sm bg-white shadow-2xl transition-transform ease-out-expo">
+              <ActivityPanel onClose={() => setActivityOpen(false)} />
+            </div>
+          </div>
+        )}
+
+        {/* Footer */}
+        <footer className="border-t border-slate-200/90 bg-white/70 px-4 py-4 sm:px-6 lg:px-8">
+          <div className="mx-auto flex flex-col items-center justify-between gap-2 sm:flex-row text-xs text-slate-500">
+            <p>
+              DZITOE · SMAN 20 Kabupaten Tangerang — istilah resmi{" "}
+              <strong className="font-semibold text-slate-700">
+                Permendikdasmen No. 1–6 Tahun 2026
+              </strong>
+            </p>
+            <div className="flex items-center gap-3">
+              <span>
+                Port Admin:{" "}
+                <code className="rounded bg-slate-100 px-1.5 py-0.5 font-mono text-[11px] font-semibold text-slate-700">
+                  :3000
+                </code>
+              </span>
+              <span>•</span>
+              <span>
+                Mobile PWA:{" "}
+                <code className="rounded bg-slate-100 px-1.5 py-0.5 font-mono text-[11px] font-semibold text-slate-700">
+                  :3001
+                </code>
+              </span>
+            </div>
+          </div>
         </footer>
       </div>
     </div>
