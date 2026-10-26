@@ -1,0 +1,38 @@
+# ==============================================================================
+# DZITOE Web Admin — Production Dockerfile
+# Monorepo pnpm + Next.js 14
+# ==============================================================================
+FROM node:20-alpine AS base
+
+RUN apk add --no-cache libc6-compat
+
+ENV PNPM_HOME="/pnpm"
+ENV PATH="$PNPM_HOME:$PATH"
+RUN corepack enable
+
+WORKDIR /app
+
+# Copy root workspace configurations
+COPY pnpm-lock.yaml pnpm-workspace.yaml package.json tsconfig.base.json ./
+
+# Copy packages and admin app
+COPY packages/ ./packages/
+COPY apps/admin/ ./apps/admin/
+
+# Install all dependencies with pnpm
+RUN pnpm install --frozen-lockfile
+
+# Generate Prisma Client
+RUN cd packages/db && npx prisma generate
+
+# Build Next.js Admin app
+ENV NODE_ENV=production
+ENV NEXT_TELEMETRY_DISABLED=1
+RUN pnpm --filter @dzitoe/admin run build
+
+# Expose port and run
+EXPOSE 3000
+ENV PORT=3000
+ENV HOSTNAME="0.0.0.0"
+
+CMD ["pnpm", "--filter", "@dzitoe/admin", "run", "start"]

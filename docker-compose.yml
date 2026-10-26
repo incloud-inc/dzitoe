@@ -1,27 +1,22 @@
 # ==============================================================================
-# DZITOE SMAN 20 Kabupaten Tangerang — Infrastructure Services
-# Task: A0.8 (Setup Docker Compose)
-# Kompatibel: Dev Lokal (Port 5433 / 6380) & Coolify / VPS Ubuntu (Environment dynamic)
+# DZITOE SMAN 20 Kabupaten Tangerang — Full-Stack Compose Configuration
+# Production & Coolify Ready (Traefik Proxy Compatible)
 # ==============================================================================
 
 version: '3.8'
 
 services:
   # ----------------------------------------------------------------------------
-  # PostgreSQL 16 — Database Utama DZITOE
-  # Port mapping lokal: 5433 -> 5432 (Mencegah bentrok dengan port 5432 lokal)
+  # 1. PostgreSQL 16 — Database Utama DZITOE
   # ----------------------------------------------------------------------------
   postgres:
     image: postgres:16-alpine
-    container_name: dzitoe-postgres
     restart: unless-stopped
     environment:
       POSTGRES_USER: ${DB_USER:-dzitoe}
-      POSTGRES_PASSWORD: ${DB_PASSWORD:-dzitoe_dev_password}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-dzitoe_production_secret_2026}
       POSTGRES_DB: ${DB_NAME:-dzitoe}
       TZ: Asia/Jakarta
-    ports:
-      - "${DB_PORT:-5433}:5432"
     volumes:
       - dzitoe_postgres_data:/var/lib/postgresql/data
     healthcheck:
@@ -34,12 +29,10 @@ services:
       - dzitoe-network
 
   # ----------------------------------------------------------------------------
-  # Redis 7 — Cache & Queue (Rate Limiting, Session, Background Jobs)
-  # Port mapping lokal: 6380 -> 6379 (Mencegah bentrok dengan port 6379 lokal)
+  # 2. Redis 7 — Cache, Rate Limiting & Queue
   # ----------------------------------------------------------------------------
   redis:
     image: redis:7-alpine
-    container_name: dzitoe-redis
     restart: unless-stopped
     command: >
       redis-server
@@ -47,8 +40,6 @@ services:
       --appendonly yes
       --maxmemory 256mb
       --maxmemory-policy allkeys-lru
-    ports:
-      - "${REDIS_PORT:-6380}:6379"
     volumes:
       - dzitoe_redis_data:/data
     healthcheck:
@@ -61,32 +52,67 @@ services:
       - dzitoe-network
 
   # ----------------------------------------------------------------------------
-  # Nginx Reverse Proxy Gateway — Task A0.9
-  # Routing traffic ke apps/admin (3000) dan apps/mobile (3001)
+  # 3. Web Admin DZITOE (Dashboard Port 3000)
+  # Di Coolify: Hubungkan domain (misal admin.domain.sch.id) ke port 3000
   # ----------------------------------------------------------------------------
-  nginx:
-    image: nginx:alpine
-    container_name: dzitoe-nginx
+  admin:
+    build:
+      context: .
+      dockerfile: Dockerfile.admin
     restart: unless-stopped
+    environment:
+      NODE_ENV: production
+      PORT: 3000
+      DATABASE_URL: postgresql://${DB_USER:-dzitoe}:${DB_PASSWORD:-dzitoe_production_secret_2026}@postgres:5432/${DB_NAME:-dzitoe}?schema=public
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      REDIS_PASSWORD: ${REDIS_PASSWORD:-dzitoe_redis_secret}
+      JWT_SECRET: ${JWT_SECRET:-dzitoe_jwt_secret_production_2026}
+    expose:
+      - "3000"
     ports:
-      - "${HTTP_PORT:-80}:80"
-      - "${HTTPS_PORT:-443}:443"
-    volumes:
-      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
-      - ./nginx/conf.d:/etc/nginx/conf.d:ro
+      - "${ADMIN_PORT:-3000}:3000"
     depends_on:
-      - postgres
-      - redis
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    networks:
+      - dzitoe-network
+
+  # ----------------------------------------------------------------------------
+  # 4. Mobile PWA DZITOE (Presensi Siswa & Guru Port 3001)
+  # Di Coolify: Hubungkan domain (misal app.domain.sch.id) ke port 3001
+  # ----------------------------------------------------------------------------
+  mobile:
+    build:
+      context: .
+      dockerfile: Dockerfile.mobile
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+      PORT: 3001
+      DATABASE_URL: postgresql://${DB_USER:-dzitoe}:${DB_PASSWORD:-dzitoe_production_secret_2026}@postgres:5432/${DB_NAME:-dzitoe}?schema=public
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      REDIS_PASSWORD: ${REDIS_PASSWORD:-dzitoe_redis_secret}
+      JWT_SECRET: ${JWT_SECRET:-dzitoe_jwt_secret_production_2026}
+    expose:
+      - "3001"
+    ports:
+      - "${MOBILE_PORT:-3001}:3001"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
     networks:
       - dzitoe-network
 
 volumes:
   dzitoe_postgres_data:
-    name: dzitoe_postgres_data
   dzitoe_redis_data:
-    name: dzitoe_redis_data
 
 networks:
   dzitoe-network:
-    name: dzitoe-network
     driver: bridge
