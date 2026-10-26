@@ -9,13 +9,12 @@ import {
   ArrowUpRight,
   MapPin,
   X,
-  Sparkles,
+  LogIn,
   LogOut,
   Lock,
   Pencil,
   Compass,
   CreditCard,
-  AlertTriangle,
   Camera,
 } from 'lucide-react';
 import { PhotoUploadModal } from '@/components/PhotoUploadModal';
@@ -544,10 +543,23 @@ export default function StudentProfileView({
                 <p className="text-xs text-slate-500">Semester Ganjil (91 Hari)</p>
               </div>
             </div>
-            <span className="flex items-center gap-1 rounded-full bg-[#e6fcf5] px-2.5 py-1 text-[11px] font-semibold text-[#087f5b] ring-1 ring-[#96f2d7]">
-              <Sparkles className="h-3 w-3 text-[#12b886]" />
-              Presensi Aktif
-            </span>
+            {!todayAttendance?.jamMasuk ? (
+              <Link
+                href="/absensi"
+                className="flex items-center gap-1.5 rounded-full bg-[#087f5b] hover:bg-[#0ca678] px-3.5 py-1.5 text-xs font-bold text-white shadow-xs active:scale-95 transition-all cursor-pointer"
+              >
+                <LogIn className="h-3.5 w-3.5" />
+                <span>Absen Masuk</span>
+              </Link>
+            ) : (
+              <Link
+                href="/absensi"
+                className="flex items-center gap-1.5 rounded-full bg-amber-600 hover:bg-amber-700 px-3.5 py-1.5 text-xs font-bold text-white shadow-xs active:scale-95 transition-all cursor-pointer"
+              >
+                <LogOut className="h-3.5 w-3.5" />
+                <span>Absen Pulang</span>
+              </Link>
+            )}
           </div>
 
           <div className="rounded-3xl bg-white p-5 shadow-sm shadow-slate-200/50 ring-1 ring-black/[0.04]">
@@ -664,25 +676,6 @@ export default function StudentProfileView({
             <span className="text-[11px] text-slate-400 font-medium">Log Presensi Real-Time</span>
           </div>
 
-          {!todayAttendance?.jamMasuk && (
-            <div className="mb-4 p-4 rounded-3xl bg-amber-50 ring-1 ring-amber-200/60 shadow-sm flex items-center justify-between gap-3">
-              <div className="flex items-center gap-3">
-                <div className="grid h-10 w-10 shrink-0 place-items-center rounded-2xl bg-amber-100/50">
-                  <AlertTriangle className="w-5 h-5 text-amber-600" />
-                </div>
-                <div>
-                  <h4 className="text-xs font-bold text-amber-900">Belum Presensi Masuk</h4>
-                  <p className="text-[10px] text-amber-700/80 mt-0.5">Silakan tap tombol untuk absen GPS.</p>
-                </div>
-              </div>
-              <Link
-                href="/absensi"
-                className="px-4 py-2 rounded-full bg-[#087f5b] hover:bg-[#0ca678] text-white text-[11px] font-bold shadow-sm active:scale-95 transition-all shrink-0 cursor-pointer"
-              >
-                Absen Masuk →
-              </Link>
-            </div>
-          )}
 
           <div className="space-y-3">
             {attendanceLogs.map((log) => (
