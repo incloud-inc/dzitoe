@@ -101,7 +101,193 @@
 
 \## 📅 Log Progres
 
-\### 2026 — Fase 1: Fondasi & Data Master
+\### 2026 — Audit Menyeluruh & Hardening RBAC Admin
+
+#### [2026-10-06] [Audit & Hardening RBAC] Eksekusi Perbaikan P0, P1, dan Pembersihan Fitur Admin
+**Status:** ✅ Selesai Penuh (Audit + P0 + P1 + Feature Cleanup)
+**Oleh:** DeepSeek V4 Pro
+**Yang dikerjakan:**
+- **Pembersihan Fitur Non-Standar:**
+  - Menghapus fitur cetak piagam penghargaan prestasi (`window.print()` modal dan tombol cetak rekap) di `apps/admin/src/app/prestasi/page.tsx`.
+  - Menghapus badge shortcut `Ctrl+K` di kolom pencarian global Topbar (`apps/admin/src/components/topbar.tsx`).
+- **Eksekusi Prioritas P0 (Hardening Keamanan & RBAC):**
+  - **Turunkan Privilege KEPALA_SEKOLAH:** Mencabut izin akses rute `/pengguna` dan `/pengaturan` dari `KEPALA_SEKOLAH` di `packages/auth/src/rbac.ts`. Menu di sidebar otomatis tersembunyi dan role bertindak sebagai pengawas eksekutif murni.
+  - **Karantina Hak Akses `/kesehatan` dari GURU:** Mengeluarkan role `GURU` dari `ROUTE_ACCESS_MAP['/kesehatan']` dan menghapus permission `kesehatan:read` dari role Guru. Modul UKS kini terlindungi khusus untuk `ADMIN`, `KEPALA_SEKOLAH`, `TU`, dan `GURU_BK`.
+  - **Enforce Force-Password-Change:** Menambahkan flag `requirePasswordChange: true` pada kredensial default (`Masuk123!`) di `@dzitoe/auth` dan API login, serta menampilkan banner notifikasi wajib ganti sandi pada sesi aktif.
+  - **HTTP 403 Forbidden Response:** Mengubah penolakan rute terlarang pada Next.js middleware (`apps/admin/src/middleware.ts`) dari redirect `307` menjadi status `403 Forbidden` terstandar dengan rewrite ke halaman khusus `/unauthorized` yang informatif.
+- **Eksekusi Prioritas P1 (Optimasi UI & Performa):**
+  - **Paginasi Server-Side Tabel Murid (`/murid`):** Mengatur limit default 25 siswa per halaman di `apps/admin/src/app/api/murid/route.ts` dan mengimplementasikan tombol navigasi halaman bernomor dinamis (`1`, `2`, `3`...).
+  - **Optimasi Snapshot Kenaikan Kelas:** Melakukan pruning dan pengarsipan terhadap 32 riwayat snapshot lama ke `packages/db/data/archive/snapshots-historical.json`. Memangkas ukuran file aktif dari 7,06 MB menjadi 673 KB (reduksi 90%+), serta menerapkan auto-archiving otomatis di `packages/db/src/promotion-store.ts` maksimal 5 snapshot aktif.
+  - **Restrukturisasi Dashboard (`/`):** Memindahkan `SchoolContactPanel` dari dashboard utama ke tab Profil Sekolah di `apps/admin/src/app/pengaturan/page.tsx`, serta menambahkan threshold indikator target (≥85%) dan badge status pada kartu Disiplin Positif.
+- **Verifikasi Mutu & Typecheck:**
+  - Typecheck: 0 error di `@dzitoe/auth`, `@dzitoe/db`, dan `@dzitoe/admin`.
+  - Pengujian Langsung: Verifikasi HTTP 403 pada Kepsek & Guru, verifikasi pagination 25 siswa, dan verifikasi flag ganti kata sandi.
+
+#### [2026-10-04] [Fase 5 & Fase 6] Penyelesaian Penuh 100% Modul Prestasi (A21) & Portal Keterbukaan Informasi Publik (PPID A25)
+**Status:** ✅ Selesai Penuh (Fase 5: 13/13 Task ✅, Fase 6: 10/10 Task ✅)
+**Oleh:** DeepSeek V4 Pro
+**Yang dikerjakan:**
+- **Modul A21: Prestasi & Portofolio Siswa (5 Task — 100% Selesai):**
+  - Mesin kalkulasi poin kejuaraan otomatis berjenjang Kemendikdasmen (`hitungPoinPrestasi` di `packages/db/src/achievement-store.ts`): Internasional (100-60 poin), Nasional (75-40 poin), Provinsi (50-20 poin), Kabupaten (30-10 poin), Kecamatan (15-5 poin), Sekolah (10-3 poin).
+  - API Routes Lengkap: `apps/admin/src/app/api/prestasi/route.ts` (GET filter/search/leaderboard, POST) & `[id]/route.ts` (GET detail, PUT update poin live, DELETE).
+  - Antarmuka Prestasi & Hall of Fame (`apps/admin/src/app/prestasi/page.tsx`):
+    - Banner Metrik: Total Prestasi, Akumulasi Poin Talenta, Prestasi Nasional/Internasional, Siswa Terbaik (Top MVP Grand Champion).
+    - Tab 1: Tabel Direktori Prestasi dengan filter jenis (Akademik/Non-Akademik) dan jenjang lomba, pencarian cerdas, badge poin instan, dan pratinjau sertifikat.
+    - Tab 2: Hall of Fame / Leaderboard Podium: Podium visual emas, perak, dan perunggu (#1, #2, #3) untuk siswa terbaik + tabel peringkat 4–10 dengan kalkulasi agregat.
+    - Modal Piagam Penghargaan: Templat piagam resmi berkop SMAN 20 Kabupaten Tangerang dengan cap digital dan tombol cetak langsung (`window.print()`).
+    - Modal Form Prestasi Baru: Live point calculator preview yang mengkalkulasi skor secara real-time saat pengguna memilih tingkat dan peringkat juara.
+- **Modul A25: Portal Keterbukaan Informasi Publik (PPID) (5 Task — 100% Selesai):**
+  - Store Dokumen & Permohonan (`packages/db/src/ppid-store.ts`): Sesuai UU No. 14 Tahun 2008 (KIP), mendukung 4 kategori statutori: Berkala, Serta-merta, Setiap saat, dan Dikecualikan (Pasal 17).
+  - API Routes Lengkap:
+    - `apps/admin/src/app/api/ppid/dokumen/route.ts` & `[id]/route.ts`: CRUD publikasi dokumen publik, pelacak jumlah unduhan warga secara otomatis (`incrementDownloadCount`).
+    - `apps/admin/src/app/api/ppid/permohonan/route.ts` & `[id]/route.ts`: Alur tiket permohonan daring, nomor tiket registrasi unik (`REG-PPID-YYYY-XXX`), dan disposisi status petugas PPID.
+  - Antarmuka Portal PPID Publik & Pengelola:
+    - **Portal Terbuka Publik Tanpa Login (`apps/admin/src/app/publik/ppid/page.tsx`):** Dapat diakses langsung oleh masyarakat, wali murid, jurnalis, dan LSM tanpa akun login. Dilengkapi Maklumat Pelayanan KIP, katalog unduhan dokumen publik, formulir pengajuan permohonan daring, pelacak nomor tiket instan, dan SOP standar waktu pelayanan (SLA 10+7 hari kerja).
+    - **Dashboard Pengelola Admin (`apps/admin/src/app/ppid/page.tsx`):** Area khusus petugas PPID/Admin untuk memverifikasi permohonan, memperbarui disposisi status, menerbitkan dokumen baru, dan tautan langsung ke pratinjau portal publik.
+    - **Middleware Redirection (`apps/admin/src/middleware.ts`):** Mengizinkan rute `/publik` bebas tanpa autentikasi, serta otomatis mengarahkan pengunjung umum yang membuka `/ppid` ke `/publik/ppid`.
+- **RBAC & Sidebar Navigation Integration:**
+  - Route map & hak akses di `packages/auth/src/rbac.ts`: Rute `/prestasi` dapat diakses oleh `ADMIN`, `KEPALA_SEKOLAH`, `TU`, `GURU`, `GURU_BK`. Rute `/ppid` dapat diakses oleh `ADMIN`, `KEPALA_SEKOLAH`, `PETUGAS_PPID`, `TU`.
+  - Sidebar di `apps/admin/src/components/sidebar.tsx`: Menambahkan menu `Prestasi Siswa` (ikon Medal, badge Poin) di kelompok Layanan Murid, dan menu `Portal PPID` (ikon FileText, badge Publik) di kelompok Keterbukaan Informasi.
+- **Pengujian & Verifikasi Mutu:**
+  - Vitest Unit Test: `tests/unit/prestasi-ppid.test.ts` (9 pengujian baru). Total seluruh 9 test files / 66 tes lulus 100% green.
+  - TypeScript Typecheck: `pnpm --filter @dzitoe/admin typecheck` lulus 100% dengan 0 error.
+  - Port Guard: `pnpm ports:check` memverifikasi port 3000 & 3001 aman dan port 8000 (ADZKIA) serta 5173 (PERSOALAN) tetap terisolasi.
+
+### 2026 — Fase 1: Fondasi & Data Master
+
+\#### [2026-10-04] [RBAC & UI/UX] Integrasi Granular Sidebar RBAC & Taste Skill Overhaul Modul Kesehatan UKS
+**Status:** ✅ Selesai
+**Oleh:** DeepSeek V4 Pro
+**Yang dikerjakan:**
+- **Dynamic RBAC Sidebar Filtering & Route Guard (`packages/auth/src/rbac.ts` & `apps/admin/src/components/sidebar.tsx`):**
+  - Mengintegrasikan mesin RBAC ke antarmuka navigasi admin (`canAccessRoute` via subpath export `@dzitoe/auth/rbac`).
+  - Menghubungkan sistem sesi aktif (`AuthProvider` & `useAuth`) ke `Sidebar` dan `Topbar`. Navigasi disaring otomatis secara dinamis sesuai peran pengguna:
+    - `GURU`: Menu Kenaikan Kelas, Mutasi, Manajemen Pengguna, Pengaturan, Layanan BK disembunyikan. Menu yang berhak diakses (Dashboard, Murid, Orang Tua, Guru, Jadwal & Mapel, Kesehatan UKS, Presensi, Ekskul) tampil rapi.
+    - `GURU_BK`: Akses eksklusif ke Layanan BK (Restitusi), Kesehatan UKS, Alumni & Tracer, Murid, Orang Tua, dan Presensi.
+    - `TU`: Akses kesiswaan lengkap (Kenaikan Kelas Wizard, Mutasi, Alumni & Tracer, Kesehatan UKS, Murid, Orang Tua, Guru, Jadwal, Presensi, Ekskul).
+    - `ADMIN` & `KEPALA_SEKOLAH`: Akses penuh ke seluruh fitur sekolah.
+  - Menambahkan indikator peran aktif (*Active Role Pill*) di footer sidebar dan profil dinamis di Topbar dengan inisial cerdas.
+  - Live UKS Bed occupancy badge di sidebar (`X UKS` beranimasi pulsasi saat ada murid yang sedang dirawat di UKS).
+- **Taste Skill & Modern Web Guidance Overhaul Modul Kesehatan Siswa & UKS (`apps/admin/src/app/kesehatan/page.tsx`):**
+  - **Design Read:** *Modern School Medical Clinic (UKS) & Student Health Record system for SMAN 20 Kabupaten Tangerang, with a clinical trust visual language, high-contrast vital telemetry badges, responsive drawer preview, and instant status comprehension.*
+  - Dial configuration: `VARIANCE: 5`, `MOTION: 4`, `DENSITY: 5`.
+  - **Banner Peringatan Ranjang UKS (Live Bed Occupancy):** Menampilkan banner peringatan cerdas jika ada siswa yang sedang rawat tidur di ruang UKS lengkap dengan tombol aksi langsung.
+  - **Quick Filter Tabs:** Tab navigasi kilat (*Semua*, *Sedang di UKS*, *Perhatian & Rujukan*, *Alergi & Bawaan*, *Skrining & Vaksin*) dengan badge kuota real-time.
+  - **Telemetry Tanda Vital Klinis Berwarna:** Indikator suhu tubuh otomatis berkode warna (Normal `< 37.3°C` hijau/netral, Subfebril `37.3–37.9°C` amber, Demam Tinggi `≥ 38.0°C` merah dengan ikon termometer beranimasi), badge golongan darah bold, dan chip peringatan alergi yang mencolok.
+  - **Slide-Over Medical Dossier Drawer:** Panel detail rekam medis murid lengkap dengan anamnesis, terapi obat, tindakan pertolongan pertama, serta 3 aksi cepat sekolah:
+    1. *Cetak Surat Keterangan / Izin UKS* resmi kop sekolah SMAN 20 Kab. Tangerang (print-ready).
+    2. *Kirim Notifikasi WhatsApp Resmi ke Wali Murid* secara instan.
+    3. *Tandai Pulih ke Kelas / Selesai Istirahat* dalam 1-klik.
+  - **Skeleton Loaders & Empty State:** Mengganti string teks biasa dengan skeletal loader 4-baris dan ilustrasi ramah saat pencarian nihil.
+- **Verifikasi & Pengujian:**
+  - Menambahkan test case baru di `tests/unit/auth-rbac-sessions.test.ts` (9/9 tests passed).
+  - Seluruh test suite unit monorepo (`57/57 tests passed 100%`).
+  - Monorepo Port Guard tetap terjaga aman.
+
+---
+
+\#### [2026-10-04] [Scope Adjustment] Eliminasi Sub-Modul A20.3 (AI Bank Soal)
+**Status:** ✅ Selesai
+**Oleh:** DeepSeek (Mode Pro)
+**Keputusan Arsitektur:**
+- Sub-modul A20.3 (AI Bank Soal - 12 task) dihapus dari lingkup DZITOE.
+- Pembuatan dan pengelolaan butir soal di DZITOE difokuskan murni pada Kurikulum Merdeka Manual dan Paket Naskah Siap Cetak (A4/Folio).
+- Modul A20 kini memiliki 20 task (A20.1 Database Kurikulum Merdeka 5 task, A20.2 Bank Soal Manual 10 task, A20.3 Paket Naskah Cetak 5 task).
+- Total tugas keseluruhan sistem disesuaikan menjadi **232 Task** (estimasi 14-17 bulan).
+
+---
+
+#### [2026-10-04] [Scope Adjustment] Penyesuaian Ruang Lingkup Fase 4 — Fokus Bank Soal Siap Cetak (Hapus Modul Asesmen & Ujian CBT)
+**Status:** ✅ Selesai
+**Oleh:** DeepSeek (Mode Pro)
+**Keputusan Arsitektur & Ruang Lingkup:**
+- **Eliminasi Fitur Ujian & Asesmen:** Modul A19 (Asesmen) dan sub-modul A20.5 (Pelaksanaan Ujian CBT, Live Proctoring, Auto-Grading) dihapus sepenuhnya dari DZITOE. Aplikasi ujian daring telah ditangani oleh sistem terpisah (ADZKIA di Port 8000).
+- **Refokus Fase 4 pada Bank Soal Siap Cetak (32 Task):**
+  - Database Kurikulum Merdeka (A20.1 - 5 Task): Capaian Pembelajaran (CP), Bab, Materi Pokok.
+  - Bank Soal Manual (A20.2 - 10 Task): Input 9 jenis soal, stimulus teks bersama, preview cetak.
+  - AI Bank Soal (A20.3 - 12 Task): Generator soal AI terarah Kurikulum Merdeka untuk bank cetak.
+  - Paket Naskah Soal & Tata Letak Cetak (A20.4 - 5 Task): Kop resmi sekolah, opsi naskah 1/2 kolom, drag & drop nomor, lembar kunci jawaban & rubrik penilaian cetak terpisah (Word / PDF).
+- Total tugas keseluruhan sistem diperbarui menjadi **244 Task** (estimasi 15-18 bulan).
+
+---
+
+#### [2026-10-04] [Roadmap & Tasks Update] Harmonisasi Fase 4 (Asesmen & CBT), Fase 5 (Layanan Murid), dan Roadmap Tahap Akhir (Fase 6-8)
+**Status:** ✅ Selesai
+**Oleh:** DeepSeek (Mode Pro)
+**Yang dikerjakan:**
+- **Fase 4: Asesmen & Bank Soal (+ Modul CBT 40 Task):**
+  - Database Kurikulum Merdeka (A20.1 - 5 Task): CRUD Capaian Pembelajaran (CP), Bab, Materi Pokok, dan seeding materi mapel.
+  - Bank Soal Manual (A20.2 - 10 Task): Form input 9 jenis soal (PG, PG Kompleks, B/S, Jodohkan, Isian Singkat, Uraian, Skala Likert, dll.) serta stimulus teks paragraf bersama.
+  - AI Bank Soal (A20.3 - 12 Task): AI generation, asynchronous queue worker, dan prompt engineering Kurikulum Merdeka.
+  - Paket Soal & Bobot (A20.4 - 5 Task): Pengelompokan paket ujian, drag & drop urutan butir soal, dan bobot skor.
+  - Ujian CBT & Penilaian (A20.5 - 8 Task): Pelaksanaan CBT, auto-grading, scoring esai manual, dan analitika butir soal.
+- **Fase 5: Layanan Murid (13 Task):**
+  - Modul A21 (Prestasi & Portofolio - 5 Task): Pencatatan prestasi akademik/non-akademik, jenjang lomba, sertifikat, dan akumulasi poin prestasi.
+  - Modul A22 (Kesehatan Murid - 5 Task): Rekam medis UKS, alergi/penyakit bawaan, tracking vaksinasi & skrining berkala.
+  - Modul A23 (Bimbingan Konseling / BK - 3 Task): Form konseling, catatan pendampingan & disiplin positif (pengganti sistem poin pelanggaran lama), penjadwalan tatap muka.
+- **Roadmap Tahap Akhir (Sesuai PRD & Arsitektur):**
+  - Fase 6: Portal Alumni (Tracer Study kelulusan/kampus) & Portal Keterbukaan Informasi Publik (PPID) — 10 task.
+  - Fase 7: Modul Pelaporan Terpadu (Rekap Absensi Bulanan Dinas, Rekap Mutasi Murid, Laporan Keuangan Tahunan) — 9 task.
+  - Fase 8: Optimalisasi Performa, Caching Redis (port 6380), dan Audit Keamanan — 6 task.
+- Total task keseluruhan sistem diselaraskan menjadi 259 task.
+
+---
+
+#### [2026-10-04] [UI/UX] Taste Skill & Modern Web Guidance Overhaul — Tindakan Opsional Kelas XII (Wisaya Kenaikan Kelas)
+\*\*Status:\*\* ✅ Selesai
+\*\*Oleh:\*\* DeepSeek (Mode Pro / Mendalam)
+\*\*Yang dikerjakan:\*\*
+\- **Tindakan Opsional Kelas XII:**
+  \- Menyediakan 3 opsi tindakan ketika switch kelulusan massal dinonaktifkan:
+    1. **Tunda Kelulusan Semua (Tetap di Kelas XII):** Seluruh murid kelas XII tetap berstatus AKTIF di rombel lamanya (untuk kasus ujian susulan atau menunggu SK kelulusan dinas).
+    2. **Kelulusan Selektif (Pilih Rombel / Murid):** Filter rombel XII.1-XII.10 instan, pencarian nama murid, dan checklist seleksi kelulusan dengan penghitung kuota real-time. Siswa yang tidak dicentang otomatis ditunda.
+    3. **Alihkan ke Status Mutasi Keluar:** Siswa dialihkan ke status MUTASI keluar jika tidak menyelesaikan studi di SMAN 20.
+  \- Menyesuaikan kalkulasi mesin simulasi *Dry-Run* dan *executePromotion* di `@dzitoe/db` dengan parameter `tindakanKelas12` dan `siswaKelas12LulusIds`.
+\- **Peremajaan UI dengan Taste Skill & Modern Web Guidance:**
+  \- Penerapan dial design: `VARIANCE: 5`, `MOTION: 4`, `DENSITY: 5` untuk antarmuka enterprise edukasi modern.
+  \- Interaksi sentuh tactile (`active:scale-[0.98]`), spring transition pada tombol dan kartu opsi radio.
+  \- Filter pills per rombel dengan count chip dan master toggle ("Luluskan Semua di Filter Ini" / "Batal Semua").
+  \- High-contrast status badges (WCAG AA compliant) dan layout bento yang bernapas.
+\- **Verifikasi & Pengujian:**
+  \- Unit test diperbarui di `tests/unit/promotion-wizard.test.ts` (5/5 passed).
+  \- Seluruh suite vitest (`48/48 unit tests passed 100%`).
+  \- `pnpm typecheck` lulus 0 error.
+
+\---
+
+\#### [2026-10-04] [A5.13] Wisaya Kenaikan Kelas Cerdas (Smart Promotion Wizard) — Jalur Cepat & 1-Click Rollback
+\*\*Status:\*\* ✅ Selesai
+\*\*Oleh:\*\* DeepSeek (Mode Pro)
+\*\*Yang dikerjakan:\*\*
+\- \*\*Skema Database Prisma:\*\*
+  \- Menambahkan model `RiwayatKelas` (mencatat histori multi-tahun: muridId, kelasId, tahunAjaranId, statusKenaikan NAIK/TINGGAL/LULUS/MUTASI) agar histori absensi dan nilai tahun lalu tidak hilang saat naik kelas.
+  \- Menambahkan model `PromotionSnapshot` untuk proteksi pencadangan otomatis (automated snapshot before execution).
+  \- Menghubungkan relasi `riwayatKelas` ke model `Murid`, `Kelas`, dan `TahunAjaran`.
+\- \*\*Backend & Store Service (@dzitoe/db):\*\*
+  \- Membuat `packages/db/src/promotion-store.ts`:
+    \- `getPromotionStatus`: Mendeteksi tahun ajaran aktif vs tahun ajaran baru, statistik per jenjang (X, XI, XII), dan memetakan otomatis rombel secara paralel (Jalur Cepat: X.1 -> XI.1, XI.1 -> XII.1).
+    \- `generatePromotionPreview`: Mesin simulasi *Dry-Run* tanpa mengubah data database (menghitung calon alumni, proyeksi kuota kelas baru, dan deteksi peringatan overload rombel > 36 murid).
+    \- `executePromotion`: Transaksi pencadangan snapshot otomatis, pencatatan `RiwayatKelas`, migrasi status kelas murid, dan pembaruan counter `jumlahMurid` rombel.
+    \- `rollbackPromotion`: Tombol darurat 1-klik untuk membatalkan kenaikan kelas dan memulihkan formasi murid ke snapshot sebelum promosi.
+\- \*\*API Endpoints (apps/admin):\*\*
+  \- `GET /api/kenaikan-kelas/status`
+  \- `POST /api/kenaikan-kelas/preview` (Dry-Run Preview)
+  \- `POST /api/kenaikan-kelas/execute` (Snapshot + Batch Promotion)
+  \- `POST /api/kenaikan-kelas/rollback` (1-Click Rollback)
+\- \*\*Frontend Dashboard Admin (apps/admin):\*\*
+  \- Membuat antarmuka 4-Langkah terpadu di `apps/admin/src/app/murid/kenaikan-kelas/page.tsx` sesuai standar Modern Web Guidance:
+    \- \*\*Langkah 1 (Kelulusan XII):\*\* Otomatisasi kelulusan massal murid kelas XII menjadi LULUS (Alumni) dan pengosongan kuota kelas XII.
+    \- \*\*Langkah 2 (Pemetaan Jalur Cepat):\*\* Tabel pemetaan paralel otomatis X->XI dan XI->XII dengan dropdown override fleksibel.
+    \- \*\*Langkah 3 (Pengecualian Murid):\*\* Pencarian murid cepat untuk menandai murid tinggal kelas atau mutasi keluar.
+    \- \*\*Langkah 4 (Simulasi & Eksekusi):\*\* Kartu ringkasan dry-run, tabel visualisasi kapasitas rombel baru, dan konfirmasi pengaman dengan mengetik `KONFIRMASI` sebelum eksekusi.
+  \- Menambahkan navigasi akses cepat di Sidebar Admin dan tombol aksi di Halaman Data Murid (`apps/admin/src/app/murid/page.tsx`).
+\- \*\*Verifikasi & Pengujian:\*\*
+  \- Menambahkan unit test di `tests/unit/promotion-wizard.test.ts` (4/4 tests passed 100%).
+  \- Menjalankan seluruh test suite unit (`47/47 tests passed 100%`).
+  \- Menjalankan `pnpm typecheck` lintas monorepo (`0 error`).
+  \- Port Guard tetap terjaga aman.
+
+\---
 
 \#### [2026-09-27] [UI/UX] Modern Web Guidance Enhancement — Dashboard Admin & Mobile PWA
 

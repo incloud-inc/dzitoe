@@ -117,7 +117,7 @@ export function ActivityPanel({ onClose, className }: ActivityPanelProps) {
       {/* Header Panel */}
       <div className="flex h-16 shrink-0 items-center justify-between border-b border-slate-200/80 px-5">
         <div className="flex items-center gap-2">
-          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-brand-50 text-brand-700">
+          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-brand-50 text-brand-900 ring-1 ring-brand-200">
             <Bell className="h-4 w-4" />
           </div>
           <div>
@@ -127,8 +127,8 @@ export function ActivityPanel({ onClose, className }: ActivityPanelProps) {
         </div>
 
         <div className="flex items-center gap-1.5">
-          <span className="inline-flex items-center gap-1 rounded-full bg-emerald-50 px-2 py-0.5 text-[11px] font-semibold text-emerald-700">
-            <Radio className="h-2.5 w-2.5 animate-pulse text-emerald-500" />
+          <span className="inline-flex items-center gap-1 rounded-full bg-brand-50 px-2 py-0.5 text-[11px] font-semibold text-brand-900 ring-1 ring-brand-200">
+            <Radio className="h-2.5 w-2.5 animate-pulse text-brand-600" />
             Live
           </span>
           {onClose && (
@@ -159,7 +159,7 @@ export function ActivityPanel({ onClose, className }: ActivityPanelProps) {
           >
             <span>Notifikasi</span>
             {unreadCount > 0 && (
-              <span className="flex h-4 min-w-4 items-center justify-center rounded-full bg-brand-600 px-1 text-[10px] font-bold text-white">
+              <span className="flex h-4 min-w-4 items-center justify-center rounded-full bg-brand-900 px-1 text-[10px] font-bold text-white">
                 {unreadCount}
               </span>
             )}
@@ -192,29 +192,29 @@ export function ActivityPanel({ onClose, className }: ActivityPanelProps) {
                 className={cn(
                   "group relative rounded-xl border p-3.5 transition-all dz-interactive",
                   item.unread
-                    ? "border-brand-200/80 bg-brand-50/40 hover:bg-brand-50/70"
+                    ? "border-brand-200/90 bg-brand-50/50 hover:bg-brand-50/80"
                     : "border-slate-100 bg-white hover:border-slate-200"
                 )}
               >
                 <div className="flex items-start justify-between gap-2">
                   <div className="flex items-center gap-2">
                     {item.type === "asesmen" && (
-                      <span className="flex h-6 w-6 items-center justify-center rounded-md bg-amber-100 text-amber-700">
+                      <span className="flex h-6 w-6 items-center justify-center rounded-md bg-warm-100 text-warm-900">
                         <FileCheck2 className="h-3.5 w-3.5" />
                       </span>
                     )}
                     {item.type === "disiplin" && (
-                      <span className="flex h-6 w-6 items-center justify-center rounded-md bg-violet-100 text-violet-700">
+                      <span className="flex h-6 w-6 items-center justify-center rounded-md bg-brand-100 text-brand-900">
                         <HeartHandshake className="h-3.5 w-3.5" />
                       </span>
                     )}
                     {item.type === "kehadiran" && (
-                      <span className="flex h-6 w-6 items-center justify-center rounded-md bg-emerald-100 text-emerald-700">
+                      <span className="flex h-6 w-6 items-center justify-center rounded-md bg-brand-50 text-brand-800 ring-1 ring-brand-200">
                         <UserCheck className="h-3.5 w-3.5" />
                       </span>
                     )}
                     {item.type === "sistem" && (
-                      <span className="flex h-6 w-6 items-center justify-center rounded-md bg-sky-100 text-sky-700">
+                      <span className="flex h-6 w-6 items-center justify-center rounded-md bg-neutral-100 text-neutral-800">
                         <Server className="h-3.5 w-3.5" />
                       </span>
                     )}
@@ -237,7 +237,7 @@ export function ActivityPanel({ onClose, className }: ActivityPanelProps) {
             <ol className="relative space-y-4 before:absolute before:bottom-2 before:left-[11px] before:top-2 before:w-px before:bg-slate-200">
               {ACTIVITIES.map((act) => (
                 <li key={act.id} className="relative flex gap-3 pl-1">
-                  <span className="relative z-10 mt-1 h-5 w-5 shrink-0 rounded-full border-2 border-white bg-brand-600 text-white grid place-items-center shadow-xs">
+                  <span className="relative z-10 mt-1 h-5 w-5 shrink-0 rounded-full border-2 border-white bg-brand-900 text-white grid place-items-center shadow-xs ring-2 ring-brand-200">
                     <Sparkles className="h-2.5 w-2.5" />
                   </span>
                   <div className="min-w-0 flex-1">

@@ -11,7 +11,7 @@ export const STUDENT_PROFILE: StudentProfile = {
   nisn: '1029384756',
   className: 'Kelas XII IPA 1',
   school: 'SMAN 20',
-  avatarUrl: '/avatars/maya_chen.jpg',
+  avatarUrl: 'https://mastatag.com/wp-content/uploads/2026/09/mastatag-academy.png',
 };
 
 export interface MetricItem {

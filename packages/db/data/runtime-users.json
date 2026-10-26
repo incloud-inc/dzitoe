@@ -1,0 +1,861 @@
+[
+  {
+    "id": "usr-mvp4zhd8-hnom",
+    "username": "test.import.1793011890856",
+    "nama": "Testing Bulk User",
+    "email": "test.import.1793011890856@sman20tng.sch.id",
+    "role": "GURU",
+    "status": "AKTIF",
+    "linkedEntityId": null,
+    "linkedEntityType": null,
+    "linkedEntityNama": null,
+    "jabatan": "Guru Pengajar",
+    "phone": "081234567890",
+    "permissions": [
+      "input:grades",
+      "record:kbm"
+    ],
+    "lastLogin": null,
+    "createdAt": "2026-10-26",
+    "avatarUrl": "https://images.unsplash.com/photo-1500000000001?w=150"
+  },
+  {
+    "id": "usr-mv0w57vo-lji0",
+    "username": "test.import.1791545853729",
+    "nama": "Testing Bulk User",
+    "email": "test.import.1791545853729@sman20tng.sch.id",
+    "role": "GURU",
+    "status": "AKTIF",
+    "linkedEntityId": null,
+    "linkedEntityType": null,
+    "linkedEntityNama": null,
+    "jabatan": "Guru Pengajar",
+    "phone": "081234567890",
+    "permissions": [
+      "input:grades",
+      "record:kbm"
+    ],
+    "lastLogin": null,
+    "createdAt": "2026-10-09",
+    "avatarUrl": "https://images.unsplash.com/photo-1500000000000?w=150"
+  },
+  {
+    "id": "usr-mv0vx1pe-gtf6",
+    "username": "test.import.1791545472479",
+    "nama": "Testing Bulk User",
+    "email": "test.import.1791545472479@sman20tng.sch.id",
+    "role": "GURU",
+    "status": "AKTIF",
+    "linkedEntityId": null,
+    "linkedEntityType": null,
+    "linkedEntityNama": null,
+    "jabatan": "Guru Pengajar",
+    "phone": "081234567890",
+    "permissions": [
+      "input:grades",
+      "record:kbm"
+    ],
+    "lastLogin": null,
+    "createdAt": "2026-10-09",
+    "avatarUrl": "https://images.unsplash.com/photo-1500000000009?w=150"
+  },
+  {
+    "id": "usr-mv0vwdxt-36uv",
+    "username": "test.import.1791545441678",
+    "nama": "Testing Bulk User",
+    "email": "test.import.1791545441678@sman20tng.sch.id",
+    "role": "GURU",
+    "status": "AKTIF",
+    "linkedEntityId": null,
+    "linkedEntityType": null,
+    "linkedEntityNama": null,
+    "jabatan": "Guru Pengajar",
+    "phone": "081234567890",
+    "permissions": [
+      "input:grades",
+      "record:kbm"
+    ],
+    "lastLogin": null,
+    "createdAt": "2026-10-09",
+    "avatarUrl": "https://images.unsplash.com/photo-1500000000008?w=150"
+  },
+  {
+    "id": "usr-mutg0hn5-kdrq",
+    "username": "test.import.1791095496014",
+    "nama": "Testing Bulk User",
+    "email": "test.import.1791095496014@sman20tng.sch.id",
+    "role": "GURU",
+    "status": "AKTIF",
+    "linkedEntityId": null,
+    "linkedEntityType": null,
+    "linkedEntityNama": null,
+    "jabatan": "Guru Pengajar",
+    "phone": "081234567890",
+    "permissions": [
+      "input:grades",
+      "record:kbm"
+    ],
+    "lastLogin": null,
+    "createdAt": "2026-10-04",
+    "avatarUrl": "https://images.unsplash.com/photo-1500000000005?w=150"
+  },
+  {
+    "id": "usr-mutfxk6t-w7da",
+    "username": "test.import.1791095359344",
+    "nama": "Testing Bulk User",
+    "email": "test.import.1791095359344@sman20tng.sch.id",
+    "role": "GURU",
+    "status": "AKTIF",
+    "linkedEntityId": null,
+    "linkedEntityType": null,
+    "linkedEntityNama": null,
+    "jabatan": "Guru Pengajar",
+    "phone": "081234567890",
+    "permissions": [
+      "input:grades",
+      "record:kbm"
+    ],
+    "lastLogin": null,
+    "createdAt": "2026-10-04",
+    "avatarUrl": "https://images.unsplash.com/photo-1500000000004?w=150"
+  },
+  {
+    "id": "usr-mutf17s4-gkhc",
+    "username": "test.import.1791093850271",
+    "nama": "Testing Bulk User",
+    "email": "test.import.1791093850271@sman20tng.sch.id",
+    "role": "GURU",
+    "status": "AKTIF",
+    "linkedEntityId": null,
+    "linkedEntityType": null,
+    "linkedEntityNama": null,
+    "jabatan": "Guru Pengajar",
+    "phone": "081234567890",
+    "permissions": [
+      "input:grades",
+      "record:kbm"
+    ],
+    "lastLogin": null,
+    "createdAt": "2026-10-04",
+    "avatarUrl": "https://images.unsplash.com/photo-1500000000003?w=150"
+  },
+  {
+    "id": "usr-mutegdd2-ue72",
+    "username": "test.import.1791092877711",
+    "nama": "Testing Bulk User",
+    "email": "test.import.1791092877711@sman20tng.sch.id",
+    "role": "GURU",
+    "status": "AKTIF",
+    "linkedEntityId": null,
+    "linkedEntityType": null,
+    "linkedEntityNama": null,
+    "jabatan": "Guru Pengajar",
+    "phone": "081234567890",
+    "permissions": [
+      "input:grades",
+      "record:kbm"
+    ],
+    "lastLogin": null,
+    "createdAt": "2026-10-04",
+    "avatarUrl": "https://images.unsplash.com/photo-1500000000002?w=150"
+  },
+  {
+    "id": "usr-mutefp30-7whs",
+    "username": "test.import.1791092846263",
+    "nama": "Testing Bulk User",
+    "email": "test.import.1791092846263@sman20tng.sch.id",
+    "role": "GURU",
+    "status": "AKTIF",
+    "linkedEntityId": null,
+    "linkedEntityType": null,
+    "linkedEntityNama": null,
+    "jabatan": "Guru Pengajar",
+    "phone": "081234567890",
+    "permissions": [
+      "input:grades",
+      "record:kbm"
+    ],
+    "lastLogin": null,
+    "createdAt": "2026-10-04",
+    "avatarUrl": "https://images.unsplash.com/photo-1500000000001?w=150"
+  },
+  {
+    "id": "usr-mute9f1q-u6dm",
+    "username": "test.import.1791092553324",
+    "nama": "Testing Bulk User",
+    "email": "test.import.1791092553324@sman20tng.sch.id",
+    "role": "GURU",
+    "status": "AKTIF",
+    "linkedEntityId": null,
+    "linkedEntityType": null,
+    "linkedEntityNama": null,
+    "jabatan": "Guru Pengajar",
+    "phone": "081234567890",
+    "permissions": [
+      "input:grades",
+      "record:kbm"
+    ],
+    "lastLogin": null,
+    "createdAt": "2026-10-04",
+    "avatarUrl": "https://images.unsplash.com/photo-1500000000000?w=150"
+  },
+  {
+    "id": "usr-mute20cv-m5r4",
+    "username": "test.import.1791092207690",
+    "nama": "Testing Bulk User",
+    "email": "test.import.1791092207690@sman20tng.sch.id",
+    "role": "GURU",
+    "status": "AKTIF",
+    "linkedEntityId": null,
+    "linkedEntityType": null,
+    "linkedEntityNama": null,
+    "jabatan": "Guru Pengajar",
+    "phone": "081234567890",
+    "permissions": [
+      "input:grades",
+      "record:kbm"
+    ],
+    "lastLogin": null,
+    "createdAt": "2026-10-04",
+    "avatarUrl": "https://images.unsplash.com/photo-1500000000009?w=150"
+  },
+  {
+    "id": "usr-mutb8sd7-ol19",
+    "username": "test.import.1791087485078",
+    "nama": "Testing Bulk User",
+    "email": "test.import.1791087485078@sman20tng.sch.id",
+    "role": "GURU",
+    "status": "AKTIF",
+    "linkedEntityId": null,
+    "linkedEntityType": null,
+    "linkedEntityNama": null,
+    "jabatan": "Guru Pengajar",
+    "phone": "081234567890",
+    "permissions": [
+      "input:grades",
+      "record:kbm"
+    ],
+    "lastLogin": null,
+    "createdAt": "2026-10-04",
+    "avatarUrl": "https://images.unsplash.com/photo-1500000000008?w=150"
+  },
+  {
+    "id": "usr-mutaz5do-19b9",
+    "username": "test.import.1791087035372",
+    "nama": "Testing Bulk User",
+    "email": "test.import.1791087035372@sman20tng.sch.id",
+    "role": "GURU",
+    "status": "AKTIF",
+    "linkedEntityId": null,
+    "linkedEntityType": null,
+    "linkedEntityNama": null,
+    "jabatan": "Guru Pengajar",
+    "phone": "081234567890",
+    "permissions": [
+      "input:grades",
+      "record:kbm"
+    ],
+    "lastLogin": null,
+    "createdAt": "2026-10-04",
+    "avatarUrl": "https://images.unsplash.com/photo-1500000000007?w=150"
+  },
+  {
+    "id": "usr-mutay7ca-b4kb",
+    "username": "test.import.1791086991262",
+    "nama": "Testing Bulk User",
+    "email": "test.import.1791086991262@sman20tng.sch.id",
+    "role": "GURU",
+    "status": "AKTIF",
+    "linkedEntityId": null,
+    "linkedEntityType": null,
+    "linkedEntityNama": null,
+    "jabatan": "Guru Pengajar",
+    "phone": "081234567890",
+    "permissions": [
+      "input:grades",
+      "record:kbm"
+    ],
+    "lastLogin": null,
+    "createdAt": "2026-10-04",
+    "avatarUrl": "https://images.unsplash.com/photo-1500000000006?w=150"
+  },
+  {
+    "id": "usr-mutaxkp4-totw",
+    "username": "test.import.1791086961924",
+    "nama": "Testing Bulk User",
+    "email": "test.import.1791086961924@sman20tng.sch.id",
+    "role": "GURU",
+    "status": "AKTIF",
+    "linkedEntityId": null,
+    "linkedEntityType": null,
+    "linkedEntityNama": null,
+    "jabatan": "Guru Pengajar",
+    "phone": "081234567890",
+    "permissions": [
+      "input:grades",
+      "record:kbm"
+    ],
+    "lastLogin": null,
+    "createdAt": "2026-10-04",
+    "avatarUrl": "https://images.unsplash.com/photo-1500000000005?w=150"
+  },
+  {
+    "id": "usr-mut2rmom-7xwp",
+    "username": "test.import.1791073247627",
+    "nama": "Testing Bulk User",
+    "email": "test.import.1791073247627@sman20tng.sch.id",
+    "role": "GURU",
+    "status": "AKTIF",
+    "linkedEntityId": null,
+    "linkedEntityType": null,
+    "linkedEntityNama": null,
+    "jabatan": "Guru Pengajar",
+    "phone": "081234567890",
+    "permissions": [
+      "input:grades",
+      "record:kbm"
+    ],
+    "lastLogin": null,
+    "createdAt": "2026-10-04",
+    "avatarUrl": "https://images.unsplash.com/photo-1500000000004?w=150"
+  },
+  {
+    "id": "usr-mut1suhn-8rfj",
+    "username": "test.import.1791071624780",
+    "nama": "Testing Bulk User",
+    "email": "test.import.1791071624780@sman20tng.sch.id",
+    "role": "GURU",
+    "status": "AKTIF",
+    "linkedEntityId": null,
+    "linkedEntityType": null,
+    "linkedEntityNama": null,
+    "jabatan": "Guru Pengajar",
+    "phone": "081234567890",
+    "permissions": [
+      "input:grades",
+      "record:kbm"
+    ],
+    "lastLogin": null,
+    "createdAt": "2026-10-03",
+    "avatarUrl": "https://images.unsplash.com/photo-1500000000003?w=150"
+  },
+  {
+    "id": "usr-mut0ppjo-ydzm",
+    "username": "test.import.1791069798799",
+    "nama": "Testing Bulk User",
+    "email": "test.import.1791069798799@sman20tng.sch.id",
+    "role": "GURU",
+    "status": "AKTIF",
+    "linkedEntityId": null,
+    "linkedEntityType": null,
+    "linkedEntityNama": null,
+    "jabatan": "Guru Pengajar",
+    "phone": "081234567890",
+    "permissions": [
+      "input:grades",
+      "record:kbm"
+    ],
+    "lastLogin": null,
+    "createdAt": "2026-10-03",
+    "avatarUrl": "https://images.unsplash.com/photo-1500000000002?w=150"
+  },
+  {
+    "id": "usr-muszy8kc-730g",
+    "username": "test.import.1791068517081",
+    "nama": "Testing Bulk User",
+    "email": "test.import.1791068517081@sman20tng.sch.id",
+    "role": "GURU",
+    "status": "AKTIF",
+    "linkedEntityId": null,
+    "linkedEntityType": null,
+    "linkedEntityNama": null,
+    "jabatan": "Guru Pengajar",
+    "phone": "081234567890",
+    "permissions": [
+      "input:grades",
+      "record:kbm"
+    ],
+    "lastLogin": null,
+    "createdAt": "2026-10-03",
+    "avatarUrl": "https://images.unsplash.com/photo-1500000000001?w=150"
+  },
+  {
+    "id": "usr-mul9888b-04mr",
+    "username": "test.import.1790600370344",
+    "nama": "Testing Bulk User",
+    "email": "test.import.1790600370344@sman20tng.sch.id",
+    "role": "GURU",
+    "status": "AKTIF",
+    "linkedEntityId": null,
+    "linkedEntityType": null,
+    "linkedEntityNama": null,
+    "jabatan": "Guru Pengajar",
+    "phone": "081234567890",
+    "permissions": [
+      "input:grades",
+      "record:kbm"
+    ],
+    "lastLogin": null,
+    "createdAt": "2026-09-28",
+    "avatarUrl": "https://images.unsplash.com/photo-1500000000000?w=150"
+  },
+  {
+    "id": "usr-mul93869-57lh",
+    "username": "test.import.1790600136991",
+    "nama": "Testing Bulk User",
+    "email": "test.import.1790600136991@sman20tng.sch.id",
+    "role": "GURU",
+    "status": "AKTIF",
+    "linkedEntityId": null,
+    "linkedEntityType": null,
+    "linkedEntityNama": null,
+    "jabatan": "Guru Pengajar",
+    "phone": "081234567890",
+    "permissions": [
+      "input:grades",
+      "record:kbm"
+    ],
+    "lastLogin": null,
+    "createdAt": "2026-09-28",
+    "avatarUrl": "https://images.unsplash.com/photo-1500000000009?w=150"
+  },
+  {
+    "id": "usr-mul90fgy-xlkl",
+    "username": "test.import.1790600006480",
+    "nama": "Testing Bulk User",
+    "email": "test.import.1790600006480@sman20tng.sch.id",
+    "role": "GURU",
+    "status": "AKTIF",
+    "linkedEntityId": null,
+    "linkedEntityType": null,
+    "linkedEntityNama": null,
+    "jabatan": "Guru Pengajar",
+    "phone": "081234567890",
+    "permissions": [
+      "input:grades",
+      "record:kbm"
+    ],
+    "lastLogin": null,
+    "createdAt": "2026-09-28",
+    "avatarUrl": "https://images.unsplash.com/photo-1500000000008?w=150"
+  },
+  {
+    "id": "usr-mul8zwux-tphj",
+    "username": "test.import.1790599982357",
+    "nama": "Testing Bulk User",
+    "email": "test.import.1790599982357@sman20tng.sch.id",
+    "role": "GURU",
+    "status": "AKTIF",
+    "linkedEntityId": null,
+    "linkedEntityType": null,
+    "linkedEntityNama": null,
+    "jabatan": "Guru Pengajar",
+    "phone": "081234567890",
+    "permissions": [
+      "input:grades",
+      "record:kbm"
+    ],
+    "lastLogin": null,
+    "createdAt": "2026-09-28",
+    "avatarUrl": "https://images.unsplash.com/photo-1500000000007?w=150"
+  },
+  {
+    "id": "usr-mul33cbb-iq4x",
+    "username": "test.import.1790590064642",
+    "nama": "Testing Bulk User",
+    "email": "test.import.1790590064642@sman20tng.sch.id",
+    "role": "GURU",
+    "status": "AKTIF",
+    "linkedEntityId": null,
+    "linkedEntityType": null,
+    "linkedEntityNama": null,
+    "jabatan": "Guru Pengajar",
+    "phone": "081234567890",
+    "permissions": [
+      "input:grades",
+      "record:kbm"
+    ],
+    "lastLogin": null,
+    "createdAt": "2026-09-28",
+    "avatarUrl": "https://images.unsplash.com/photo-1500000000006?w=150"
+  },
+  {
+    "id": "usr-mul1wgkm-elld",
+    "username": "test.import.1790588063971",
+    "nama": "Testing Bulk User",
+    "email": "test.import.1790588063971@sman20tng.sch.id",
+    "role": "GURU",
+    "status": "AKTIF",
+    "linkedEntityId": null,
+    "linkedEntityType": null,
+    "linkedEntityNama": null,
+    "jabatan": "Guru Pengajar",
+    "phone": "081234567890",
+    "permissions": [
+      "input:grades",
+      "record:kbm"
+    ],
+    "lastLogin": null,
+    "createdAt": "2026-09-28",
+    "avatarUrl": "https://images.unsplash.com/photo-1500000000005?w=150"
+  },
+  {
+    "id": "usr-mul0q76w-ziig",
+    "username": "test.import.1790586092196",
+    "nama": "Testing Bulk User",
+    "email": "test.import.1790586092196@sman20tng.sch.id",
+    "role": "GURU",
+    "status": "AKTIF",
+    "linkedEntityId": null,
+    "linkedEntityType": null,
+    "linkedEntityNama": null,
+    "jabatan": "Guru Pengajar",
+    "phone": "081234567890",
+    "permissions": [
+      "input:grades",
+      "record:kbm"
+    ],
+    "lastLogin": null,
+    "createdAt": "2026-09-28",
+    "avatarUrl": "https://images.unsplash.com/photo-1500000000004?w=150"
+  },
+  {
+    "id": "usr-mul0p3ax-cpl7",
+    "username": "test.import.1790586040563",
+    "nama": "Testing Bulk User",
+    "email": "test.import.1790586040563@sman20tng.sch.id",
+    "role": "GURU",
+    "status": "AKTIF",
+    "linkedEntityId": null,
+    "linkedEntityType": null,
+    "linkedEntityNama": null,
+    "jabatan": "Guru Pengajar",
+    "phone": "081234567890",
+    "permissions": [
+      "input:grades",
+      "record:kbm"
+    ],
+    "lastLogin": null,
+    "createdAt": "2026-09-28",
+    "avatarUrl": "https://images.unsplash.com/photo-1500000000003?w=150"
+  },
+  {
+    "id": "usr-mukx7pu1-zkv0",
+    "username": "test.import.1790580191111",
+    "nama": "Testing Bulk User",
+    "email": "test.import.1790580191111@sman20tng.sch.id",
+    "role": "GURU",
+    "status": "AKTIF",
+    "linkedEntityId": null,
+    "linkedEntityType": null,
+    "linkedEntityNama": null,
+    "jabatan": "Guru Pengajar",
+    "phone": "081234567890",
+    "permissions": [
+      "input:grades",
+      "record:kbm"
+    ],
+    "lastLogin": null,
+    "createdAt": "2026-09-28",
+    "avatarUrl": "https://images.unsplash.com/photo-1500000000002?w=150"
+  },
+  {
+    "id": "usr-admin-01",
+    "username": "admin",
+    "nama": "Administrator Sistem IT SMAN 20",
+    "email": "admin@sman20kabtangerang.sch.id",
+    "role": "ADMIN",
+    "status": "AKTIF",
+    "linkedEntityId": null,
+    "linkedEntityType": "STAFF",
+    "linkedEntityNama": "Tim Pengelola TI & Jaringan",
+    "jabatan": "Koordinator Sistem IT",
+    "phone": "081298765430",
+    "permissions": [
+      "all"
+    ],
+    "lastLogin": "2026-09-28 04:30 WIB",
+    "createdAt": "2026-01-05",
+    "avatarUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150"
+  },
+  {
+    "id": "usr-kepsek-01",
+    "username": "kepsek",
+    "nama": "Drs. H. Ahmad Fauzi, M.Pd.",
+    "email": "ahmad.fauzi@sman20kabtangerang.sch.id",
+    "role": "KEPALA_SEKOLAH",
+    "status": "AKTIF",
+    "linkedEntityId": "197005121995031001",
+    "linkedEntityType": "GURU",
+    "linkedEntityNama": "Drs. H. Ahmad Fauzi, M.Pd.",
+    "jabatan": "Kepala Sekolah",
+    "phone": "081287654321",
+    "permissions": [
+      "read:all",
+      "approve:permits",
+      "view:reports",
+      "audit:presensi"
+    ],
+    "lastLogin": "2026-09-27 19:45 WIB",
+    "createdAt": "2026-01-05",
+    "avatarUrl": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150"
+  },
+  {
+    "id": "usr-kurikulum-01",
+    "username": "kurikulum",
+    "nama": "Siti Rahmawati, M.Pd.",
+    "email": "siti.rahmawati@sman20kabtangerang.sch.id",
+    "role": "WAKA_KURIKULUM",
+    "status": "AKTIF",
+    "linkedEntityId": "197408252000032002",
+    "linkedEntityType": "GURU",
+    "linkedEntityNama": "Siti Rahmawati, M.Pd.",
+    "jabatan": "Wakil Kepala Sekolah Bidang Kurikulum",
+    "phone": "081398765432",
+    "permissions": [
+      "manage:schedule",
+      "manage:mapel",
+      "view:teachers",
+      "view:reports"
+    ],
+    "lastLogin": "2026-09-27 21:15 WIB",
+    "createdAt": "2026-01-05",
+    "avatarUrl": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150"
+  },
+  {
+    "id": "usr-kesiswaan-01",
+    "username": "kesiswaan",
+    "nama": "Supriyadi, S.Pd.",
+    "email": "supriyadi@sman20kabtangerang.sch.id",
+    "role": "WAKA_KESISWAAN",
+    "status": "AKTIF",
+    "linkedEntityId": "198103152006041005",
+    "linkedEntityType": "GURU",
+    "linkedEntityNama": "Supriyadi, S.Pd.",
+    "jabatan": "Wakil Kepala Sekolah Bidang Kesiswaan",
+    "phone": "081234567894",
+    "permissions": [
+      "manage:students",
+      "manage:ekskul",
+      "approve:permits",
+      "view:presensi"
+    ],
+    "lastLogin": "2026-09-27 18:20 WIB",
+    "createdAt": "2026-01-05",
+    "avatarUrl": "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?w=150"
+  },
+  {
+    "id": "usr-tu-01",
+    "username": "bendahara",
+    "nama": "Hj. Nurul Anisa, S.E.",
+    "email": "keuangan@sman20kabtangerang.sch.id",
+    "role": "BENDAHARA",
+    "status": "AKTIF",
+    "linkedEntityId": null,
+    "linkedEntityType": "STAFF",
+    "linkedEntityNama": "Tata Usaha Keuangan",
+    "jabatan": "Bendahara Sekolah / Kepala Urusan Keuangan",
+    "phone": "085712345678",
+    "permissions": [
+      "manage:finance",
+      "view:students",
+      "view:reports"
+    ],
+    "lastLogin": "2026-09-26 14:00 WIB",
+    "createdAt": "2026-01-10",
+    "avatarUrl": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150"
+  },
+  {
+    "id": "usr-op-01",
+    "username": "operator",
+    "nama": "Rahmat Hidayat, S.Kom.",
+    "email": "operator@sman20kabtangerang.sch.id",
+    "role": "OPERATOR",
+    "status": "AKTIF",
+    "linkedEntityId": null,
+    "linkedEntityType": "STAFF",
+    "linkedEntityNama": "Staf Operator Data Pokok Pendidikan",
+    "jabatan": "Operator Utama Dapodik",
+    "phone": "087812345670",
+    "permissions": [
+      "manage:students",
+      "manage:teachers",
+      "sync:dapodik",
+      "export:data"
+    ],
+    "lastLogin": "2026-09-27 16:10 WIB",
+    "createdAt": "2026-01-10",
+    "avatarUrl": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150"
+  },
+  {
+    "id": "usr-piket-01",
+    "username": "piket",
+    "nama": "Tim Guru Piket Harian SMAN 20",
+    "email": "piket@sman20kabtangerang.sch.id",
+    "role": "GURU_PIKET",
+    "status": "AKTIF",
+    "linkedEntityId": null,
+    "linkedEntityType": "STAFF",
+    "linkedEntityNama": "Meja Piket Gerbang Utama",
+    "jabatan": "Petugas Piket Kehadiran",
+    "phone": "081299988877",
+    "permissions": [
+      "manage:attendance",
+      "approve:permits",
+      "record:keterlambatan"
+    ],
+    "lastLogin": "2026-09-28 06:15 WIB",
+    "createdAt": "2026-01-15",
+    "avatarUrl": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150"
+  },
+  {
+    "id": "usr-bk-01",
+    "username": "guru.bk",
+    "nama": "Indah Permatasari, S.Psi.",
+    "email": "indah.permatasari@sman20kabtangerang.sch.id",
+    "role": "GURU_BK",
+    "status": "AKTIF",
+    "linkedEntityId": "198709142011012004",
+    "linkedEntityType": "GURU",
+    "linkedEntityNama": "Indah Permatasari, S.Psi.",
+    "jabatan": "Koordinator Bimbingan Konseling",
+    "phone": "085211223344",
+    "permissions": [
+      "view:students",
+      "view:attendance",
+      "manage:counseling",
+      "approve:permits"
+    ],
+    "lastLogin": "2026-09-27 11:20 WIB",
+    "createdAt": "2026-01-15",
+    "avatarUrl": "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150"
+  },
+  {
+    "id": "usr-guru-x1",
+    "username": "budi.santoso",
+    "nama": "Budi Santoso, S.Pd.",
+    "email": "budi.santoso@sman20kabtangerang.sch.id",
+    "role": "WALI_KELAS",
+    "status": "AKTIF",
+    "linkedEntityId": "197801122002121003",
+    "linkedEntityType": "GURU",
+    "linkedEntityNama": "Budi Santoso, S.Pd.",
+    "jabatan": "Wali Kelas X.1 & Guru Matematika",
+    "phone": "081234567891",
+    "permissions": [
+      "view:class_students",
+      "approve:class_permits",
+      "input:grades",
+      "record:kbm"
+    ],
+    "lastLogin": "2026-09-27 20:30 WIB",
+    "createdAt": "2026-01-15",
+    "avatarUrl": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=150"
+  },
+  {
+    "id": "usr-guru-pjok",
+    "username": "rizky.pratama",
+    "nama": "Rizky Pratama, S.Pd.",
+    "email": "rizky.pratama@sman20kabtangerang.sch.id",
+    "role": "GURU",
+    "status": "AKTIF",
+    "linkedEntityId": "199004122015041002",
+    "linkedEntityType": "GURU",
+    "linkedEntityNama": "Rizky Pratama, S.Pd.",
+    "jabatan": "Guru PJOK & Pembina Basket",
+    "phone": "081399887766",
+    "permissions": [
+      "input:grades",
+      "record:kbm",
+      "manage:ekskul_basket"
+    ],
+    "lastLogin": "2026-09-25 15:45 WIB",
+    "createdAt": "2026-01-15",
+    "avatarUrl": "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=150"
+  },
+  {
+    "id": "usr-siswa-01",
+    "username": "0080000001",
+    "nama": "Ahmad Fauzi",
+    "email": "ahmad.fauzi@siswa.sman20.sch.id",
+    "role": "MURID",
+    "status": "AKTIF",
+    "linkedEntityId": "0080000001",
+    "linkedEntityType": "MURID",
+    "linkedEntityNama": "Ahmad Fauzi (Kelas X.1)",
+    "jabatan": "Ketua Kelas X.1",
+    "phone": "081211110001",
+    "permissions": [
+      "student:attendance",
+      "student:schedule",
+      "student:profile"
+    ],
+    "lastLogin": "2026-09-27 22:10 WIB",
+    "createdAt": "2026-02-01",
+    "avatarUrl": "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=150"
+  },
+  {
+    "id": "usr-siswa-02",
+    "username": "0080000002",
+    "nama": "Aisyah Putri",
+    "email": "aisyah.putri@siswa.sman20.sch.id",
+    "role": "MURID",
+    "status": "AKTIF",
+    "linkedEntityId": "0080000002",
+    "linkedEntityType": "MURID",
+    "linkedEntityNama": "Aisyah Putri (Kelas X.1)",
+    "jabatan": "Siswa Kelas X.1",
+    "phone": "081211110002",
+    "permissions": [
+      "student:attendance",
+      "student:schedule",
+      "student:profile"
+    ],
+    "lastLogin": "2026-09-27 21:50 WIB",
+    "createdAt": "2026-02-01",
+    "avatarUrl": "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=150"
+  },
+  {
+    "id": "usr-tu-01",
+    "username": "tu",
+    "nama": "Hj. Nurul Anisa, S.E.",
+    "email": "tu@sman20kabtangerang.sch.id",
+    "role": "TU",
+    "status": "AKTIF",
+    "linkedEntityId": null,
+    "linkedEntityType": "STAFF",
+    "linkedEntityNama": "Bagian Tata Usaha SMAN 20",
+    "jabatan": "Staf Tata Usaha & Kesiswaan",
+    "phone": "085712345679",
+    "permissions": [
+      "manage:students",
+      "manage:mutasi",
+      "manage:promotion",
+      "view:reports"
+    ],
+    "lastLogin": "2026-10-01 08:00 WIB",
+    "createdAt": "2026-01-10",
+    "avatarUrl": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150"
+  },
+  {
+    "id": "usr-ppid-01",
+    "username": "ppid",
+    "nama": "Rahmat Hidayat, S.Kom.",
+    "email": "ppid@sman20kabtangerang.sch.id",
+    "role": "PETUGAS_PPID",
+    "status": "AKTIF",
+    "linkedEntityId": null,
+    "linkedEntityType": "STAFF",
+    "linkedEntityNama": "Layanan PPID SMAN 20",
+    "jabatan": "Petugas Pengelola Informasi dan Dokumentasi (PPID)",
+    "phone": "087812345678",
+    "permissions": [
+      "manage:ppid",
+      "view:reports",
+      "publish:documents"
+    ],
+    "lastLogin": "2026-10-02 09:30 WIB",
+    "createdAt": "2026-01-10",
+    "avatarUrl": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150"
+  }
+]

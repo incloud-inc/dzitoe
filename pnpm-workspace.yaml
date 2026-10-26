@@ -7,16 +7,23 @@ packages:
   - 'apps/*'
   - 'packages/*'
 
+allowBuilds:
+  '@prisma/client': true
+  '@prisma/engines': true
+  prisma: true
+  esbuild: true
+  sharp: true
+
 catalog:
   typescript: ^5.7.2
   '@types/node': ^22.10.2
   prettier: ^3.4.2
   rimraf: ^6.0.1
   zod: ^3.24.1
-
-onlyBuiltDependencies:
-  - '@prisma/client'
-  - '@prisma/engines'
-  - esbuild
-  - prisma
-  - sharp
+  prisma: ^6.4.1
+  '@prisma/client': ^6.4.1
+  jose: ^5.9.6
+  bcryptjs: ^2.4.3
+  '@types/bcryptjs': ^2.4.6
+  leaflet: ^1.9.4
+  '@types/leaflet': ^1.9.16

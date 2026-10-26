@@ -1,0 +1,32 @@
+# ==============================================================================
+# DZITOE — Continuous Deployment (CD) Workflow
+# SMAN 20 Kabupaten Tangerang
+# Task: A0.10 (Setup CI/CD - GitHub Actions)
+# ==============================================================================
+
+name: DZITOE CD — Production Deployment
+
+on:
+  push:
+    branches:
+      - main
+
+concurrency:
+  group: production-deployment
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: Deploy to Production Server
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Webhook / Coolify Deploy
+        run: |
+          echo "🚀 Triggering DZITOE Production Deployment for SMAN 20 Kabupaten Tangerang..."
+          # Webhook Coolify / Dokku / Portainer trigger
+          if [ -n "${{ secrets.DEPLOY_WEBHOOK_URL }}" ]; then
+            curl -X POST -f "${{ secrets.DEPLOY_WEBHOOK_URL }}"
+            echo "✅ Deployment webhook triggered successfully."
+          else
+            echo "ℹ️ DEPLOY_WEBHOOK_URL secret is not configured; skipped auto-curl."
+          fi

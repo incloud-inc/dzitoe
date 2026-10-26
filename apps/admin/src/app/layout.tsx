@@ -10,6 +10,14 @@ export const metadata: Metadata = {
     "Dashboard admin DZITOE untuk tata kelola Murid (Siswa), Guru, Fasilitasi Belajar (Pembelajaran), Asesmen, Perkembangan Murid, dan Disiplin Positif.",
   applicationName: "DZITOE Admin",
   authors: [{ name: "DZITOE Dev Team" }],
+  icons: {
+    icon: [
+      { url: '/api/favicon', type: 'image/png' },
+      { url: '/favicon.ico', sizes: 'any' },
+    ],
+    shortcut: '/api/favicon',
+    apple: '/api/favicon',
+  },
   robots: { index: false, follow: false },
 };
 

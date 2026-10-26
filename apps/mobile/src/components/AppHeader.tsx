@@ -1,12 +1,19 @@
-import { Bell, CheckCircle2, GraduationCap } from 'lucide-react';
+'use client';
+
+import React, { useState } from 'react';
+import { Bell, Camera, CheckCircle2, GraduationCap } from 'lucide-react';
 
 import Avatar from '@/components/Avatar';
 import TodayGreeting from '@/components/TodayGreeting';
-import { KEHADIRAN_HARI_INI, PROFIL_MURID } from '@/lib/data';
+import { PROFIL_MURID, KEHADIRAN_HARI_INI } from '@/lib/data';
+import { PhotoUploadModal } from '@/components/PhotoUploadModal';
 
 export default function AppHeader() {
+  const [showPhotoModal, setShowPhotoModal] = useState(false);
+  const [avatarUrl, setAvatarUrl] = useState<string | null>(null);
+
   return (
-    <header className="relative overflow-hidden rounded-b-4xl bg-gradient-to-br from-brand-600 via-brand-700 to-indigo-900 px-4 pt-[calc(0.75rem+env(safe-area-inset-top,0px))] pb-20 text-white shadow-xl shadow-brand-950/20">
+    <header className="relative overflow-hidden rounded-b-4xl bg-gradient-to-br from-brand-600 via-brand-800 to-brand-950 px-4 pt-[calc(0.75rem+env(safe-area-inset-top,0px))] pb-20 text-white shadow-xl shadow-brand-950/20">
       {/* Dekorasi latar glassmorphism */}
       <div
         aria-hidden="true"
@@ -33,16 +40,32 @@ export default function AppHeader() {
       {/* Profil Murid & Notifikasi */}
       <div className="relative flex items-center justify-between gap-3">
         <div className="flex min-w-0 items-center gap-3">
-          <div className="relative">
-            <Avatar
-              nama={PROFIL_MURID.nama}
-              className="h-12 w-12 text-sm ring-2 ring-white/40 shadow-sm"
-            />
+          <div
+            onClick={() => setShowPhotoModal(true)}
+            className="relative cursor-pointer group active:scale-95 transition-transform"
+            title="Ketuk untuk mengganti foto dari galeri"
+          >
+            {avatarUrl ? (
+              <img
+                src={avatarUrl}
+                alt={PROFIL_MURID.nama}
+                className="h-12 w-12 rounded-full object-cover ring-2 ring-white/40 shadow-sm"
+              />
+            ) : (
+              <Avatar
+                nama={PROFIL_MURID.nama}
+                className="h-12 w-12 text-sm ring-2 ring-white/40 shadow-sm"
+              />
+            )}
+            <div className="absolute inset-0 bg-black/40 rounded-full opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white">
+              <Camera className="w-4 h-4" />
+            </div>
             <span
-              className="absolute bottom-0 right-0 h-3 w-3 rounded-full bg-emerald-400 ring-2 ring-brand-700"
-              title="Online"
-              aria-hidden="true"
-            />
+              className="absolute -bottom-0.5 -right-0.5 flex h-4 w-4 items-center justify-center rounded-full bg-emerald-500 text-white ring-2 ring-brand-700 shadow-xs"
+              title="Ganti foto profil"
+            >
+              <Camera className="w-2.5 h-2.5" />
+            </span>
           </div>
           <TodayGreeting nama={PROFIL_MURID.nama} />
         </div>
@@ -78,6 +101,15 @@ export default function AppHeader() {
           {KEHADIRAN_HARI_INI.label} · {KEHADIRAN_HARI_INI.jamMasuk}
         </span>
       </div>
+
+      {/* Modal Tap to Change Photo */}
+      <PhotoUploadModal
+        isOpen={showPhotoModal}
+        onClose={() => setShowPhotoModal(false)}
+        userName={PROFIL_MURID.nama}
+        currentAvatar={avatarUrl}
+        onPhotoUpdated={(newUrl) => setAvatarUrl(newUrl)}
+      />
     </header>
   );
 }

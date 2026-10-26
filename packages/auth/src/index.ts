@@ -1,6 +1,14 @@
-/**
- * DZITOE Auth — NextAuth config placeholder.
- * Task: A0.1
- * Konfigurasi NextAuth dan session protection diimplementasikan pada task A0.7 & A1.2.
- */
-export const AUTH_PACKAGE_NAME = '@dzitoe/auth' as const;
+// ==============================================================================
+// DZITOE — Auth Package (@dzitoe/auth)
+// Exporting types, JWT, password hash, cookies, and authentication service
+// ==============================================================================
+
+export * from './types';
+export * from './hash';
+export * from './jwt';
+export * from './cookies';
+export * from './service';
+export * from './rbac';
+export * from './session-store';
+export * from './audit-store';
+export * from './password-reset-store';

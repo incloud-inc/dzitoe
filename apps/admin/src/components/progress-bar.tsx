@@ -29,7 +29,7 @@ export function ProgressBar({
     >
       <div
         className={cn(
-          "h-full rounded-full bg-gradient-to-r from-brand-600 to-violet-500 transition-[width] duration-700 ease-out-expo",
+          "h-full rounded-full bg-gradient-to-r from-brand-900 via-brand-600 to-brand-400 transition-[width] duration-700 ease-out-expo",
           barClassName,
         )}
         style={{ width: `${safe}%` }}

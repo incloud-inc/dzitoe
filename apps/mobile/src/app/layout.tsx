@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from 'next';
 import type { ReactNode } from 'react';
 
-import BottomNav from '@/components/BottomNav';
 import MobileShell from '@/components/MobileShell';
 import ServiceWorkerRegister from '@/components/ServiceWorkerRegister';
 
@@ -37,8 +36,13 @@ export const metadata: Metadata = {
     statusBarStyle: 'default',
   },
   icons: {
-    icon: '/icon.svg',
-    shortcut: '/icon.svg',
+    icon: [
+      { url: '/api/favicon', type: 'image/png' },
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/icon.svg', type: 'image/svg+xml' },
+    ],
+    shortcut: '/api/favicon',
+    apple: '/api/favicon',
   },
   formatDetection: {
     telephone: false,
@@ -53,7 +57,7 @@ export const viewport: Viewport = {
   maximumScale: 1,
   userScalable: false,
   viewportFit: 'cover',
-  themeColor: '#0a9066',
+  themeColor: '#087f5b',
   colorScheme: 'light',
 };
 
@@ -61,12 +65,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="id">
       <body className="font-sans">
-        <MobileShell>
-          <main className="flex-1 pb-[calc(5.75rem+env(safe-area-inset-bottom,0px))]">
-            {children}
-          </main>
-          <BottomNav />
-        </MobileShell>
+        <MobileShell>{children}</MobileShell>
         <ServiceWorkerRegister />
       </body>
     </html>

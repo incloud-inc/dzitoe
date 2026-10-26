@@ -28,36 +28,36 @@ export interface StatCardProps {
 }
 
 const iconTone: Record<StatTone, string> = {
-  brand: "bg-brand-50 text-brand-600 ring-brand-100",
-  emerald: "bg-emerald-50 text-emerald-600 ring-emerald-100",
-  amber: "bg-amber-50 text-amber-600 ring-amber-100",
-  sky: "bg-sky-50 text-sky-600 ring-sky-100",
-  violet: "bg-violet-50 text-violet-600 ring-violet-100",
-  rose: "bg-rose-50 text-rose-600 ring-rose-100",
+  brand: "bg-brand-50 text-brand-900 ring-brand-200",
+  emerald: "bg-brand-50 text-brand-700 ring-brand-200",
+  amber: "bg-warm-50 text-warm-900 ring-warm-200",
+  sky: "bg-brand-50 text-brand-800 ring-brand-100",
+  violet: "bg-brand-100/70 text-brand-900 ring-brand-200",
+  rose: "bg-warm-100 text-warm-900 ring-warm-200",
 };
 
 const glowTone: Record<StatTone, string> = {
   brand: "bg-brand-400",
-  emerald: "bg-emerald-400",
-  amber: "bg-amber-400",
-  sky: "bg-sky-400",
-  violet: "bg-violet-400",
-  rose: "bg-rose-400",
+  emerald: "bg-brand-300",
+  amber: "bg-warm-400",
+  sky: "bg-brand-200",
+  violet: "bg-brand-400",
+  rose: "bg-warm-400",
 };
 
 const barTone: Record<StatTone, string> = {
-  brand: "from-brand-600 to-brand-400",
-  emerald: "from-emerald-600 to-emerald-400",
-  amber: "from-amber-600 to-amber-400",
-  sky: "from-sky-600 to-sky-400",
-  violet: "from-violet-600 to-violet-400",
-  rose: "from-rose-600 to-rose-400",
+  brand: "from-brand-900 via-brand-600 to-brand-400",
+  emerald: "from-brand-700 via-brand-500 to-brand-300",
+  amber: "from-warm-700 via-warm-600 to-warm-400",
+  sky: "from-brand-600 to-brand-300",
+  violet: "from-brand-800 to-brand-500",
+  rose: "from-warm-800 to-warm-400",
 };
 
 const trendTone = {
-  up: "bg-emerald-50 text-emerald-700",
-  down: "bg-rose-50 text-rose-700",
-  flat: "bg-slate-100 text-slate-600",
+  up: "bg-brand-50 text-brand-900 font-bold ring-1 ring-brand-200",
+  down: "bg-warm-50 text-warm-900 font-bold ring-1 ring-warm-200",
+  flat: "bg-neutral-100 text-neutral-700 font-bold ring-1 ring-neutral-200",
 } as const;
 
 function TrendIcon({ direction }: { direction: StatTrend["direction"] }) {
@@ -84,9 +84,9 @@ export function StatCard({
       role="region"
       aria-label={`Statistik ${label}`}
       className={cn(
-        "group relative overflow-hidden rounded-2xl border border-slate-200/90 bg-white p-5 shadow-card",
+        "group relative overflow-hidden rounded-xl border border-slate-200 bg-white p-5 shadow-sm",
         "transition-all duration-300 ease-out-expo dz-interactive",
-        "hover:-translate-y-0.5 hover:border-slate-300 hover:shadow-card-hover",
+        "hover:-translate-y-0.5 hover:border-slate-300 hover:shadow-md",
         "animate-fade-in-up",
       )}
     >

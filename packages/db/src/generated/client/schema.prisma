@@ -1,0 +1,940 @@
+// ==============================================================================
+// DZITOE — Sistem Tata Kelola Sekolah SMAN 20 Kabupaten Tangerang
+// Skema Database Prisma (Permendikdasmen No. 1–6 Tahun 2026 Compliant)
+// Task: A0.6 & A1.1
+// ==============================================================================
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/client"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ------------------------------------------------------------------------------
+// 1. AUTENTIKASI, PENGGUNA & SESI
+// ------------------------------------------------------------------------------
+
+enum Role {
+  ADMIN
+  KEPALA_SEKOLAH
+  TU
+  GURU
+  MURID
+  ORANG_TUA
+  GURU_BK
+  PETUGAS_PPID
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  username  String   @unique
+  password  String // bcrypt hash
+  name      String
+  role      Role     @default(MURID)
+  avatar    String?
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  murid     Murid?
+  guru      Guru?
+  sessions  Session[]
+  auditLogs AuditLog[]
+
+  @@index([email])
+  @@index([username])
+  @@index([role])
+}
+
+model Session {
+  id        String   @id @default(cuid())
+  userId    String
+  token     String   @unique
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([token])
+}
+
+model AuditLog {
+  id        String   @id @default(cuid())
+  userId    String?
+  action    String // LOGIN, LOGOUT, FAILED_LOGIN, CREATE, UPDATE, DELETE
+  resource  String // User, Murid, Absensi, Asesmen
+  ipAddress String?
+  userAgent String?
+  details   Json?
+  createdAt DateTime @default(now())
+
+  user User? @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  @@index([userId])
+  @@index([action])
+  @@index([createdAt])
+}
+
+// ------------------------------------------------------------------------------
+// 2. DATA MASTER: MURID & ORANG TUA
+// ------------------------------------------------------------------------------
+
+enum JenisKelamin {
+  LAKI_LAKI
+  PEREMPUAN
+}
+
+enum StatusMurid {
+  AKTIF
+  LULUS
+  MUTASI
+  KELUAR
+}
+
+enum Agama {
+  ISLAM
+  KRISTEN_PROTESTAN
+  KATOLIK
+  HINDU
+  BUDDHA
+  KHONGHUCU
+  PENGHAYAT_KEPERCAYAAN
+}
+
+model Murid {
+  id           String       @id @default(cuid())
+  userId       String       @unique
+  nis          String       @unique
+  nisn         String?      @unique
+  nik          String?      @unique
+  noKk         String?
+  nama         String
+  jenisKelamin JenisKelamin
+  tempatLahir  String?
+  tanggalLahir DateTime?
+  noAktaLahir  String?
+  agama        Agama?       @default(ISLAM)
+
+  // Alamat Lengkap Tempat Tinggal
+  alamat    String?
+  jalan     String?
+  rtRw      String?
+  kelurahan String?
+  kecamatan String?
+  kabupaten String?
+  provinsi  String?
+  kodePos   String?
+  lintang   Float? // Titik koordinat rumah
+  bujur     Float?
+
+  foto      String?
+  kelasId   String?
+  status    StatusMurid @default(AKTIF)
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @updatedAt
+
+  user            User            @relation(fields: [userId], references: [id], onDelete: Cascade)
+  kelas           Kelas?          @relation(fields: [kelasId], references: [id])
+  orangTua        OrangTua[]
+  absensi         Absensi[]
+  asesmen         Asesmen[]
+  prestasi        Prestasi[]
+  kesehatan       Kesehatan[]
+  bk              PelayananBK[]
+  tagihan         Tagihan[]
+  pembayaran      Pembayaran[]
+  ekstrakurikuler PesertaEkstra[]
+  pesertaUjian    PesertaUjian[]
+  jawabanUjian    JawabanUjian[]
+  riwayatKelas    RiwayatKelas[]
+
+  @@index([nis])
+  @@index([nisn])
+  @@index([nik])
+  @@index([kelasId])
+  @@index([status])
+}
+
+enum Hubungan {
+  AYAH
+  IBU
+  WALI
+}
+
+model OrangTua {
+  id        String   @id @default(cuid())
+  muridId   String
+  nama      String
+  hubungan  Hubungan
+  nomorHp   String
+  email     String?
+  pekerjaan String?
+  alamat    String?
+  createdAt DateTime @default(now())
+
+  murid Murid @relation(fields: [muridId], references: [id], onDelete: Cascade)
+
+  @@index([muridId])
+}
+
+// ------------------------------------------------------------------------------
+// 3. DATA MASTER: GURU, TENDIK & KELAS
+// ------------------------------------------------------------------------------
+
+enum StatusGuru {
+  AKTIF
+  CUTI
+  PENSIUN
+  MUTASI
+}
+
+model Guru {
+  id            String       @id @default(cuid())
+  userId        String       @unique
+  nip           String?      @unique
+  nuptk         String?      @unique
+  nama          String
+  jenisKelamin  JenisKelamin
+  jabatan       String?
+  mataPelajaran String?
+  status        StatusGuru   @default(AKTIF)
+  createdAt     DateTime     @default(now())
+  updatedAt     DateTime     @updatedAt
+
+  user      User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  absensi   AbsensiGuru[]
+  kelasWali Kelas[]
+  jadwal    Jadwal[]
+  bankSoal  BankSoal[]
+  paketSoal PaketSoal[]
+
+  @@index([nip])
+  @@index([nuptk])
+  @@index([status])
+}
+
+model Kelas {
+  id          String   @id @default(cuid())
+  nama        String // Contoh: "XII IPA 1", "X-1"
+  tingkat     String // Contoh: "X", "XI", "XII"
+  waliKelasId String?
+  jumlahMurid Int      @default(0)
+  createdAt   DateTime @default(now())
+
+  waliKelas    Guru?          @relation(fields: [waliKelasId], references: [id], onDelete: SetNull)
+  murid        Murid[]
+  jadwal       Jadwal[]
+  riwayatKelas RiwayatKelas[]
+
+  @@index([tingkat])
+}
+
+// ------------------------------------------------------------------------------
+// 4. PRESENSI / ABSENSI (GPS RADIUS + SELFIE + DETEKSI MOCK LOCATION)
+// ------------------------------------------------------------------------------
+
+enum StatusAbsensi {
+  HADIR
+  TEPAT
+  PARSIAL
+  TERLAMBAT
+  IZIN
+  SAKIT
+  ALPA
+}
+
+model Absensi {
+  id                 String        @id @default(cuid())
+  muridId            String
+  tanggal            DateTime      @db.Date
+  jamMasuk           DateTime?
+  jamPulang          DateTime?
+  status             StatusAbsensi @default(HADIR)
+  latitude           Float?
+  longitude          Float?
+  accuracy           Float?
+  distanceFromSchool Float? // dalam meter
+  isWithinRadius     Boolean       @default(false)
+  isMockLocation     Boolean       @default(false)
+  selfieUrl          String?
+  selfieThumbnail    String?
+  watermarkText      String?
+  deviceInfo         Json?
+  verifiedBy         String?
+  verifiedAt         DateTime?
+  notes              String?
+  createdAt          DateTime      @default(now())
+
+  murid Murid @relation(fields: [muridId], references: [id], onDelete: Cascade)
+
+  @@unique([muridId, tanggal])
+  @@index([tanggal])
+  @@index([status])
+  @@index([isWithinRadius])
+}
+
+model AbsensiGuru {
+  id                 String        @id @default(cuid())
+  guruId             String
+  tanggal            DateTime      @db.Date
+  jamMasuk           DateTime?
+  jamPulang          DateTime?
+  status             StatusAbsensi @default(HADIR)
+  latitude           Float?
+  longitude          Float?
+  accuracy           Float?
+  distanceFromSchool Float?
+  isWithinRadius     Boolean       @default(false)
+  isMockLocation     Boolean       @default(false)
+  selfieUrl          String?
+  selfieThumbnail    String?
+  watermarkText      String?
+  deviceInfo         Json?
+  keterangan         String?
+  createdAt          DateTime      @default(now())
+
+  guru Guru @relation(fields: [guruId], references: [id], onDelete: Cascade)
+
+  @@unique([guruId, tanggal])
+  @@index([tanggal])
+  @@index([status])
+}
+
+// ------------------------------------------------------------------------------
+// 5. JADWAL PELAJARAN & FASILITASI BELAJAR
+// ------------------------------------------------------------------------------
+
+enum Hari {
+  SENIN
+  SELASA
+  RABU
+  KAMIS
+  JUMAT
+  SABTU
+}
+
+model Jadwal {
+  id            String   @id @default(cuid())
+  kelasId       String
+  guruId        String?
+  mataPelajaran String
+  hari          Hari
+  jamMulai      String // "07:00"
+  jamSelesai    String // "08:30"
+  ruang         String?
+  createdAt     DateTime @default(now())
+
+  kelas Kelas @relation(fields: [kelasId], references: [id], onDelete: Cascade)
+  guru  Guru? @relation(fields: [guruId], references: [id], onDelete: SetNull)
+
+  @@index([kelasId])
+  @@index([hari])
+}
+
+// ------------------------------------------------------------------------------
+// 6. ASESMEN PERKEMBANGAN MURID (PERMENDIKDASMEN 2026)
+// ------------------------------------------------------------------------------
+
+enum JenisAsesmen {
+  FORMATIF
+  SUMATIF
+  DIAGNOSTIK
+  PROYEK
+}
+
+model Asesmen {
+  id            String       @id @default(cuid())
+  muridId       String
+  jenis         JenisAsesmen
+  mataPelajaran String
+  nilai         Float
+  tanggal       DateTime
+  semester      String // "Ganjil" / "Genap"
+  tahunAjaran   String // "2025/2026"
+  catatan       String?
+  createdAt     DateTime     @default(now())
+
+  murid Murid @relation(fields: [muridId], references: [id], onDelete: Cascade)
+
+  @@index([muridId])
+  @@index([tanggal])
+  @@index([mataPelajaran])
+}
+
+enum JenisPrestasi {
+  AKADEMIK
+  NON_AKADEMIK
+}
+
+enum Tingkat {
+  SEKOLAH
+  KECAMATAN
+  KABUPATEN
+  PROVINSI
+  NASIONAL
+  INTERNASIONAL
+}
+
+model Prestasi {
+  id            String        @id @default(cuid())
+  muridId       String
+  jenis         JenisPrestasi
+  nama          String
+  tingkat       Tingkat
+  peringkat     String?
+  tahun         Int
+  penyelenggara String?
+  sertifikat    String?
+  createdAt     DateTime      @default(now())
+
+  murid Murid @relation(fields: [muridId], references: [id], onDelete: Cascade)
+
+  @@index([muridId])
+  @@index([jenis])
+  @@index([tingkat])
+}
+
+enum JenisKesehatan {
+  RIWAYAT_PENYAKIT
+  ALERGI
+  OBAT
+  IMUNISASI
+  PEMERIKSAAN
+  CATATAN_MEDIS
+}
+
+model Kesehatan {
+  id         String         @id @default(cuid())
+  muridId    String
+  jenis      JenisKesehatan
+  keterangan String
+  tanggal    DateTime?
+  penanganan String?
+  createdAt  DateTime       @default(now())
+
+  murid Murid @relation(fields: [muridId], references: [id], onDelete: Cascade)
+
+  @@index([muridId])
+  @@index([jenis])
+}
+
+// ------------------------------------------------------------------------------
+// 7. DISIPLIN POSITIF & LAYANAN BK (RESTITUSI, BUKAN HUKUMAN FISIK)
+// ------------------------------------------------------------------------------
+
+enum JenisBK {
+  KONSELING_INDIVIDU
+  KONSELING_KELOMPOK
+  BIMBINGAN_KARIR
+  DISIPLIN_POSITIF
+  RUJUKAN
+}
+
+enum StatusBK {
+  OPEN
+  IN_PROGRESS
+  RESOLVED
+  CLOSED
+}
+
+model PelayananBK {
+  id           String   @id @default(cuid())
+  muridId      String
+  jenis        JenisBK
+  konselor     String
+  tanggal      DateTime
+  permasalahan String
+  solusi       String? // Langkah restitusi dan pembinaan karakter
+  status       StatusBK @default(OPEN)
+  createdAt    DateTime @default(now())
+
+  murid Murid @relation(fields: [muridId], references: [id], onDelete: Cascade)
+
+  @@index([muridId])
+  @@index([jenis])
+  @@index([status])
+}
+
+// ------------------------------------------------------------------------------
+// 8. TATA KELOLA KEUANGAN
+// ------------------------------------------------------------------------------
+
+enum Periode {
+  SEKALI
+  BULANAN
+  SEMESTER
+  TAHUNAN
+}
+
+model JenisTagihan {
+  id         String    @id @default(cuid())
+  nama       String // Contoh: "SPP", "Uang Kegiatan", "Seragam"
+  nominal    Decimal   @db.Decimal(12, 2)
+  periode    Periode
+  jatuhTempo DateTime?
+  createdAt  DateTime  @default(now())
+
+  tagihan Tagihan[]
+
+  @@index([periode])
+}
+
+enum StatusTagihan {
+  BELUM_LUNAS
+  CICILAN
+  LUNAS
+  TUNGGAKAN
+}
+
+model Tagihan {
+  id             String        @id @default(cuid())
+  muridId        String
+  jenisTagihanId String
+  nominal        Decimal       @db.Decimal(12, 2)
+  sisa           Decimal       @db.Decimal(12, 2)
+  jatuhTempo     DateTime
+  status         StatusTagihan @default(BELUM_LUNAS)
+  bisaCicil      Boolean       @default(false)
+  jumlahCicilan  Int?
+  createdAt      DateTime      @default(now())
+
+  murid        Murid        @relation(fields: [muridId], references: [id], onDelete: Cascade)
+  jenisTagihan JenisTagihan @relation(fields: [jenisTagihanId], references: [id])
+  pembayaran   Pembayaran[]
+
+  @@index([muridId])
+  @@index([status])
+  @@index([jatuhTempo])
+}
+
+enum MetodePembayaran {
+  TUNAI
+  TRANSFER
+  QRIS
+  VA
+}
+
+model Pembayaran {
+  id         String           @id @default(cuid())
+  tagihanId  String
+  muridId    String
+  nominal    Decimal          @db.Decimal(12, 2)
+  metode     MetodePembayaran
+  cicilanKe  Int?
+  tanggal    DateTime         @default(now())
+  bukti      String?
+  verifiedBy String?
+  verifiedAt DateTime?
+  createdAt  DateTime         @default(now())
+
+  tagihan Tagihan @relation(fields: [tagihanId], references: [id], onDelete: Cascade)
+  murid   Murid   @relation(fields: [muridId], references: [id], onDelete: Cascade)
+
+  @@index([tagihanId])
+  @@index([muridId])
+  @@index([tanggal])
+}
+
+// ------------------------------------------------------------------------------
+// 9. EKSTRAKURIKULER & ALUMNI
+// ------------------------------------------------------------------------------
+
+model Ekstrakurikuler {
+  id        String   @id @default(cuid())
+  nama      String
+  pembina   String?
+  jadwal    String?
+  lokasi    String?
+  createdAt DateTime @default(now())
+
+  peserta PesertaEkstra[]
+
+  @@index([nama])
+}
+
+model PesertaEkstra {
+  id                String   @id @default(cuid())
+  muridId           String
+  ekstrakurikulerId String
+  createdAt         DateTime @default(now())
+
+  murid           Murid           @relation(fields: [muridId], references: [id], onDelete: Cascade)
+  ekstrakurikuler Ekstrakurikuler @relation(fields: [ekstrakurikulerId], references: [id], onDelete: Cascade)
+
+  @@unique([muridId, ekstrakurikulerId])
+  @@index([muridId])
+  @@index([ekstrakurikulerId])
+}
+
+model Alumni {
+  id            String   @id @default(cuid())
+  nisn          String   @unique
+  nama          String
+  tahunLulus    Int
+  kelasTerakhir String
+  nomorHp       String?
+  email         String?
+  lanjutanStudi String?
+  pekerjaan     String?
+  createdAt     DateTime @default(now())
+
+  @@index([tahunLulus])
+  @@index([nisn])
+}
+
+// ------------------------------------------------------------------------------
+// 10. PPID (KETERBUKAAN INFORMASI PUBLIK)
+// ------------------------------------------------------------------------------
+
+model InformasiPublik {
+  id        String   @id @default(cuid())
+  judul     String
+  kategori  String
+  deskripsi String?
+  file      String?
+  tanggal   DateTime @default(now())
+  createdAt DateTime @default(now())
+
+  @@index([kategori])
+  @@index([tanggal])
+}
+
+enum StatusPermohonan {
+  PENDING
+  DIPROSES
+  SELESAI
+  DITOLAK
+}
+
+model PermohonanInformasi {
+  id        String           @id @default(cuid())
+  pemohon   String
+  kontak    String
+  informasi String
+  status    StatusPermohonan @default(PENDING)
+  tanggal   DateTime         @default(now())
+  createdAt DateTime         @default(now())
+
+  @@index([status])
+  @@index([tanggal])
+}
+
+// ------------------------------------------------------------------------------
+// 11. PENGATURAN SISTEM & TAHUN AJARAN
+// ------------------------------------------------------------------------------
+
+model Pengaturan {
+  id        String   @id @default(cuid())
+  key       String   @unique
+  value     String
+  updatedAt DateTime @updatedAt
+
+  @@index([key])
+}
+
+enum Semester {
+  GANJIL
+  GENAP
+}
+
+model TahunAjaran {
+  id           String         @id @default(cuid())
+  tahun        String // "2025/2026"
+  semester     Semester
+  isActive     Boolean        @default(false)
+  createdAt    DateTime       @default(now())
+  riwayatKelas RiwayatKelas[]
+
+  @@index([tahun])
+  @@index([isActive])
+}
+
+// ------------------------------------------------------------------------------
+// 11.5. RIWAYAT KELAS & WISAYA KENAIKAN KELAS (PROMOTION WIZARD)
+// ------------------------------------------------------------------------------
+
+enum StatusKenaikan {
+  NAIK
+  TINGGAL
+  LULUS
+  MUTASI
+}
+
+model RiwayatKelas {
+  id            String         @id @default(cuid())
+  muridId       String
+  kelasId       String
+  tahunAjaranId String
+  status        StatusKenaikan @default(NAIK)
+  catatan       String?
+  createdAt     DateTime       @default(now())
+
+  murid       Murid       @relation(fields: [muridId], references: [id], onDelete: Cascade)
+  kelas       Kelas       @relation(fields: [kelasId], references: [id])
+  tahunAjaran TahunAjaran @relation(fields: [tahunAjaranId], references: [id])
+
+  @@unique([muridId, tahunAjaranId])
+  @@index([kelasId])
+  @@index([tahunAjaranId])
+}
+
+model PromotionSnapshot {
+  id                String   @id @default(cuid())
+  tahunAjaranLamaId String
+  tahunAjaranBaruId String
+  timestamp         DateTime @default(now())
+  data              Json
+  isReverted        Boolean  @default(false)
+  createdBy         String?
+}
+
+// ------------------------------------------------------------------------------
+// 12. KURIKULUM MERDEKA, BANK SOAL & UJIAN
+// ------------------------------------------------------------------------------
+
+model MataPelajaran {
+  id        String   @id @default(cuid())
+  nama      String // "Matematika", "Bahasa Indonesia"
+  kode      String   @unique
+  deskripsi String?
+  createdAt DateTime @default(now())
+
+  kelasKurikulum KelasKurikulum[]
+  bankSoal       BankSoal[]
+  paketSoal      PaketSoal[]
+
+  @@index([kode])
+}
+
+model KelasKurikulum {
+  id        String   @id @default(cuid())
+  kelas     String // "X", "XI", "XII"
+  semester  Semester
+  mapelId   String
+  createdAt DateTime @default(now())
+
+  mapel    MataPelajaran @relation(fields: [mapelId], references: [id])
+  bab      Bab[]
+  bankSoal BankSoal[]
+
+  @@unique([kelas, semester, mapelId])
+  @@index([kelas])
+}
+
+model Bab {
+  id               String   @id @default(cuid())
+  kelasKurikulumId String
+  nama             String
+  urutan           Int
+  deskripsi        String?
+  createdAt        DateTime @default(now())
+
+  kelasKurikulum KelasKurikulum @relation(fields: [kelasKurikulumId], references: [id], onDelete: Cascade)
+  materi         Materi[]
+  bankSoal       BankSoal[]
+
+  @@index([kelasKurikulumId])
+  @@index([urutan])
+}
+
+model Materi {
+  id             String   @id @default(cuid())
+  babId          String
+  nama           String
+  deskripsi      String?
+  capaianBelajar String? // CP (Capaian Pembelajaran)
+  tujuanBelajar  String? // TP (Tujuan Pembelajaran)
+  alurTujuan     String? // ATP (Alur Tujuan Pembelajaran)
+  createdAt      DateTime @default(now())
+
+  bab      Bab        @relation(fields: [babId], references: [id], onDelete: Cascade)
+  bankSoal BankSoal[]
+
+  @@index([babId])
+}
+
+enum JenisSoal {
+  PILIHAN_GANDA
+  PILIHAN_GANDA_MULTI
+  BENAR_SALAH
+  MENCOCOKKAN
+  ISIAN_SINGKAT
+  MENGURUTKAN
+  JAWABAN_BERBASIS_POIN
+  JAWABAN_PANJANG
+}
+
+enum TingkatKesulitan {
+  MUDAH
+  SEDANG
+  SULIT
+}
+
+enum SumberSoal {
+  MANUAL
+  AI
+  IMPORT
+}
+
+model Paragraf {
+  id        String   @id @default(cuid())
+  guruId    String
+  judul     String?
+  konten    String   @db.Text
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  bankSoal BankSoal[]
+
+  @@index([guruId])
+}
+
+model BankSoal {
+  id               String           @id @default(cuid())
+  guruId           String
+  kelasKurikulumId String
+  babId            String?
+  materiId         String?
+  mapelId          String
+  jenisSoal        JenisSoal
+  tingkatKesulitan TingkatKesulitan
+  pertanyaan       String           @db.Text
+  jawaban          Json // Struktur format jawaban terverifikasi
+  pembahasan       String?          @db.Text
+  paragraf         String?          @db.Text
+  paragrafId       String?
+  sumber           SumberSoal       @default(MANUAL)
+  aiPrompt         String?          @db.Text
+  aiModel          String? // "deepseek-chat" dsb.
+  aiGeneratedAt    DateTime?
+  tags             String[]
+  isPublished      Boolean          @default(false)
+  createdAt        DateTime         @default(now())
+  updatedAt        DateTime         @updatedAt
+
+  guru           Guru            @relation(fields: [guruId], references: [id])
+  kelasKurikulum KelasKurikulum  @relation(fields: [kelasKurikulumId], references: [id])
+  bab            Bab?            @relation(fields: [babId], references: [id], onDelete: SetNull)
+  materi         Materi?         @relation(fields: [materiId], references: [id], onDelete: SetNull)
+  mapel          MataPelajaran   @relation(fields: [mapelId], references: [id])
+  paragrafObj    Paragraf?       @relation(fields: [paragrafId], references: [id], onDelete: SetNull)
+  paketSoal      PaketSoalItem[]
+  jawabanMurid   JawabanUjian[]
+
+  @@index([guruId])
+  @@index([mapelId])
+  @@index([jenisSoal])
+  @@index([sumber])
+  @@index([paragrafId])
+}
+
+model PaketSoal {
+  id         String   @id @default(cuid())
+  guruId     String
+  nama       String
+  mapelId    String
+  kelas      String
+  semester   Semester
+  jumlahSoal Int
+  durasi     Int // dalam menit
+  createdAt  DateTime @default(now())
+
+  guru  Guru            @relation(fields: [guruId], references: [id])
+  mapel MataPelajaran   @relation(fields: [mapelId], references: [id])
+  items PaketSoalItem[]
+  ujian Ujian[]
+}
+
+model PaketSoalItem {
+  id          String   @id @default(cuid())
+  paketSoalId String
+  bankSoalId  String
+  urutan      Int
+  bobot       Float    @default(1.0)
+  createdAt   DateTime @default(now())
+
+  paketSoal PaketSoal @relation(fields: [paketSoalId], references: [id], onDelete: Cascade)
+  bankSoal  BankSoal  @relation(fields: [bankSoalId], references: [id])
+
+  @@unique([paketSoalId, urutan])
+  @@index([paketSoalId])
+}
+
+enum ModeUjian {
+  ONLINE
+  OFFLINE
+}
+
+enum StatusUjian {
+  DRAFT
+  PUBLISHED
+  ONGOING
+  COMPLETED
+  CANCELLED
+}
+
+model Ujian {
+  id             String      @id @default(cuid())
+  paketSoalId    String
+  nama           String
+  tanggalMulai   DateTime
+  tanggalSelesai DateTime
+  durasi         Int // dalam menit
+  mode           ModeUjian   @default(ONLINE)
+  status         StatusUjian @default(DRAFT)
+  createdAt      DateTime    @default(now())
+
+  paketSoal PaketSoal      @relation(fields: [paketSoalId], references: [id])
+  peserta   PesertaUjian[]
+  jawaban   JawabanUjian[]
+}
+
+enum StatusPeserta {
+  BELUM_MULAI
+  MENGERJAKAN
+  SELESAI
+  TERLAMBAT
+}
+
+model PesertaUjian {
+  id        String        @id @default(cuid())
+  ujianId   String
+  muridId   String
+  status    StatusPeserta @default(BELUM_MULAI)
+  nilai     Float?
+  mulaiAt   DateTime?
+  selesaiAt DateTime?
+  createdAt DateTime      @default(now())
+
+  ujian Ujian @relation(fields: [ujianId], references: [id], onDelete: Cascade)
+  murid Murid @relation(fields: [muridId], references: [id])
+
+  @@unique([ujianId, muridId])
+  @@index([ujianId])
+}
+
+model JawabanUjian {
+  id         String   @id @default(cuid())
+  ujianId    String
+  muridId    String
+  bankSoalId String
+  jawaban    Json
+  isBenar    Boolean?
+  poin       Float?
+  feedback   String?
+  createdAt  DateTime @default(now())
+
+  ujian    Ujian    @relation(fields: [ujianId], references: [id], onDelete: Cascade)
+  murid    Murid    @relation(fields: [muridId], references: [id])
+  bankSoal BankSoal @relation(fields: [bankSoalId], references: [id])
+
+  @@unique([ujianId, muridId, bankSoalId])
+  @@index([ujianId])
+  @@index([muridId])
+}

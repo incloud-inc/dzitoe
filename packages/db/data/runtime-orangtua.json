@@ -1,0 +1,596 @@
+[
+  {
+    "nama": "Ibu Rahmawati S.Pd",
+    "nik": "3603125501800099",
+    "hubungan": "IBU",
+    "noHp": "081299008877",
+    "pekerjaan": "Guru SMP",
+    "penghasilan": "Rp 5.000.000 - Rp 10.000.000",
+    "alamat": "Jl. Surya Bahari No. 10, Pakuhaji",
+    "muridIds": [
+      "mrd-test-01"
+    ],
+    "isPrimaryContact": true,
+    "email": "rahmawati@gmail.com",
+    "id": "prt-1793011892427-rhoc",
+    "createdAt": "2026-10-26T10:51:32.427Z"
+  },
+  {
+    "nama": "Ibu Rahmawati S.Pd",
+    "nik": "3603125501800099",
+    "hubungan": "IBU",
+    "noHp": "081299008877",
+    "pekerjaan": "Guru SMP",
+    "penghasilan": "Rp 5.000.000 - Rp 10.000.000",
+    "alamat": "Jl. Surya Bahari No. 10, Pakuhaji",
+    "muridIds": [
+      "mrd-test-01"
+    ],
+    "isPrimaryContact": true,
+    "email": "rahmawati@gmail.com",
+    "id": "prt-1791545851913-8k5q",
+    "createdAt": "2026-10-09T11:37:31.914Z"
+  },
+  {
+    "nama": "Ibu Rahmawati S.Pd",
+    "nik": "3603125501800099",
+    "hubungan": "IBU",
+    "noHp": "081299008877",
+    "pekerjaan": "Guru SMP",
+    "penghasilan": "Rp 5.000.000 - Rp 10.000.000",
+    "alamat": "Jl. Surya Bahari No. 10, Pakuhaji",
+    "muridIds": [
+      "mrd-test-01"
+    ],
+    "isPrimaryContact": true,
+    "email": "rahmawati@gmail.com",
+    "id": "prt-1791545472279-ncua",
+    "createdAt": "2026-10-09T11:31:12.279Z"
+  },
+  {
+    "nama": "Ibu Rahmawati S.Pd",
+    "nik": "3603125501800099",
+    "hubungan": "IBU",
+    "noHp": "081299008877",
+    "pekerjaan": "Guru SMP",
+    "penghasilan": "Rp 5.000.000 - Rp 10.000.000",
+    "alamat": "Jl. Surya Bahari No. 10, Pakuhaji",
+    "muridIds": [
+      "mrd-test-01"
+    ],
+    "isPrimaryContact": true,
+    "email": "rahmawati@gmail.com",
+    "id": "prt-1791545441122-1es0",
+    "createdAt": "2026-10-09T11:30:41.122Z"
+  },
+  {
+    "nama": "Ibu Rahmawati S.Pd",
+    "nik": "3603125501800099",
+    "hubungan": "IBU",
+    "noHp": "081299008877",
+    "pekerjaan": "Guru SMP",
+    "penghasilan": "Rp 5.000.000 - Rp 10.000.000",
+    "alamat": "Jl. Surya Bahari No. 10, Pakuhaji",
+    "muridIds": [
+      "mrd-test-01"
+    ],
+    "isPrimaryContact": true,
+    "email": "rahmawati@gmail.com",
+    "id": "prt-1791095495868-mqru",
+    "createdAt": "2026-10-04T06:31:35.868Z"
+  },
+  {
+    "nama": "Ibu Rahmawati S.Pd",
+    "nik": "3603125501800099",
+    "hubungan": "IBU",
+    "noHp": "081299008877",
+    "pekerjaan": "Guru SMP",
+    "penghasilan": "Rp 5.000.000 - Rp 10.000.000",
+    "alamat": "Jl. Surya Bahari No. 10, Pakuhaji",
+    "muridIds": [
+      "mrd-test-01"
+    ],
+    "isPrimaryContact": true,
+    "email": "rahmawati@gmail.com",
+    "id": "prt-1791095359289-ug3j",
+    "createdAt": "2026-10-04T06:29:19.289Z"
+  },
+  {
+    "nama": "Ibu Rahmawati S.Pd",
+    "nik": "3603125501800099",
+    "hubungan": "IBU",
+    "noHp": "081299008877",
+    "pekerjaan": "Guru SMP",
+    "penghasilan": "Rp 5.000.000 - Rp 10.000.000",
+    "alamat": "Jl. Surya Bahari No. 10, Pakuhaji",
+    "muridIds": [
+      "mrd-test-01"
+    ],
+    "isPrimaryContact": true,
+    "email": "rahmawati@gmail.com",
+    "id": "prt-1791093851812-8bis",
+    "createdAt": "2026-10-04T06:04:11.812Z"
+  },
+  {
+    "nama": "Ibu Rahmawati S.Pd",
+    "nik": "3603125501800099",
+    "hubungan": "IBU",
+    "noHp": "081299008877",
+    "pekerjaan": "Guru SMP",
+    "penghasilan": "Rp 5.000.000 - Rp 10.000.000",
+    "alamat": "Jl. Surya Bahari No. 10, Pakuhaji",
+    "muridIds": [
+      "mrd-test-01"
+    ],
+    "isPrimaryContact": true,
+    "email": "rahmawati@gmail.com",
+    "id": "prt-1791092875630-m8p4",
+    "createdAt": "2026-10-04T05:47:55.633Z"
+  },
+  {
+    "nama": "Ibu Rahmawati S.Pd",
+    "nik": "3603125501800099",
+    "hubungan": "IBU",
+    "noHp": "081299008877",
+    "pekerjaan": "Guru SMP",
+    "penghasilan": "Rp 5.000.000 - Rp 10.000.000",
+    "alamat": "Jl. Surya Bahari No. 10, Pakuhaji",
+    "muridIds": [
+      "mrd-test-01"
+    ],
+    "isPrimaryContact": true,
+    "email": "rahmawati@gmail.com",
+    "id": "prt-1791092844098-qa5v",
+    "createdAt": "2026-10-04T05:47:24.098Z"
+  },
+  {
+    "nama": "Ibu Rahmawati S.Pd",
+    "nik": "3603125501800099",
+    "hubungan": "IBU",
+    "noHp": "081299008877",
+    "pekerjaan": "Guru SMP",
+    "penghasilan": "Rp 5.000.000 - Rp 10.000.000",
+    "alamat": "Jl. Surya Bahari No. 10, Pakuhaji",
+    "muridIds": [
+      "mrd-test-01"
+    ],
+    "isPrimaryContact": true,
+    "email": "rahmawati@gmail.com",
+    "id": "prt-1791092550796-z9sk",
+    "createdAt": "2026-10-04T05:42:30.796Z"
+  },
+  {
+    "nama": "Ibu Rahmawati S.Pd",
+    "nik": "3603125501800099",
+    "hubungan": "IBU",
+    "noHp": "081299008877",
+    "pekerjaan": "Guru SMP",
+    "penghasilan": "Rp 5.000.000 - Rp 10.000.000",
+    "alamat": "Jl. Surya Bahari No. 10, Pakuhaji",
+    "muridIds": [
+      "mrd-test-01"
+    ],
+    "isPrimaryContact": true,
+    "email": "rahmawati@gmail.com",
+    "id": "prt-1791092205541-dumw",
+    "createdAt": "2026-10-04T05:36:45.541Z"
+  },
+  {
+    "nama": "Ibu Rahmawati S.Pd",
+    "nik": "3603125501800099",
+    "hubungan": "IBU",
+    "noHp": "081299008877",
+    "pekerjaan": "Guru SMP",
+    "penghasilan": "Rp 5.000.000 - Rp 10.000.000",
+    "alamat": "Jl. Surya Bahari No. 10, Pakuhaji",
+    "muridIds": [
+      "mrd-test-01"
+    ],
+    "isPrimaryContact": true,
+    "email": "rahmawati@gmail.com",
+    "id": "prt-1791087486283-2663",
+    "createdAt": "2026-10-04T04:18:06.283Z"
+  },
+  {
+    "nama": "Ibu Rahmawati S.Pd",
+    "nik": "3603125501800099",
+    "hubungan": "IBU",
+    "noHp": "081299008877",
+    "pekerjaan": "Guru SMP",
+    "penghasilan": "Rp 5.000.000 - Rp 10.000.000",
+    "alamat": "Jl. Surya Bahari No. 10, Pakuhaji",
+    "muridIds": [
+      "mrd-test-01"
+    ],
+    "isPrimaryContact": true,
+    "email": "rahmawati@gmail.com",
+    "id": "prt-1791087035201-slju",
+    "createdAt": "2026-10-04T04:10:35.201Z"
+  },
+  {
+    "nama": "Ibu Rahmawati S.Pd",
+    "nik": "3603125501800099",
+    "hubungan": "IBU",
+    "noHp": "081299008877",
+    "pekerjaan": "Guru SMP",
+    "penghasilan": "Rp 5.000.000 - Rp 10.000.000",
+    "alamat": "Jl. Surya Bahari No. 10, Pakuhaji",
+    "muridIds": [
+      "mrd-test-01"
+    ],
+    "isPrimaryContact": true,
+    "email": "rahmawati@gmail.com",
+    "id": "prt-1791086989469-oeef",
+    "createdAt": "2026-10-04T04:09:49.469Z"
+  },
+  {
+    "nama": "Ibu Rahmawati S.Pd",
+    "nik": "3603125501800099",
+    "hubungan": "IBU",
+    "noHp": "081299008877",
+    "pekerjaan": "Guru SMP",
+    "penghasilan": "Rp 5.000.000 - Rp 10.000.000",
+    "alamat": "Jl. Surya Bahari No. 10, Pakuhaji",
+    "muridIds": [
+      "mrd-test-01"
+    ],
+    "isPrimaryContact": true,
+    "email": "rahmawati@gmail.com",
+    "id": "prt-1791086960373-zjgc",
+    "createdAt": "2026-10-04T04:09:20.373Z"
+  },
+  {
+    "nama": "Ibu Rahmawati S.Pd",
+    "nik": "3603125501800099",
+    "hubungan": "IBU",
+    "noHp": "081299008877",
+    "pekerjaan": "Guru SMP",
+    "penghasilan": "Rp 5.000.000 - Rp 10.000.000",
+    "alamat": "Jl. Surya Bahari No. 10, Pakuhaji",
+    "muridIds": [
+      "mrd-test-01"
+    ],
+    "isPrimaryContact": true,
+    "email": "rahmawati@gmail.com",
+    "id": "prt-1791073253968-a0yj",
+    "createdAt": "2026-10-04T00:20:53.968Z"
+  },
+  {
+    "nama": "Ibu Rahmawati S.Pd",
+    "nik": "3603125501800099",
+    "hubungan": "IBU",
+    "noHp": "081299008877",
+    "pekerjaan": "Guru SMP",
+    "penghasilan": "Rp 5.000.000 - Rp 10.000.000",
+    "alamat": "Jl. Surya Bahari No. 10, Pakuhaji",
+    "muridIds": [
+      "mrd-test-01"
+    ],
+    "isPrimaryContact": true,
+    "email": "rahmawati@gmail.com",
+    "id": "prt-1791071623039-byow",
+    "createdAt": "2026-10-03T23:53:43.039Z"
+  },
+  {
+    "nama": "Ibu Rahmawati S.Pd",
+    "nik": "3603125501800099",
+    "hubungan": "IBU",
+    "noHp": "081299008877",
+    "pekerjaan": "Guru SMP",
+    "penghasilan": "Rp 5.000.000 - Rp 10.000.000",
+    "alamat": "Jl. Surya Bahari No. 10, Pakuhaji",
+    "muridIds": [
+      "mrd-test-01"
+    ],
+    "isPrimaryContact": true,
+    "email": "rahmawati@gmail.com",
+    "id": "prt-1791069798101-mfqx",
+    "createdAt": "2026-10-03T23:23:18.101Z"
+  },
+  {
+    "nama": "Ibu Rahmawati S.Pd",
+    "nik": "3603125501800099",
+    "hubungan": "IBU",
+    "noHp": "081299008877",
+    "pekerjaan": "Guru SMP",
+    "penghasilan": "Rp 5.000.000 - Rp 10.000.000",
+    "alamat": "Jl. Surya Bahari No. 10, Pakuhaji",
+    "muridIds": [
+      "mrd-test-01"
+    ],
+    "isPrimaryContact": true,
+    "email": "rahmawati@gmail.com",
+    "id": "prt-1791068518359-vp2r",
+    "createdAt": "2026-10-03T23:01:58.359Z"
+  },
+  {
+    "nama": "Ibu Rahmawati S.Pd",
+    "nik": "3603125501800099",
+    "hubungan": "IBU",
+    "noHp": "081299008877",
+    "pekerjaan": "Guru SMP",
+    "penghasilan": "Rp 5.000.000 - Rp 10.000.000",
+    "alamat": "Jl. Surya Bahari No. 10, Pakuhaji",
+    "muridIds": [
+      "mrd-test-01"
+    ],
+    "isPrimaryContact": true,
+    "email": "rahmawati@gmail.com",
+    "id": "prt-1790600368729-euqm",
+    "createdAt": "2026-09-28T12:59:28.729Z"
+  },
+  {
+    "nama": "Ibu Rahmawati S.Pd",
+    "nik": "3603125501800099",
+    "hubungan": "IBU",
+    "noHp": "081299008877",
+    "pekerjaan": "Guru SMP",
+    "penghasilan": "Rp 5.000.000 - Rp 10.000.000",
+    "alamat": "Jl. Surya Bahari No. 10, Pakuhaji",
+    "muridIds": [
+      "mrd-test-01"
+    ],
+    "isPrimaryContact": true,
+    "email": "rahmawati@gmail.com",
+    "id": "prt-1790600135927-yqtg",
+    "createdAt": "2026-09-28T12:55:35.927Z"
+  },
+  {
+    "nama": "Ibu Rahmawati S.Pd",
+    "nik": "3603125501800099",
+    "hubungan": "IBU",
+    "noHp": "081299008877",
+    "pekerjaan": "Guru SMP",
+    "penghasilan": "Rp 5.000.000 - Rp 10.000.000",
+    "alamat": "Jl. Surya Bahari No. 10, Pakuhaji",
+    "muridIds": [
+      "mrd-test-01"
+    ],
+    "isPrimaryContact": true,
+    "email": "rahmawati@gmail.com",
+    "id": "prt-1790600005604-oy1x",
+    "createdAt": "2026-09-28T12:53:25.604Z"
+  },
+  {
+    "nama": "Ibu Rahmawati S.Pd",
+    "nik": "3603125501800099",
+    "hubungan": "IBU",
+    "noHp": "081299008877",
+    "pekerjaan": "Guru SMP",
+    "penghasilan": "Rp 5.000.000 - Rp 10.000.000",
+    "alamat": "Jl. Surya Bahari No. 10, Pakuhaji",
+    "muridIds": [
+      "mrd-test-01"
+    ],
+    "isPrimaryContact": true,
+    "email": "rahmawati@gmail.com",
+    "id": "prt-1790599982278-xqp0",
+    "createdAt": "2026-09-28T12:53:02.278Z"
+  },
+  {
+    "nama": "Ibu Rahmawati S.Pd",
+    "nik": "3603125501800099",
+    "hubungan": "IBU",
+    "noHp": "081299008877",
+    "pekerjaan": "Guru SMP",
+    "penghasilan": "Rp 5.000.000 - Rp 10.000.000",
+    "alamat": "Jl. Surya Bahari No. 10, Pakuhaji",
+    "muridIds": [
+      "mrd-test-01"
+    ],
+    "isPrimaryContact": true,
+    "email": "rahmawati@gmail.com",
+    "id": "prt-1790590064290-9lj2",
+    "createdAt": "2026-09-28T10:07:44.290Z"
+  },
+  {
+    "nama": "Ibu Rahmawati S.Pd",
+    "nik": "3603125501800099",
+    "hubungan": "IBU",
+    "noHp": "081299008877",
+    "pekerjaan": "Guru SMP",
+    "penghasilan": "Rp 5.000.000 - Rp 10.000.000",
+    "alamat": "Jl. Surya Bahari No. 10, Pakuhaji",
+    "muridIds": [
+      "mrd-test-01"
+    ],
+    "isPrimaryContact": true,
+    "email": "rahmawati@gmail.com",
+    "id": "prt-1790589530942-v0ap",
+    "createdAt": "2026-09-28T09:58:50.942Z"
+  },
+  {
+    "nama": "Ibu Rahmawati S.Pd",
+    "nik": "3603125501800099",
+    "hubungan": "IBU",
+    "noHp": "081299008877",
+    "pekerjaan": "Guru SMP",
+    "penghasilan": "Rp 5.000.000 - Rp 10.000.000",
+    "alamat": "Jl. Surya Bahari No. 10, Pakuhaji",
+    "muridIds": [
+      "mrd-test-01"
+    ],
+    "isPrimaryContact": true,
+    "email": "rahmawati@gmail.com",
+    "id": "prt-1790588064827-xa17",
+    "createdAt": "2026-09-28T09:34:24.827Z"
+  },
+  {
+    "nama": "Ibu Rahmawati S.Pd",
+    "nik": "3603125501800099",
+    "hubungan": "IBU",
+    "noHp": "081299008877",
+    "pekerjaan": "Guru SMP",
+    "penghasilan": "Rp 5.000.000 - Rp 10.000.000",
+    "alamat": "Jl. Surya Bahari No. 10, Pakuhaji",
+    "muridIds": [
+      "mrd-test-01"
+    ],
+    "isPrimaryContact": true,
+    "email": "rahmawati@gmail.com",
+    "id": "prt-1790586092721-5g0e",
+    "createdAt": "2026-09-28T09:01:32.721Z"
+  },
+  {
+    "nama": "Ibu Rahmawati S.Pd",
+    "nik": "3603125501800099",
+    "hubungan": "IBU",
+    "noHp": "081299008877",
+    "pekerjaan": "Guru SMP",
+    "penghasilan": "Rp 5.000.000 - Rp 10.000.000",
+    "alamat": "Jl. Surya Bahari No. 10, Pakuhaji",
+    "muridIds": [
+      "mrd-test-01"
+    ],
+    "isPrimaryContact": true,
+    "email": "rahmawati@gmail.com",
+    "id": "prt-1790586041212-0zzk",
+    "createdAt": "2026-09-28T09:00:41.212Z"
+  },
+  {
+    "id": "prt-001",
+    "userId": "usr-prt-001",
+    "nama": "H. Bambang Sudirman, S.E.",
+    "nik": "3603120101750001",
+    "hubungan": "AYAH",
+    "noHp": "081288991122",
+    "pekerjaan": "Wiraswasta / Pemilik Usaha",
+    "penghasilan": "Rp 10.000.000 - Rp 20.000.000",
+    "alamat": "Jl. Raya Pakuhaji No. 12, RT 002/RW 001, Pakuhaji",
+    "muridIds": [
+      "mrd-001",
+      "26001"
+    ],
+    "isPrimaryContact": true,
+    "email": "bambang.sudirman@gmail.com",
+    "createdAt": "2026-01-10T08:00:00.000Z"
+  },
+  {
+    "id": "prt-002",
+    "userId": "usr-prt-002",
+    "nama": "Hj. Siti Aminah, S.Pd.",
+    "nik": "3603124502780002",
+    "hubungan": "IBU",
+    "noHp": "081288991123",
+    "pekerjaan": "PNS Guru",
+    "penghasilan": "Rp 5.000.000 - Rp 10.000.000",
+    "alamat": "Jl. Raya Pakuhaji No. 12, RT 002/RW 001, Pakuhaji",
+    "muridIds": [
+      "mrd-001",
+      "26001"
+    ],
+    "isPrimaryContact": false,
+    "email": "siti.aminah@gmail.com",
+    "createdAt": "2026-01-10T08:00:00.000Z"
+  },
+  {
+    "id": "prt-003",
+    "userId": "usr-prt-003",
+    "nama": "Drs. Supardi Mulyono",
+    "nik": "3603120803720003",
+    "hubungan": "AYAH",
+    "noHp": "081377882233",
+    "pekerjaan": "Karyawan BUMN",
+    "penghasilan": "Rp 7.500.000 - Rp 15.000.000",
+    "alamat": "Kp. Gaga Ilir RT 003/RW 002, Ds. Gaga, Pakuhaji",
+    "muridIds": [
+      "mrd-002",
+      "26002"
+    ],
+    "isPrimaryContact": true,
+    "email": "supardi.m@bumn.co.id",
+    "createdAt": "2026-01-11T09:15:00.000Z"
+  },
+  {
+    "id": "prt-004",
+    "userId": "usr-prt-004",
+    "nama": "Endang Wahyuni",
+    "nik": "3603125206760004",
+    "hubungan": "IBU",
+    "noHp": "081377882234",
+    "pekerjaan": "Ibu Rumah Tangga",
+    "penghasilan": "< Rp 3.000.000",
+    "alamat": "Kp. Gaga Ilir RT 003/RW 002, Ds. Gaga, Pakuhaji",
+    "muridIds": [
+      "mrd-002",
+      "26002"
+    ],
+    "isPrimaryContact": false,
+    "createdAt": "2026-01-11T09:15:00.000Z"
+  },
+  {
+    "id": "prt-005",
+    "userId": "usr-prt-005",
+    "nama": "Rahmat Hidayat, S.Kom.",
+    "nik": "3603121509800005",
+    "hubungan": "WALI",
+    "noHp": "085711223344",
+    "pekerjaan": "Konsultan IT",
+    "penghasilan": "Rp 10.000.000 - Rp 25.000.000",
+    "alamat": "Perum Grand Sepatan Residence Blok C4 No. 8",
+    "muridIds": [
+      "mrd-003",
+      "26003",
+      "mrd-2",
+      "mrd-32",
+      "mrd-62",
+      "mrd-92",
+      "mrd-122"
+    ],
+    "isPrimaryContact": true,
+    "email": "rahmat.hidayat@techindo.com",
+    "createdAt": "2026-01-12T10:30:00.000Z"
+  },
+  {
+    "id": "prt-006",
+    "userId": "usr-prt-006",
+    "nama": "Dedi Kurniawan",
+    "nik": "3603122204770006",
+    "hubungan": "AYAH",
+    "noHp": "081822334455",
+    "pekerjaan": "Pedagang",
+    "penghasilan": "Rp 3.000.000 - Rp 5.000.000",
+    "alamat": "Jl. KH. Saad No. 45, Buaran Bambu, Pakuhaji",
+    "muridIds": [
+      "mrd-004",
+      "26004"
+    ],
+    "isPrimaryContact": true,
+    "createdAt": "2026-01-14T11:00:00.000Z"
+  },
+  {
+    "id": "prt-007",
+    "userId": "usr-prt-007",
+    "nama": "Sri Lestari",
+    "nik": "3603126011790007",
+    "hubungan": "IBU",
+    "noHp": "081822334456",
+    "pekerjaan": "Penjahit Mandiri",
+    "penghasilan": "Rp 2.000.000 - Rp 4.000.000",
+    "alamat": "Jl. KH. Saad No. 45, Buaran Bambu, Pakuhaji",
+    "muridIds": [
+      "mrd-004",
+      "26004"
+    ],
+    "isPrimaryContact": false,
+    "createdAt": "2026-01-14T11:00:00.000Z"
+  },
+  {
+    "id": "prt-008",
+    "userId": "usr-prt-008",
+    "nama": "Ir. Agus Wijaya",
+    "nik": "3603120508730008",
+    "hubungan": "AYAH",
+    "noHp": "081299887766",
+    "pekerjaan": "Kontraktor Sipil",
+    "penghasilan": "> Rp 20.000.000",
+    "alamat": "Jl. Raya Tanjung Pasir KM 4, Sukawali, Pakuhaji",
+    "muridIds": [
+      "mrd-005",
+      "26005"
+    ],
+    "isPrimaryContact": true,
+    "email": "agus.wijaya@wijayakonstruksi.id",
+    "createdAt": "2026-01-15T14:20:00.000Z"
+  }
+]

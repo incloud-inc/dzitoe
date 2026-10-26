@@ -1,0 +1,123 @@
+[
+  {
+    "id": "ang-mukr2r5t-k2r",
+    "ekskulId": "eks-01",
+    "muridId": "mrd-10",
+    "muridNama": "Tegar Sari",
+    "nisn": "0080000010",
+    "kelasNama": "X.2",
+    "jabatan": "ANGGOTA",
+    "tanggalBergabung": "2026-09-28",
+    "status": "AKTIF"
+  },
+  {
+    "id": "ang-001",
+    "ekskulId": "eks-01",
+    "muridId": "std-0080000001",
+    "muridNama": "Ahmad Fauzi",
+    "nisn": "0080000001",
+    "kelasNama": "X.1",
+    "jabatan": "KETUA",
+    "tanggalBergabung": "2025-07-20",
+    "status": "AKTIF"
+  },
+  {
+    "id": "ang-002",
+    "ekskulId": "eks-01",
+    "muridId": "std-0080000002",
+    "muridNama": "Aisyah Putri",
+    "nisn": "0080000002",
+    "kelasNama": "X.1",
+    "jabatan": "SEKRETARIS",
+    "tanggalBergabung": "2025-07-20",
+    "status": "AKTIF"
+  },
+  {
+    "id": "ang-003",
+    "ekskulId": "eks-05",
+    "muridId": "std-0080000003",
+    "muridNama": "Budi Santoso",
+    "nisn": "0080000003",
+    "kelasNama": "X.1",
+    "jabatan": "KETUA",
+    "tanggalBergabung": "2025-07-22",
+    "status": "AKTIF"
+  },
+  {
+    "id": "ang-004",
+    "ekskulId": "eks-05",
+    "muridId": "std-0080000007",
+    "muridNama": "Fajar Nugraha",
+    "nisn": "0080000007",
+    "kelasNama": "X.1",
+    "jabatan": "ANGGOTA",
+    "tanggalBergabung": "2025-07-22",
+    "status": "AKTIF"
+  },
+  {
+    "id": "ang-005",
+    "ekskulId": "eks-06",
+    "muridId": "std-0080000008",
+    "muridNama": "Farhan Maulana",
+    "nisn": "0080000008",
+    "kelasNama": "X.1",
+    "jabatan": "KETUA",
+    "tanggalBergabung": "2025-07-21",
+    "status": "AKTIF"
+  },
+  {
+    "id": "ang-006",
+    "ekskulId": "eks-03",
+    "muridId": "std-0080000004",
+    "muridNama": "Citra Dewi",
+    "nisn": "0080000004",
+    "kelasNama": "X.1",
+    "jabatan": "WAKIL_KETUA",
+    "tanggalBergabung": "2025-07-20",
+    "status": "AKTIF"
+  },
+  {
+    "id": "ang-007",
+    "ekskulId": "eks-07",
+    "muridId": "std-0080000010",
+    "muridNama": "Hendra Gunawan",
+    "nisn": "0080000010",
+    "kelasNama": "X.1",
+    "jabatan": "KETUA",
+    "tanggalBergabung": "2025-07-25",
+    "status": "AKTIF"
+  },
+  {
+    "id": "ang-008",
+    "ekskulId": "eks-09",
+    "muridId": "std-0080000005",
+    "muridNama": "Eko Prasetyo",
+    "nisn": "0080000005",
+    "kelasNama": "X.1",
+    "jabatan": "ANGGOTA",
+    "tanggalBergabung": "2025-07-25",
+    "status": "AKTIF"
+  },
+  {
+    "id": "ang-009",
+    "ekskulId": "eks-04",
+    "muridId": "std-0080000015",
+    "muridNama": "Dewi Lestari",
+    "nisn": "0080000015",
+    "kelasNama": "X.1",
+    "jabatan": "BENDAHARA",
+    "tanggalBergabung": "2025-07-20",
+    "status": "AKTIF"
+  },
+  {
+    "id": "ang-010",
+    "ekskulId": "eks-08",
+    "muridId": "std-0080000012",
+    "muridNama": "Bambang Pamungkas",
+    "nisn": "0080000012",
+    "kelasNama": "X.1",
+    "jabatan": "ANGGOTA",
+    "tanggalBergabung": "2025-07-24",
+    "status": "AKTIF"
+  }
+]

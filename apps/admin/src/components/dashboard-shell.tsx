@@ -4,12 +4,13 @@ import { useState, type ReactNode } from "react";
 import { Sidebar } from "@/components/sidebar";
 import { Topbar } from "@/components/topbar";
 import { ActivityPanel } from "@/components/activity-panel";
+import { AuthProvider } from "@/lib/auth-context";
 
 export interface DashboardShellProps {
   children: ReactNode;
 }
 
-export function DashboardShell({ children }: DashboardShellProps) {
+function DashboardShellInner({ children }: DashboardShellProps) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [activityOpen, setActivityOpen] = useState(false);
 
@@ -58,34 +59,16 @@ export function DashboardShell({ children }: DashboardShellProps) {
           </div>
         )}
 
-        {/* Footer */}
-        <footer className="border-t border-slate-200/90 bg-white/70 px-4 py-4 sm:px-6 lg:px-8">
-          <div className="mx-auto flex flex-col items-center justify-between gap-2 sm:flex-row text-xs text-slate-500">
-            <p>
-              DZITOE · SMAN 20 Kabupaten Tangerang — istilah resmi{" "}
-              <strong className="font-semibold text-slate-700">
-                Permendikdasmen No. 1–6 Tahun 2026
-              </strong>
-            </p>
-            <div className="flex items-center gap-3">
-              <span>
-                Port Admin:{" "}
-                <code className="rounded bg-slate-100 px-1.5 py-0.5 font-mono text-[11px] font-semibold text-slate-700">
-                  :3000
-                </code>
-              </span>
-              <span>•</span>
-              <span>
-                Mobile PWA:{" "}
-                <code className="rounded bg-slate-100 px-1.5 py-0.5 font-mono text-[11px] font-semibold text-slate-700">
-                  :3001
-                </code>
-              </span>
-            </div>
-          </div>
-        </footer>
       </div>
     </div>
+  );
+}
+
+export function DashboardShell({ children }: DashboardShellProps) {
+  return (
+    <AuthProvider>
+      <DashboardShellInner>{children}</DashboardShellInner>
+    </AuthProvider>
   );
 }
 

@@ -15,11 +15,24 @@
   },
   "files": ["src", "prisma"],
   "scripts": {
+    "db:generate": "dotenv -e ../../.env -- prisma generate",
+    "db:push": "dotenv -e ../../.env -- prisma db push",
+    "db:migrate": "dotenv -e ../../.env -- prisma migrate dev",
+    "db:deploy": "dotenv -e ../../.env -- prisma migrate deploy",
+    "db:studio": "dotenv -e ../../.env -- prisma studio",
+    "db:seed": "dotenv -e ../../.env -- tsx prisma/seed-kurikulum.ts",
+    "db:seed:mapel": "dotenv -e ../../.env -- tsx prisma/seed-mapel.ts",
+    "build": "tsc -b",
     "typecheck": "tsc --noEmit -p tsconfig.json",
     "clean": "rimraf dist"
   },
+  "dependencies": {
+    "@prisma/client": "catalog:"
+  },
   "devDependencies": {
     "@types/node": "catalog:",
+    "dotenv-cli": "^7.3.0",
+    "prisma": "catalog:",
     "rimraf": "catalog:",
     "typescript": "catalog:"
   }

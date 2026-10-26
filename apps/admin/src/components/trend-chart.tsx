@@ -147,12 +147,12 @@ export function TrendChart({
       >
         <defs>
           <linearGradient id="dzGradAsesmen" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stopColor="#4f46e5" stopOpacity="0.28" />
-            <stop offset="100%" stopColor="#4f46e5" stopOpacity="0.0" />
+            <stop offset="0%" stopColor="#12b886" stopOpacity="0.25" />
+            <stop offset="100%" stopColor="#12b886" stopOpacity="0.0" />
           </linearGradient>
           <linearGradient id="dzGradKehadiran" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stopColor="#10b981" stopOpacity="0.22" />
-            <stop offset="100%" stopColor="#10b981" stopOpacity="0.0" />
+            <stop offset="0%" stopColor="#ffa94d" stopOpacity="0.20" />
+            <stop offset="100%" stopColor="#ffa94d" stopOpacity="0.0" />
           </linearGradient>
         </defs>
 
@@ -166,7 +166,7 @@ export function TrendChart({
                 x2={width - padding.right}
                 y1={y}
                 y2={y}
-                stroke="#f1f5f9"
+                stroke="#dee2e6"
                 strokeWidth={1}
                 strokeDasharray="4 4"
               />
@@ -174,7 +174,7 @@ export function TrendChart({
                 x={padding.left - 8}
                 y={y + 3.5}
                 textAnchor="end"
-                className="fill-slate-400 font-mono text-[10px]"
+                className="fill-neutral-500 font-mono text-[10px]"
               >
                 {t}%
               </text>
@@ -189,7 +189,7 @@ export function TrendChart({
             x={p.x}
             y={height - 10}
             textAnchor="middle"
-            className="fill-slate-500 text-[11px] font-semibold"
+            className="fill-neutral-700 text-[11px] font-semibold"
           >
             {p.bulan}
           </text>
@@ -203,7 +203,7 @@ export function TrendChart({
         <path
           d={pathKehadiranLine}
           fill="none"
-          stroke="#10b981"
+          stroke="#fd7e14"
           strokeWidth={2.5}
           strokeLinecap="round"
           strokeLinejoin="round"
@@ -211,7 +211,7 @@ export function TrendChart({
         <path
           d={pathAsesmenLine}
           fill="none"
-          stroke="#4f46e5"
+          stroke="#087f5b"
           strokeWidth={2.5}
           strokeLinecap="round"
           strokeLinejoin="round"
@@ -224,7 +224,7 @@ export function TrendChart({
             cx={p.x}
             cy={p.y}
             r={hoverIndex === i ? 5 : 3.5}
-            fill="#10b981"
+            fill="#fd7e14"
             stroke="#ffffff"
             strokeWidth={2}
           />
@@ -236,7 +236,7 @@ export function TrendChart({
             cx={p.x}
             cy={p.y}
             r={hoverIndex === i ? 5 : 3.5}
-            fill="#4f46e5"
+            fill="#087f5b"
             stroke="#ffffff"
             strokeWidth={2}
           />
@@ -249,7 +249,7 @@ export function TrendChart({
             x2={hoveredX}
             y1={padding.top}
             y2={baseY}
-            stroke="#94a3b8"
+            stroke="#adb5bd"
             strokeWidth={1.5}
             strokeDasharray="3 3"
           />
@@ -259,19 +259,19 @@ export function TrendChart({
       {/* Floating Tooltip */}
       {hoveredData && hoveredX !== null && (
         <div
-          className="pointer-events-none absolute top-4 z-20 -translate-x-1/2 rounded-xl border border-slate-800 bg-slate-900/95 px-3 py-2 text-white shadow-xl backdrop-blur-xs transition-transform duration-75"
+          className="pointer-events-none absolute top-4 z-20 -translate-x-1/2 rounded-xl border border-neutral-700 bg-neutral-900/95 px-3.5 py-2 text-white shadow-xl backdrop-blur-xs transition-transform duration-75"
           style={{ left: hoveredX }}
         >
-          <p className="text-center text-[10px] font-bold uppercase tracking-wider text-slate-400">
+          <p className="text-center text-[10px] font-bold uppercase tracking-wider text-neutral-400">
             Bulan {hoveredData.bulan}
           </p>
-          <div className="mt-1 flex items-center gap-3 text-xs">
-            <span className="flex items-center gap-1 font-semibold text-indigo-300">
-              <span className="h-2 w-2 rounded-full bg-indigo-500" />
+          <div className="mt-1 flex items-center gap-3.5 text-xs">
+            <span className="flex items-center gap-1.5 font-semibold text-[#96f2d7]">
+              <span className="h-2 w-2 rounded-full bg-[#12b886]" />
               Asesmen: {hoveredData.asesmen}%
             </span>
-            <span className="flex items-center gap-1 font-semibold text-emerald-300">
-              <span className="h-2 w-2 rounded-full bg-emerald-500" />
+            <span className="flex items-center gap-1.5 font-semibold text-[#ffd8a8]">
+              <span className="h-2 w-2 rounded-full bg-[#fd7e14]" />
               Kehadiran: {hoveredData.kehadiran}%
             </span>
           </div>
