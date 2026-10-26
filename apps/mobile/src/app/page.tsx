@@ -12,7 +12,7 @@ export default async function BerandaPage() {
   const role = user?.role;
 
   return (
-    <main className="flex flex-col flex-1 animate-fade-up h-full">
+    <main className="flex flex-col flex-1 animate-fade-up">
       {role === 'GURU' || role === 'KEPALA_SEKOLAH' || role === 'TU' || role === 'ADMIN' ? (
         <TeacherHomeView user={user} />
       ) : role === 'ORANG_TUA' ? (

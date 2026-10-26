@@ -11,6 +11,9 @@ import {
   calculateDistanceMeters,
   type SeedAbsensi,
   TODAY_DATE_STR,
+  getWibDateString,
+  getWibTimeString,
+  getWibHoursMinutes,
 } from './seed-data';
 
 // Global memory cache to retain records during process lifecycle
@@ -149,11 +152,9 @@ export function recordStudentAttendance(input: RecordAttendanceInput): {
   }
 
   const all = getAllAttendance();
-  const tanggal = TODAY_DATE_STR;
-  const now = new Date();
-  const timeStr = `${String(now.getHours()).padStart(2, '0')}:${String(
-    now.getMinutes()
-  ).padStart(2, '0')} WIB`;
+  const tanggal = getWibDateString();
+  const timeStr = getWibTimeString();
+  const { hours: wibHours, minutes: wibMinutes } = getWibHoursMinutes();
 
   const chosenMethod: 'GPS' | 'SELFIE' | 'QR' =
     input.method || (input.selfieUrl ? 'SELFIE' : 'GPS');
@@ -276,7 +277,7 @@ export function recordStudentAttendance(input: RecordAttendanceInput): {
     }
   }
 
-  const isLate = now.getHours() > 7 || (now.getHours() === 7 && now.getMinutes() > 15);
+  const isLate = wibHours > 7 || (wibHours === 7 && wibMinutes > 15);
   const status: 'TEPAT' | 'TERLAMBAT' = isLate ? 'TERLAMBAT' : 'TEPAT';
 
   if (!existing) {

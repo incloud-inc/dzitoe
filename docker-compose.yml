@@ -65,6 +65,7 @@ services:
     environment:
       NODE_ENV: production
       PORT: 3000
+      TZ: Asia/Jakarta
       DATABASE_URL: ${DATABASE_URL:-postgresql://dzitoe:GKbqZzlFAjWVxelmleP31LYA6n7kIkv1isoeBJpPrXBwPH7O8zcwjEWNMC6J1xwo@b2wrapblhuo9sdbw4owuot3w:5432/dzitoe?schema=public}
       REDIS_HOST: ${REDIS_HOST:-lbiore2hrrhbgy9guq0q7tfg}
       REDIS_PORT: ${REDIS_PORT:-6379}
@@ -90,6 +91,7 @@ services:
     environment:
       NODE_ENV: production
       PORT: 3001
+      TZ: Asia/Jakarta
       DATABASE_URL: ${DATABASE_URL:-postgresql://dzitoe:GKbqZzlFAjWVxelmleP31LYA6n7kIkv1isoeBJpPrXBwPH7O8zcwjEWNMC6J1xwo@b2wrapblhuo9sdbw4owuot3w:5432/dzitoe?schema=public}
       REDIS_HOST: ${REDIS_HOST:-lbiore2hrrhbgy9guq0q7tfg}
       REDIS_PORT: ${REDIS_PORT:-6379}

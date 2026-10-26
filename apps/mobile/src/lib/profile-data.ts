@@ -21,10 +21,8 @@ export interface MetricItem {
 }
 
 export const STUDENT_METRICS: MetricItem[] = [
-  { value: '5', label: 'prestasi' },
   { value: '98%', label: 'kehadiran' },
   { value: '12', label: 'kegiatan' },
-  { value: '0', label: 'poin pelanggaran' },
 ];
 
 export type AttendanceLevel = 'exact' | 'partial' | 'excused' | 'absent' | 'weekend';

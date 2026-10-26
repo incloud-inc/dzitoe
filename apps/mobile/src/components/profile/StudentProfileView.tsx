@@ -504,25 +504,23 @@ export default function StudentProfileView({
         </div>
       )}
 
-      {/* 3. METRICS CARDS */}
-      <div className="mx-4 mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4 animate-in slide-in-from-bottom-4 fade-in duration-500">
+      {/* 3. METRICS CARDS (1 Baris Sejajar: Kehadiran & Kegiatan) */}
+      <div className="mx-4 mt-6 grid grid-cols-2 gap-3 animate-in slide-in-from-bottom-4 fade-in duration-500">
         {STUDENT_METRICS.map((metric, idx) => (
           <div
             key={idx}
-            className="group flex flex-col items-center justify-center rounded-2xl bg-white py-4 px-2 shadow-sm shadow-slate-200/50 ring-1 ring-black/[0.04] transition-all hover:ring-black/[0.08]"
+            className="group flex flex-col items-center justify-center rounded-2xl bg-white py-4 px-3 shadow-sm shadow-slate-200/50 ring-1 ring-black/[0.04] transition-all hover:ring-black/[0.08]"
           >
             <span
               className={`text-2xl font-bold tracking-tight ${
-                idx === 1
+                idx === 0
                   ? 'text-[#087f5b]'
-                  : idx === 0
-                  ? 'text-[#12b886]'
-                  : 'text-slate-900'
+                  : 'text-[#12b886]'
               }`}
             >
               {metric.value}
             </span>
-            <span className="mt-1.5 text-[10px] font-medium text-slate-500 uppercase tracking-widest text-center">
+            <span className="mt-1.5 text-[10px] font-semibold text-slate-500 uppercase tracking-widest text-center">
               {metric.label}
             </span>
           </div>

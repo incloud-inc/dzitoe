@@ -9,7 +9,9 @@ import {
   type SeedTeacherAttendance,
   SCHOOL_COORDINATES,
   calculateDistanceMeters,
-  TODAY_DATE_STR,
+  getWibDateString,
+  getWibTimeString,
+  getWibHoursMinutes,
 } from './seed-data';
 import { getAllTeachers } from './teacher-store';
 
@@ -120,8 +122,9 @@ export function recordTeacherAttendance(data: {
     return { success: false, message: 'Data guru tidak ditemukan.' };
   }
 
-  const now = new Date();
-  const timeStr = `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')} WIB`;
+  const timeStr = getWibTimeString();
+  const { hours: wibHours, minutes: wibMinutes } = getWibHoursMinutes();
+  const tanggalHariIni = getWibDateString();
 
   let distance: number | null = null;
   let isWithinRadius = false;
@@ -136,7 +139,7 @@ export function recordTeacherAttendance(data: {
   }
 
   const existingIndex = records.findIndex(
-    (r) => (r.guruId === teacher.id || r.nip === teacher.nip) && r.tanggal === TODAY_DATE_STR
+    (r) => (r.guruId === teacher.id || r.nip === teacher.nip) && r.tanggal === tanggalHariIni
   );
 
   let updatedRecord: SeedTeacherAttendance;
@@ -171,13 +174,13 @@ export function recordTeacherAttendance(data: {
     records[existingIndex] = updatedRecord;
   } else {
     // New Record
-    const isLate = now.getHours() > 7 || (now.getHours() === 7 && now.getMinutes() > 15);
+    const isLate = wibHours > 7 || (wibHours === 7 && wibMinutes > 15);
     updatedRecord = {
-      id: `att-t-${TODAY_DATE_STR}-${teacher.id}`,
+      id: `att-t-${tanggalHariIni}-${teacher.id}`,
       guruId: teacher.id,
       guruNama: `${teacher.nama}, ${teacher.gelar}`,
       nip: teacher.nip,
-      tanggal: TODAY_DATE_STR,
+      tanggal: tanggalHariIni,
       jamMasuk: data.type === 'MASUK' ? timeStr : null,
       jamPulang: data.type === 'PULANG' ? timeStr : null,
       status: isLate ? 'TERLAMBAT' : 'TEPAT',

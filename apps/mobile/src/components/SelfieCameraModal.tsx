@@ -151,18 +151,20 @@ export function SelfieCameraModal({
     // 1. Gambar frame video kamera
     ctx.drawImage(video, 0, 0, width, height);
 
-    // 2. Format Waktu & Tanggal Real-Time
+    // 2. Format Waktu & Tanggal Real-Time (WIB / Asia/Jakarta)
     const now = new Date();
     const dateStr = now.toLocaleDateString('id-ID', {
       weekday: 'long',
       day: 'numeric',
       month: 'short',
       year: 'numeric',
+      timeZone: 'Asia/Jakarta',
     });
     const timeStr = now.toLocaleTimeString('id-ID', {
       hour: '2-digit',
       minute: '2-digit',
       second: '2-digit',
+      timeZone: 'Asia/Jakarta',
     });
 
     const latText = gpsData.lat.toFixed(6);

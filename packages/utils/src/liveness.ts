@@ -109,11 +109,13 @@ export function validateSelfieLiveness(input: SelfieValidationInput): SelfieVali
     day: 'numeric',
     month: 'short',
     year: 'numeric',
+    timeZone: 'Asia/Jakarta',
   });
   const timeFormatted = new Date().toLocaleTimeString('id-ID', {
     hour: '2-digit',
     minute: '2-digit',
     second: '2-digit',
+    timeZone: 'Asia/Jakarta',
   });
 
   const latStr = input.latitude ? input.latitude.toFixed(6) : '-6.071285';

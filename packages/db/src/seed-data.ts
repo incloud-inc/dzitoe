@@ -249,9 +249,50 @@ export interface SeedAbsensi {
 
 export const SEED_ABSENSI: SeedAbsensi[] = [];
 
-// Helper untuk format tanggal hari ini (YYYY-MM-DD)
-const todayObj = new Date();
-export const TODAY_DATE_STR: string = todayObj.toISOString().split('T')[0] ?? '2026-09-27';
+// Helper untuk format tanggal & waktu hari ini dalam zona Waktu Indonesia Barat (WIB / Asia/Jakarta)
+export function getWibDate(date: Date = new Date()): Date {
+  return new Date(date.toLocaleString('en-US', { timeZone: 'Asia/Jakarta' }));
+}
+
+export function getWibDateString(date: Date = new Date()): string {
+  return new Intl.DateTimeFormat('en-CA', {
+    timeZone: 'Asia/Jakarta',
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+  }).format(date);
+}
+
+export function getWibTimeString(date: Date = new Date()): string {
+  const formatter = new Intl.DateTimeFormat('id-ID', {
+    timeZone: 'Asia/Jakarta',
+    hour: '2-digit',
+    minute: '2-digit',
+    hour12: false,
+  });
+  const parts = formatter.formatToParts(date);
+  const hour = parts.find((p) => p.type === 'hour')?.value || '00';
+  const minute = parts.find((p) => p.type === 'minute')?.value || '00';
+  return `${hour.padStart(2, '0')}:${minute.padStart(2, '0')} WIB`;
+}
+
+export function getWibHoursMinutes(date: Date = new Date()): { hours: number; minutes: number } {
+  const formatter = new Intl.DateTimeFormat('en-US', {
+    timeZone: 'Asia/Jakarta',
+    hour: 'numeric',
+    minute: 'numeric',
+    hour12: false,
+  });
+  const parts = formatter.formatToParts(date);
+  const hourStr = parts.find((p) => p.type === 'hour')?.value || '0';
+  const minuteStr = parts.find((p) => p.type === 'minute')?.value || '0';
+  return {
+    hours: parseInt(hourStr, 10) % 24,
+    minutes: parseInt(minuteStr, 10),
+  };
+}
+
+export const TODAY_DATE_STR: string = getWibDateString();
 
 // Inisialisasi data absensi real-time untuk 150 murid pada hari ini
 for (let i = 0; i < SEED_STUDENTS.length; i++) {
