@@ -10,6 +10,7 @@ import {
   RefreshCw,
   Loader2,
 } from 'lucide-react';
+import { DashboardShell } from '@/components/dashboard-shell';
 
 export default function SecurityAndPerfPage() {
   const [data, setData] = useState<any>(null);
@@ -53,22 +54,26 @@ export default function SecurityAndPerfPage() {
   };
 
   return (
-    <div className="flex flex-col gap-6 p-6">
-      {/* Banner */}
-      <div className="rounded-3xl bg-linear-to-r from-slate-900 via-indigo-950 to-slate-900 p-8 text-white shadow-xl relative overflow-hidden">
-        <div className="relative z-10 max-w-3xl">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/20 border border-emerald-400/30 text-emerald-300 text-xs font-semibold mb-4">
-            <CheckCircle2 className="w-3.5 h-3.5" />
-            <span>Fase 8: Optimalisasi & Hardening Keamanan (100% Selesai)</span>
+    <DashboardShell>
+      <div className="flex flex-col gap-6">
+        {/* Banner */}
+        <div className="rounded-3xl bg-slate-900 bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 p-8 text-white shadow-xl relative overflow-hidden border border-slate-800">
+          {/* Ambient glow effects */}
+          <div className="pointer-events-none absolute -right-12 -top-12 h-64 w-64 rounded-full bg-indigo-500/20 blur-3xl" />
+          <div className="pointer-events-none absolute -left-12 -bottom-12 h-64 w-64 rounded-full bg-emerald-500/20 blur-3xl" />
+          <div className="relative z-10 max-w-3xl">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/20 border border-emerald-400/40 text-emerald-300 text-xs font-semibold mb-4">
+              <CheckCircle2 className="w-3.5 h-3.5" />
+              <span>Fase 8: Optimalisasi & Hardening Keamanan (100% Selesai)</span>
+            </div>
+            <h1 className="text-3xl md:text-4xl font-extrabold tracking-tight text-white">
+              Performa, Redis Cache & Audit Keamanan
+            </h1>
+            <p className="mt-2 text-slate-200 text-sm md:text-base leading-relaxed">
+              Multi-layer caching Redis (port 6380), proteksi rate-limiting bertingkat, OWASP security headers, dan audit trail mutasi data terpusat SMAN 20 Kabupaten Tangerang.
+            </p>
           </div>
-          <h1 className="text-3xl md:text-4xl font-extrabold tracking-tight">
-            Performa, Redis Cache & Audit Keamanan
-          </h1>
-          <p className="mt-2 text-slate-300 text-sm md:text-base leading-relaxed">
-            Multi-layer caching Redis (port 6380), proteksi rate-limiting bertingkat, OWASP security headers, dan audit trail mutasi data terpusat SMAN 20 Kabupaten Tangerang.
-          </p>
         </div>
-      </div>
 
       {loading ? (
         <div className="flex justify-center p-16">
@@ -266,6 +271,7 @@ export default function SecurityAndPerfPage() {
           </div>
         </>
       )}
-    </div>
+      </div>
+    </DashboardShell>
   );
 }

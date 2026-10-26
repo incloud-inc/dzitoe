@@ -135,7 +135,7 @@ export function ActivityPanel({ onClose, className }: ActivityPanelProps) {
             <button
               type="button"
               onClick={onClose}
-              className="grid h-8 w-8 place-items-center rounded-lg text-slate-400 hover:bg-slate-100 hover:text-slate-700 lg:hidden"
+              className="grid h-8 w-8 place-items-center rounded-lg text-slate-400 hover:bg-slate-100 hover:text-slate-700 transition cursor-pointer"
               aria-label="Tutup panel aktivitas"
             >
               <X className="h-4 w-4" />

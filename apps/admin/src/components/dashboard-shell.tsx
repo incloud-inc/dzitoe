@@ -28,33 +28,28 @@ function DashboardShellInner({ children }: DashboardShellProps) {
           activityPanelOpen={activityOpen}
         />
 
-        {/* 2. Grid Area: Konten Utama (Kolom 2) + Activity Panel (Kolom 3) */}
+        {/* 2. Grid Area: Konten Utama */}
         <div className="flex flex-1 min-w-0">
           {/* Konten Utama */}
           <main className="flex-1 min-w-0 px-4 py-6 sm:px-6 lg:px-8">
             <div className="mx-auto w-full max-w-[1240px]">{children}</div>
           </main>
-
-          {/* Kolom 3: Right Activity & Notification Panel (Desktop 2xl / >= 1440px sticky) */}
-          <div className="hidden 2xl:block 2xl:w-[320px] 2xl:shrink-0">
-            <div className="sticky top-16 h-[calc(100vh-64px)] overflow-hidden">
-              <ActivityPanel />
-            </div>
-          </div>
         </div>
 
-        {/* Drawer Panel Kanan untuk layar < 1440px saat di-toggle dari Topbar */}
+        {/* Drawer Panel Kanan (Panel Terpadu) yang dapat di-show/hide lewat tombol lonceng */}
         {activityOpen && (
-          <div className="fixed inset-0 z-50 2xl:hidden">
+          <div className="fixed inset-0 z-50 overflow-hidden">
             {/* Backdrop */}
             <div
-              className="fixed inset-0 bg-slate-900/40 backdrop-blur-xs transition-opacity"
+              className="fixed inset-0 bg-slate-900/40 backdrop-blur-xs transition-opacity duration-200"
               onClick={() => setActivityOpen(false)}
               aria-hidden="true"
             />
             {/* Drawer */}
-            <div className="fixed inset-y-0 right-0 z-50 w-full max-w-sm bg-white shadow-2xl transition-transform ease-out-expo">
-              <ActivityPanel onClose={() => setActivityOpen(false)} />
+            <div className="fixed inset-y-0 right-0 z-50 flex max-w-full">
+              <div className="w-screen max-w-sm sm:max-w-md bg-white shadow-2xl transition-transform ease-out ring-1 ring-slate-900/10">
+                <ActivityPanel onClose={() => setActivityOpen(false)} />
+              </div>
             </div>
           </div>
         )}
